@@ -1,13 +1,26 @@
-// Design Tokens
+//~ Imports ~\\
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import '@/src/assets/images/brand/locaweb.svg';
 
-// Colors
+
+
+//~ Design Tokens ~\\
+
+// Brand
+$brand-primary: #2A343E;
+$brand-secondary: #F00843;
+$brand-vivid-pink: #F30168;
+$brand-lime-green: #10C300;
+
+// Default Colors
 $primary-color: #007bff;
 $secondary-color: #6c757d;
 $success-color: #28a745;
 $error-color: #dc3545;
 
+
 // Tipography
-$font-family: Arial, sans-serif;
+$font-family: 'Roboto', sans-serif;
 $font-size-base: 16px;
 
 // Spacements
@@ -33,7 +46,7 @@ $icon-size-small: 16px;
 $icon-size-medium: 24px;
 $icon-size-large: 32px;
 
-// Z-index
+// Z-indexes
 $z-index-modal: 1000;
 $z-index-dropdown: 900;
 $z-index-overlay: 800;
@@ -42,7 +55,7 @@ $z-index-overlay: 800;
 $transition-duration: 0.3s;
 $transition-easing: ease-in-out;
 
-// Mídia queries
+// Media queries
 $breakpoint-small: 576px;
 $breakpoint-medium: 768px;
 $breakpoint-large: 992px;
