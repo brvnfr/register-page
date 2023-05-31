@@ -30,6 +30,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '@/assets/styles/variables.scss';
+
 .button {
 	padding: $spacing-small $spacing-medium;
 	border-radius: $border-radius;

@@ -1,17 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import LoginPage from '@/views/LoginPage.vue';
-import RegisterPage from '@/views/RegisterPage.vue';
+import LoginView from '@/views/LoginView.vue';
+import RegisterView from '@/views/RegisterView.vue';
 
+//  routing de paginas do projeto
 const routes = [
   {
-    path: '/login',
-    name: 'login',
-    component: LoginPage
+    path: '/',
+    name: 'Login',
+    component: LoginView
   },
   {
     path: '/register',
     name: 'Register',
-    component: RegisterPage
+    component: RegisterView
   }
 ];
 

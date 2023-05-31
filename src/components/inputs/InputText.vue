@@ -4,11 +4,12 @@
 		<input
 			:type="type"
 			:name="name"
-			v-model="value"
+			:value="inputValue"
+			@input="updateValue($event.target.value)"
 			:placeholder="placeholder"
 			class="input-text__input"
 		/>
-		<div v-if="hasError" class="input-text__error">{{ errorMessage }}</div>
+		<div v-if="errorMessage" class="input-text__error">{{ errorMessage }}</div>
 	</div>
 </template>
 
@@ -40,12 +41,23 @@ export default {
 			default: '',
 		},
 	},
+	data() {
+		return {
+			inputValue: this.value,
+		}
+	},
 	computed: {
 		hasError() {
 			return Boolean(this.error)
 		},
 		errorMessage() {
 			return this.hasError ? this.error : ''
+		},
+	},
+	methods: {
+		updateValue(newValue) {
+			this.inputValue = newValue
+			this.$emit('input', newValue)
 		},
 	},
 }
