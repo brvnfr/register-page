@@ -1,0 +1,49 @@
+// Design Tokens
+
+// Colors
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$success-color: #28a745;
+$error-color: #dc3545;
+
+// Tipography
+$font-family: Arial, sans-serif;
+$font-size-base: 16px;
+
+// Spacements
+$spacing-small: 8px;
+$spacing-medium: 16px;
+$spacing-large: 24px;
+
+// Borders
+$border-radius: 4px;
+
+// Shadows
+$box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+// Width
+$content-width: 1200px;
+
+// Height
+$header-height: 64px;
+$footer-height: 48px;
+
+// Icons
+$icon-size-small: 16px;
+$icon-size-medium: 24px;
+$icon-size-large: 32px;
+
+// Z-index
+$z-index-modal: 1000;
+$z-index-dropdown: 900;
+$z-index-overlay: 800;
+
+// Transition Effect
+$transition-duration: 0.3s;
+$transition-easing: ease-in-out;
+
+// Mídia queries
+$breakpoint-small: 576px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 992px;
+$breakpoint-xlarge: 1200px;
