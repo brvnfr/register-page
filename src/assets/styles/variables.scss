@@ -1,12 +1,13 @@
 //~ Imports ~\\
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-@import '@/src/assets/images/brand/locaweb.svg';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'); // fonte roboto google apis
 
 
 
 //~ Design Tokens ~\\
 
-// Brand
+
+// Brand Colors
+$brand-color-main: #FAFAFC;
 $brand-primary: #2A343E;
 $brand-secondary: #F00843;
 $brand-vivid-pink: #F30168;
@@ -21,7 +22,19 @@ $error-color: #dc3545;
 
 // Tipography
 $font-family: 'Roboto', sans-serif;
-$font-size-base: 16px;
+
+
+//Font Colors
+$font-color-primary: #333333;
+$font-color-secondary: #666666;
+$font-color-light: #999999;
+$font-color-white: #FAFAFC;
+$font-color-black: #0a0a0a;
+
+// Tamanhos Sizes
+$font-size-small: 14px;
+$font-size-medium: 16px;
+$font-size-large: 20px;
 
 // Spacements
 $spacing-small: 8px;
@@ -60,3 +73,4 @@ $breakpoint-small: 576px;
 $breakpoint-medium: 768px;
 $breakpoint-large: 992px;
 $breakpoint-xlarge: 1200px;
+
