@@ -1,72 +1,83 @@
 <template>
-	<div class="login">
+	<form class="form" @submit.prevent="handleSubmit">
 		<h1>Login</h1>
-		<form>
-			<InputText
-				label="E-mail"
-				name="email"
-				v-model="email"
-				placeholder="Digite o e-mail"
-			></InputText>
-			<InputText
-				label="Senha"
-				name="password"
-				v-model="password"
-				type="password"
-				placeholder="Digite a senha"
-			></InputText>
-			<Button label="Entrar" type="primary" @click="login"></Button>
-		</form>
-	</div>
+		<InputText
+			label="Email"
+			name="email"
+			:value="email"
+			@input="updateEmail"
+			placeholder="Enter your email"
+			:error="errors.email"
+		/>
+
+		<InputText
+			label="Password"
+			name="password"
+			:value="password"
+			@input="updatePassword"
+			placeholder="Enter your password"
+			type="password"
+			:error="errors.password"
+		/>
+
+		<ButtonDefault label="Login" @click="handleSubmit" />
+	</form>
 </template>
 
 <script>
 import InputText from '@/components/inputs/InputText.vue'
-import Button from '@/components/buttons/ButtonDefault.vue'
+import ButtonDefault from '@/components/buttons/ButtonDefault.vue'
 
 export default {
 	components: {
 		InputText,
-		Button,
+		ButtonDefault,
 	},
 	data() {
 		return {
 			email: '',
 			password: '',
+			errors: {},
 		}
 	},
 	methods: {
-		async login() {
-			// método para realizar o login do usuario
+		updateEmail(value) {
+			this.email = value
+			this.errors.email = ''
+		},
+		updatePassword(value) {
+			this.password = value
+			this.errors.password = ''
+		},
+		handleSubmit() {
+			this.errors = {}
+
+			if (!this.email) {
+				this.errors.email = 'Email is required.'
+			}
+
+			if (!this.password) {
+				this.errors.password = 'Password is required.'
+			}
+
+			// Perform additional validation if needed
+
+			if (Object.keys(this.errors).length === 0) {
+				// Proceed with login logic
+				this.login()
+			}
+		},
+		login() {
+			// Implement your login logic here
 		},
 	},
 }
 </script>
 
-<style scoped lang="scss">
-@import '@/assets/styles/variables.scss';
-
-.login {
+<style scoped>
+.form {
 	max-width: 400px;
 	margin: 0 auto;
-	padding: $spacing-large;
-
-	h1 {
-		text-align: center;
-		margin-bottom: $spacing-large;
-	}
-
-	form {
-		display: flex;
-		flex-direction: column;
-
-		& > * {
-			margin-bottom: $spacing-medium;
-		}
-
-		& > :last-child {
-			align-self: center;
-		}
-	}
+	padding: 20px;
 }
 </style>

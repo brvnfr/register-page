@@ -1,5 +1,8 @@
 <template>
-	<button :class="buttonClasses" :disabled="disabled">
+	<button
+		:class="['button', `button--${type}`, sizeClass]"
+		:disabled="disabled"
+	>
 		{{ label }}
 	</button>
 </template>
@@ -20,10 +23,15 @@ export default {
 			type: Boolean,
 			default: false,
 		},
+		size: {
+			type: String,
+			default: 'medium',
+			validator: (value) => ['small', 'medium', 'large'].includes(value),
+		},
 	},
 	computed: {
-		buttonClasses() {
-			return ['button', `button--${this.type}`]
+		sizeClass() {
+			return `button--${this.size}`
 		},
 	},
 }
@@ -36,13 +44,12 @@ export default {
 	border-radius: $border-radius;
 	cursor: pointer;
 	font-weight: bold;
-	width: 551px;
-	height: 80px;
+	width: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	padding: 30px 24px;
+	padding: 16px 8px;
 	gap: 24px;
 
 	&--default {

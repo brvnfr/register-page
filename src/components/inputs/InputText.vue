@@ -82,7 +82,7 @@ export default {
 	&__input {
 		border: 2px solid #ccc;
 		border-radius: 5px;
-		padding: 24px 0;
+		padding: 16px 0;
 		gap: 10px;
 		transition: border-color 0.3s;
 		width: 100%;
