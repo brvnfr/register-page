@@ -52,7 +52,7 @@ export default {
 	},
 	methods: {
 		register() {
-			// Lógica para realizar o cadastro
+			// metodo pra registrar um novo usuario
 		},
 	},
 }

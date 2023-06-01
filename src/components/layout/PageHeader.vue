@@ -1,49 +1,80 @@
 <template>
-	<header class="header">
-		<h1>Meu Site</h1>
-		<nav class="header__nav">
-			<router-link to="/">Home</router-link>
-			<router-link to="/about">Sobre</router-link>
-			<router-link to="/contact">Contato</router-link>
+	<header class="page-header navbar">
+		<div class="logo">
+			<img src="@/assets/images/brand/locaweb.svg" alt="Logo" />
+		</div>
+		<button class="menu-toggle" @click="toggleMenu">
+			<i :class="{ 'fa-bars': !isMenuOpen, 'fa-times': isMenuOpen }"></i>
+		</button>
+		<nav class="nav-items" v-show="isMenuOpen">
+			<router-link to="/" class="nav-link">Login</router-link>
+			<router-link to="/register" class="nav-link">Cadastrar</router-link>
 		</nav>
 	</header>
 </template>
 
-<style scoped lang="scss">
-.header {
-	background-color: var(--primary-color);
-	padding: var(--spacing-medium);
-
-	h1 {
-		color: var(--font-color-light);
-		font-size: var(--font-size-large);
-		margin-bottom: var(--spacing-small);
-	}
-
-	&__nav {
-		display: flex;
-		gap: var(--spacing-medium);
-		margin-top: var(--spacing-small);
-
-		a {
-			color: var(--font-color-light);
-			text-decoration: none;
-
-			&:hover {
-				text-decoration: underline;
-			}
+<script>
+export default {
+	data() {
+		return {
+			isMenuOpen: false,
 		}
-	}
+	},
+	methods: {
+		toggleMenu() {
+			this.isMenuOpen = !this.isMenuOpen
+		},
+	},
+}
+</script>
+
+<style scoped lang="scss">
+@import '@/assets/styles/variables.scss';
+.page-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem;
+	background-color: $brand-color-main;
+	color: $font-color-primary;
+}
+
+.logo img {
+	height: 2rem;
+}
+
+.menu-toggle {
+	display: none;
+	background: none;
+	border: none;
+	font-size: 1.5rem;
+	color: $font-color-primary;
+}
+
+.nav-items {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.nav-link {
+	color: $font-color-primary;
+	text-decoration: none;
 }
 
 @media (max-width: 768px) {
-	.header {
-		padding: var(--spacing-small);
+	.logo {
+		flex: 1;
+	}
 
-		h1 {
-			font-size: var(--font-size-medium);
-			margin-bottom: var(--spacing-tiny);
-		}
+	.menu-toggle {
+		display: block;
+	}
+
+	.nav-items {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
 	}
 }
 </style>

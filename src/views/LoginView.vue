@@ -37,7 +37,7 @@ export default {
 	},
 	methods: {
 		async login() {
-			// método para realizar o login
+			// método para realizar o login do usuario
 		},
 	},
 }

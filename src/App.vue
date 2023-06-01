@@ -1,7 +1,9 @@
 <template>
-	<div class="app">
+	<div id="app" class="app-container">
 		<PageHeader />
-		<router-view />
+		<main class="page-content">
+			<router-view />
+		</main>
 		<PageFooter />
 	</div>
 </template>
@@ -19,10 +21,16 @@ export default {
 }
 </script>
 
-<style>
-.app {
+<style scoped lang="scss">
+.app-container {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
 	min-height: 100vh;
+}
+
+.page-content {
 	display: flex;
-	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 </style>
