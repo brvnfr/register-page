@@ -1,5 +1,5 @@
 <template>
-	<div class="input-text">
+	<div :class="['input-text', { 'input-text--responsive': responsive }]">
 		<label :for="name" class="input-text__label">{{ label }}</label>
 		<input
 			:type="type"
@@ -40,6 +40,10 @@ export default {
 			type: String,
 			default: '',
 		},
+		responsive: {
+			type: Boolean,
+			default: false,
+		},
 	},
 	data() {
 		return {
@@ -78,13 +82,18 @@ export default {
 	&__input {
 		border: 2px solid #ccc;
 		border-radius: 5px;
-		padding: 30px 16px;
+		padding: 24px 0;
 		gap: 10px;
 		transition: border-color 0.3s;
-		width: 551px;
+		width: 100%;
 
 		&:hover,
 		&:focus {
+			border: 2px solid $brand-vivid-pink;
+			outline: none;
+		}
+
+		&:active {
 			border-color: $brand-vivid-pink;
 		}
 

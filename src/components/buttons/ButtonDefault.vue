@@ -33,13 +33,20 @@ export default {
 @import '@/assets/styles/variables.scss';
 
 .button {
-	padding: $spacing-small $spacing-medium;
 	border-radius: $border-radius;
 	cursor: pointer;
 	font-weight: bold;
+	width: 551px;
+	height: 80px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 30px 24px;
+	gap: 24px;
 
 	&--default {
-		background-color: $primary-color;
+		background-color: $brand-vivid-pink;
 		color: $font-color-light;
 	}
 
