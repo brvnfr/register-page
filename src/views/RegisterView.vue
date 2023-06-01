@@ -34,8 +34,8 @@
 </template>
 
 <script>
-import InputText from '@/components/InputText.vue'
-import Button from '@/components/Button.vue'
+import InputText from '@/components/inputs/InputText.vue'
+import Button from '@/components/buttons/ButtonDefault.vue'
 
 export default {
 	components: {
@@ -58,30 +58,31 @@ export default {
 }
 </script>
 
+<
 <style scoped lang="scss">
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 
 .register {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: $spacing-large;
+	max-width: 400px;
+	margin: 0 auto;
+	padding: $spacing-large;
 
-  h1 {
-    text-align: center;
-    margin-bottom: $spacing-large;
-  }
+	h1 {
+		text-align: center;
+		margin-bottom: $spacing-large;
+	}
 
-  form {
-    display: flex;
-    flex-direction: column;
+	form {
+		display: flex;
+		flex-direction: column;
 
-    ${InputText} {
-      margin-bottom: $spacing-medium;
-    }
+		/deep/ InputText {
+			margin-bottom: $spacing-medium;
+		}
 
-    ${Button} {
-      align-self: center;
-    }
-  }
+		/deep/ Button {
+			align-self: center;
+		}
+	}
 }
 </style>

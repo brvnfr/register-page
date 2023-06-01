@@ -82,7 +82,7 @@ export default {
 
 	&__error {
 		color: $error-color;
-		font-size: $font-size-base - 2px;
+		font-size: $font-size-medium - 2px;
 		margin-top: $spacing-small;
 	}
 }
