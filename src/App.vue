@@ -1,36 +1,36 @@
 <template>
-	<div id="app" class="app-container">
-		<PageHeader />
-		<main class="page-content">
+	<div id="app">
+		<main>
 			<router-view />
 		</main>
-		<PageFooter />
 	</div>
 </template>
 
 <script>
-import PageHeader from '@/components/layout/PageHeader.vue'
-import PageFooter from '@/components/layout/PageFooter.vue'
-
 export default {
 	name: 'App',
-	components: {
-		PageHeader,
-		PageFooter,
-	},
+	components: {},
 }
 </script>
 
 <style scoped lang="scss">
-.app-container {
-	display: grid;
-	grid-template-rows: auto 1fr auto;
-	min-height: 100vh;
-}
-
-.page-content {
+#app {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	min-height: 100vh;
+}
+
+main {
+	max-width: 1200px;
+	padding: 20px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+	main {
+		padding: 10px;
+	}
 }
 </style>
