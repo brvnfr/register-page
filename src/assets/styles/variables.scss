@@ -40,9 +40,14 @@ $font-styles: (
     font-family: $font-family
   ),
   large: (
-    size: 28px,
+    size: 18px,
     font-weight: 700,
     font-family: $font-family
+  )
+  x-large: (
+    size:28,
+    fontg-weight:700,
+    font-family:$font-family
   )
 );
 
@@ -52,7 +57,7 @@ $font-styles: (
 // font-weight: map-get(map-get($font-styles, medium), weight);
 
 //Font Colors
-$font-color-primary: #333333;
+$font-color-primary: #2A343E;
 $font-color-secondary: #666666;
 $font-color-light: #999999;
 $font-color-white: #FAFAFC;
@@ -73,17 +78,18 @@ $spacing-medium: 16px;
 $spacing-large: 24px;
 
 // Borders
-$border-radius: 4px;
+$border: 1px solid $brand-color-main;
 
-// Shadows
+//Border Radius
+$border-radius: 5px;
+
+// Box Shadows
 $box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
 // Width
 $content-width: 1200px;
 
 // Height
-$header-height: 64px;
-$footer-height: 48px;
 
 // Icons
 $icon-size-small: 16px;
