@@ -1,15 +1,16 @@
 <template>
-	<div :class="['input-text', { 'input-text--responsive': responsive }]">
-		<label :for="name" class="input-text__label">{{ label }}</label>
+	<div class="input-text">
+		<label :for="name" class="label">{{ label }}</label>
 		<input
-			:type="type"
+			:id="name"
 			:name="name"
-			:value="inputValue"
-			@input="updateValue($event.target.value)"
+			:value="value"
+			@input="$emit('update:modelValue', $event.target.value)"
 			:placeholder="placeholder"
-			class="input-text__input"
+			:type="type"
+			:class="{ 'input-error': error }"
 		/>
-		<div v-if="errorMessage" class="input-text__error">{{ errorMessage }}</div>
+		<div v-if="error" class="error-message">{{ error }}</div>
 	</div>
 </template>
 
@@ -20,48 +21,25 @@ export default {
 			type: String,
 			required: true,
 		},
-		type: {
-			type: String,
-			default: 'text',
-		},
 		name: {
 			type: String,
 			required: true,
 		},
 		value: {
-			type: [String, Number],
-			required: true,
-		},
-		placeholder: {
 			type: String,
-			default: '',
+			required: true,
 		},
 		error: {
 			type: String,
 			default: '',
 		},
-		responsive: {
-			type: Boolean,
-			default: false,
+		placeholder: {
+			type: String,
+			default: '',
 		},
-	},
-	data() {
-		return {
-			inputValue: this.value,
-		}
-	},
-	computed: {
-		hasError() {
-			return Boolean(this.error)
-		},
-		errorMessage() {
-			return this.hasError ? this.error : ''
-		},
-	},
-	methods: {
-		updateValue(newValue) {
-			this.inputValue = newValue
-			this.$emit('input', newValue)
+		type: {
+			type: String,
+			default: 'text',
 		},
 	},
 }
@@ -71,42 +49,37 @@ export default {
 @import '@/assets/styles/variables.scss';
 
 .input-text {
-	margin-bottom: $spacing-medium;
+	margin-bottom: 20px;
+	width: 94%;
+}
 
-	&__label {
-		display: block;
-		font-weight: bold;
-		margin-bottom: $spacing-small;
-	}
+.label {
+	font-weight: bold;
+	margin-bottom: 5px;
+	font-size: map-get(map-get($font-styles, small), size);
+	font-weight: map-get(map-get($font-styles, small), font-weight);
+}
 
-	&__input {
-		border: 2px solid #ccc;
-		border-radius: 5px;
-		padding: 16px 0;
-		gap: 10px;
-		transition: border-color 0.3s;
-		width: 100%;
+input {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	border: 2px solid #ccc;
+	border-radius: 5px;
+	transition: border-color 0.3s;
+}
 
-		&:hover,
-		&:focus {
-			border: 2px solid $brand-vivid-pink;
-			outline: none;
-		}
+input:focus {
+	outline: none;
+	border-color: #007bff;
+}
 
-		&:active {
-			border-color: $brand-vivid-pink;
-		}
+.input-error {
+	border-color: red;
+}
 
-		&::selection {
-			background-color: $brand-vivid-pink;
-		}
-	}
-
-	&__error {
-		color: $error-color;
-		font-size: map-get(map-get($font-styles, medium), size);
-		font-weight: map-get(map-get($font-styles, medium), font-weight);
-		margin-top: $spacing-small;
-	}
+.error-message {
+	color: red;
+	margin-top: 5px;
 }
 </style>

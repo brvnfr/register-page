@@ -20,18 +20,20 @@
 			:error="errors.password"
 		/>
 
-		<ButtonDefault label="Login" @click="handleSubmit" />
+		<CTAButton :button-class="submitButtonClass" @click="handleSubmit"
+			>Login</CTAButton
+		>
 	</form>
 </template>
 
 <script>
 import InputText from '@/components/inputs/InputText.vue'
-import ButtonDefault from '@/components/buttons/ButtonDefault.vue'
+import CTAButton from '@/components/buttons/CTAButton.vue'
 
 export default {
 	components: {
 		InputText,
-		ButtonDefault,
+		CTAButton,
 	},
 	data() {
 		return {

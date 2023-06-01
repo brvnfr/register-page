@@ -29,18 +29,23 @@ $font-family: 'Sora', sans-serif;
 
 //Font sizes
 $font-styles: (
+  x-small: (
+    size: 12px,
+    font-weight: 400,
+    font-family: $font-family
+  ),
   small: (
-    size: 16px,
+    size: 14px,
     font-weight: 400,
     font-family: $font-family
   ),
   medium: (
-    size: 18px,
+    size: 14px,
     font-weight: 400,
     font-family: $font-family
   ),
   large: (
-    size: 18px,
+    size: 20px,
     font-weight: 700,
     font-family: $font-family
   ),
@@ -84,14 +89,10 @@ $border: 1px solid $brand-color-main;
 $border-radius: 5px;
 
 // Box Shadows
-$box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+$box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 
-// Width
-$content-width: 1200px;
 
-// Form Box
-$form-box-width: 617px;
-$form-box-height: 492px;
+
 
 // Icons
 $icon-size-small: 16px;
@@ -107,9 +108,23 @@ $z-index-overlay: 800;
 $transition-duration: 0.3s;
 $transition-easing: ease-in-out;
 
+// Width
+$content-width: 1200px;
+
+// Form Box
+$box-size: 400px;
+
 // Media queries
 $breakpoint-small: 576px;
 $breakpoint-medium: 768px;
 $breakpoint-large: 992px;
 $breakpoint-xlarge: 1200px;
 
+$box-size: 400px;
+
+// Update $box-size based on breakpoints
+@if $breakpoint-medium < $breakpoint-small {
+  $box-size: 100%;
+} @else {
+  $box-size: 400px;
+}

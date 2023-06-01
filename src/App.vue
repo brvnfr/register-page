@@ -12,32 +12,3 @@ export default {
 	components: {},
 }
 </script>
-
-<style scoped lang="scss">
-#app {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-}
-
-main {
-	max-width: 1200px;
-	padding: 20px;
-	width: 100%;
-	margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-	main {
-		padding: 10px;
-	}
-}
-
-.centered-text {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 20px;
-}
-</style>
