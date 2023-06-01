@@ -78,6 +78,7 @@ $font-styles: (
     $font-700: 700;
     
     // Spacements
+    $spacing-x-small: 4px;
     $spacing-small: 8px;
     $spacing-medium: 16px;
     $spacing-large: 24px;
@@ -119,15 +120,6 @@ $breakpoint-small: 576px;
 $breakpoint-medium: 768px;
 $breakpoint-large: 992px;
 $breakpoint-xlarge: 1200px;
-
-$box-size: 400px;
-
-// Update $box-size based on breakpoints
-@if $breakpoint-medium < $breakpoint-small {
-  $box-size: 100%;
-} @else {
-  $box-size: 400px;
-}
 
 //Lighten/Darken Variables
 $luminosity-increase: 15%; // variavel de enclarecimento da cor padrao do botao

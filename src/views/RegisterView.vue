@@ -7,10 +7,10 @@
 				class="logo-img"
 			/>
 		</div>
-		<h1>
+		<h2>
 			Você está muito perto de mudar a forma de <br />
 			<u>hospedar seu site</u>
-		</h1>
+		</h2>
 		<div class="register-form">
 			<form class="form" @submit.prevent="handleSubmit">
 				<h2>Dados pessoais</h2>
@@ -157,6 +157,12 @@ export default {
 	width: $box-size;
 	overflow: hidden;
 }
+@media (max-width: 640px) {
+	.register-form {
+		width: 100%;
+		padding: $spacing-small;
+	}
+}
 
 .form {
 	display: flex;
@@ -167,7 +173,7 @@ export default {
 	color: $error-color;
 	font-size: map-get(map-get($font-styles, small), size);
 	font-weight: map-get(map-get($font-styles, large), font-weight);
-	margin-top: $spacing-small;
+	margin-top: $spacing-x-small; /* Reduzir a margem superior */
 }
 
 .input-error {
@@ -176,37 +182,44 @@ export default {
 
 .error-message {
 	color: $error-color;
-	margin-top: $spacing-small;
+	margin-top: $spacing-x-small; /* Reduzir a margem superior */
 }
 
 .form-margin {
-	margin-bottom: calc($spacing-small - 5px);
+	margin-bottom: calc($spacing-x-small - 5px); /* Reduzir a margem inferior */
 }
 
 .form-caption {
 	color: $font-color-secondary;
 	font-size: map-get(map-get($font-styles, x-small), size);
 	font-weight: map-get(map-get($font-styles, x-small), font-weight);
-	margin-top: calc($spacing-small - 3px);
-	margin-bottom: $spacing-large;
+	margin-top: calc($spacing-x-small - 3px); /* Reduzir a margem superior */
+	margin-bottom: $spacing-small; /* Reduzir a margem inferior */
 }
 
 h2:last-of-type {
+	margin-bottom: $spacing-small; /* Reduzir a margem inferior */
+}
+h2:first-of-type {
 	margin-bottom: $spacing-large;
+	text-align: center;
+	& u {
+		color: $brand-vivid-pink;
+	}
 }
 
 .checkbox-section {
 	display: flex;
 	align-items: center;
-	margin-top: $spacing-small;
-	margin-bottom: $spacing-large;
+	margin-top: $spacing-x-small; /* Reduzir a margem superior */
+	margin-bottom: $spacing-small; /* Reduzir a margem inferior */
 	font-size: map-get(map-get($font-styles, small), size);
 	font-weight: map-get(map-get($font-styles, small), font-weight);
 	color: $font-color-primary;
 }
 
 .checkbox-section input[type='checkbox'] {
-	margin-right: $spacing-small;
+	margin-right: $spacing-x-small; /* Reduzir a margem à direita */
 }
 
 .checkbox-section a {
