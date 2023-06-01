@@ -37,36 +37,36 @@ export default {
 	},
 	methods: {
 		async login() {
-			//método para realizar o login
+			// método para realizar o login
 		},
 	},
 }
 </script>
 
 <style scoped lang="scss">
-@import "@/styles/variables.scss";
+@import '@/assets/styles/variables.scss';
 
 .login {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: $spacing-large;
+	max-width: 400px;
+	margin: 0 auto;
+	padding: $spacing-large;
 
-  h1 {
-    text-align: center;
-    margin-bottom: $spacing-large;
-  }
+	h1 {
+		text-align: center;
+		margin-bottom: $spacing-large;
+	}
 
-  form {
-    display: flex;
-    flex-direction: column;
+	form {
+		display: flex;
+		flex-direction: column;
 
-    ${InputText} {
-      margin-bottom: $spacing-medium;
-    }
+		& > * {
+			margin-bottom: $spacing-medium;
+		}
 
-    ${Button} {
-      align-self: center;
-    }
-  }
+		& > :last-child {
+			align-self: center;
+		}
+	}
 }
 </style>

@@ -58,9 +58,8 @@ export default {
 }
 </script>
 
-<
 <style scoped lang="scss">
-@import '@/styles/variables.scss';
+@import '@/assets/styles/variables.scss';
 
 .register {
 	max-width: 400px;
@@ -76,11 +75,11 @@ export default {
 		display: flex;
 		flex-direction: column;
 
-		/deep/ InputText {
+		& > * {
 			margin-bottom: $spacing-medium;
 		}
 
-		/deep/ Button {
+		& > :last-child {
 			align-self: center;
 		}
 	}
