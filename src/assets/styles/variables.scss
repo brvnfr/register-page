@@ -31,20 +31,26 @@ $font-family: 'Sora', sans-serif;
 $font-styles: (
   small: (
     size: 16px,
-    weight: 400,
+    font-weight: 400,
     font-family: $font-family
   ),
   medium: (
     size: 18px,
-    weight: 400,
+    font-weight: 400,
     font-family: $font-family
   ),
   large: (
     size: 28px,
-    weight: 700,
+    font-weight: 700,
     font-family: $font-family
   )
 );
+
+// usar com map-get
+// ex:
+// font-size: map-get(map-get($font-styles, medium), size);
+// font-weight: map-get(map-get($font-styles, medium), weight);
+
 //Font Colors
 $font-color-primary: #333333;
 $font-color-secondary: #666666;
