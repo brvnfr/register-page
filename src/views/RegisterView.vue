@@ -27,9 +27,9 @@
 					v-model="password"
 					:error="errors.password"
 					type="password"
-					class="password-field"
+					class="form-margin"
 				/>
-				<p class="password-info">No mínimo 8 caracteres.</p>
+				<p class="form-caption">No mínimo 8 caracteres.</p>
 
 				<InputText
 					label="Confirme sua senha"
@@ -38,6 +38,20 @@
 					type="password"
 					:error="confirmPasswordError"
 				/>
+
+				<div class="horizontal-spacer"></div>
+
+				<h2 class="section-title">Dados do seu Site</h2>
+
+				<InputText
+					label="Nome do seu Site"
+					name="siteName"
+					v-model="siteName"
+					:value="siteName"
+					:error="siteNameError"
+					class="form-margin"
+				/>
+				<p class="form-caption">Exatamente igual ao título do seu site.</p>
 
 				<p v-if="formError" class="form-error">{{ formError }}</p>
 
@@ -65,6 +79,8 @@ export default {
 			password: '',
 			confirmPassword: '',
 			confirmPasswordError: '',
+			siteName: '',
+			siteNameError: '',
 			errors: {},
 			formError: '',
 		}
@@ -110,13 +126,6 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/styles/variables.scss';
 
-.container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-}
-
 .register-form {
 	background-color: $color-white;
 	box-shadow: $box-shadow;
@@ -137,20 +146,6 @@ export default {
 	margin-top: $spacing-small;
 }
 
-h2 {
-	font-size: map-get(map-get($font-styles, large), size);
-	font-weight: map-get(map-get($font-styles, large), font-weight);
-	margin: $spacing-none;
-}
-
-h3 {
-	font-size: map-get(map-get($font-styles, medium), size);
-	font-weight: map-get(map-get($font-styles, medium), font-weight);
-	color: $font-color-secondary;
-	margin-top: $spacing-none;
-	margin-bottom: $spacing-medium;
-}
-
 .input-error {
 	border-color: $error-color;
 }
@@ -160,13 +155,19 @@ h3 {
 	margin-top: $spacing-small;
 }
 
-.password-field {
-	margin-bottom: 5px; /* Ajuste o valor conforme necessário */
+.form-margin {
+	margin-bottom: calc($spacing-small - 5px);
 }
 
-.password-info {
-	color: #666666;
-	font-size: 12px;
-	margin-top: 5px;
+.form-caption {
+	color: $font-color-secondary;
+	font-size: map-get(map-get($font-styles, x-small), size);
+	font-weight: map-get(map-get($font-styles, x-small), font-weight);
+	margin-top: calc($spacing-small - 3px);
+	margin-bottom: $spacing-large;
+}
+
+h2:last-of-type {
+	margin-bottom: $spacing-large;
 }
 </style>

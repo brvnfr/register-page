@@ -4,3 +4,31 @@ body {
   font-family: $font-family;
   background-color: $bg-default;
 }
+
+h2 {
+	font-size: map-get(map-get($font-styles, large), size);
+	font-weight: map-get(map-get($font-styles, large), font-weight);
+	margin: $spacing-none;
+}
+
+h3 {
+	font-size: map-get(map-get($font-styles, medium), size);
+	font-weight: map-get(map-get($font-styles, medium), font-weight);
+	color: $font-color-secondary;
+	margin-top: $spacing-none;
+	margin-bottom: $spacing-medium;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.horizontal-spacer {
+	height: 1px;
+	background-color: $brand-color-main;
+	margin-top: $spacing-large;
+	margin-bottom: $spacing-large;
+}
