@@ -1,6 +1,9 @@
 <template>
 	<div class="register">
-		<h1>Cadastro</h1>
+		<div class="logo-container">
+			<img src="@/assets/images/brand/brand-logo.svg" alt="" />
+		</div>
+		<h1 class="title">Cadastro</h1>
 		<form>
 			<InputText
 				label="Nome"
@@ -52,7 +55,8 @@ export default {
 	},
 	methods: {
 		register() {
-			// metodo pra registrar um novo usuario
+			// método para registrar um usuário
+			// ...
 		},
 	},
 }
@@ -66,7 +70,13 @@ export default {
 	margin: 0 auto;
 	padding: $spacing-large;
 
-	h1 {
+	.logo-container {
+		display: flex;
+		justify-content: center;
+		margin-bottom: $spacing-large;
+	}
+
+	.title {
 		text-align: center;
 		margin-bottom: $spacing-large;
 	}
@@ -74,6 +84,7 @@ export default {
 	form {
 		display: flex;
 		flex-direction: column;
+		background: $color-white;
 
 		& > * {
 			margin-bottom: $spacing-medium;

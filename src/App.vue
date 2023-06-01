@@ -33,4 +33,11 @@ main {
 		padding: 10px;
 	}
 }
+
+.centered-text {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
 </style>
