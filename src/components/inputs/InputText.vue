@@ -82,7 +82,8 @@ export default {
 
 	&__error {
 		color: $error-color;
-		font-size: $font-size-medium - 2px;
+		font-size: map-get(map-get($font-styles, medium), size);
+		font-weight: map-get(map-get($font-styles, medium), font-weight);
 		margin-top: $spacing-small;
 	}
 }
