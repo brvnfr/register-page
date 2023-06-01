@@ -6,11 +6,11 @@
 				<h3>Informe seus dados pessoais para acesso à sua conta</h3>
 
 				<InputText
-					label="Name"
+					label="Nome Completo"
 					name="name"
 					v-model="name"
 					:error="errors.name"
-					placeholder="Enter your name"
+					placeholder="Informe seu nome completo"
 				/>
 
 				<InputText
@@ -18,20 +18,31 @@
 					name="email"
 					v-model="email"
 					:error="errors.email"
-					placeholder="Enter your email"
+					placeholder="Informe seu e-mail"
 				/>
 
 				<InputText
-					label="Password"
+					label="Senha"
 					name="password"
 					v-model="password"
 					:error="errors.password"
-					placeholder="Enter your password"
 					type="password"
+					class="password-field"
+				/>
+				<p class="password-info">No mínimo 8 caracteres.</p>
+
+				<InputText
+					label="Confirme sua senha"
+					name="confirmPassword"
+					v-model="confirmPassword"
+					type="password"
+					:error="confirmPasswordError"
 				/>
 
+				<p v-if="formError" class="form-error">{{ formError }}</p>
+
 				<CTAButton :button-class="submitButtonClass" @click="handleSubmit"
-					>Register</CTAButton
+					>Criar Conta</CTAButton
 				>
 			</form>
 		</div>
@@ -52,7 +63,10 @@ export default {
 			name: '',
 			email: '',
 			password: '',
+			confirmPassword: '',
+			confirmPasswordError: '',
 			errors: {},
+			formError: '',
 		}
 	},
 	computed: {
@@ -77,11 +91,12 @@ export default {
 			if (!this.password) {
 				this.errors.password = 'Senha obrigatória.'
 			}
-
-			// Perform additional validation if needed
+			if (this.confirmPassword !== this.password) {
+				this.confirmPasswordError = 'As senhas não correspondem'
+				return
+			}
 
 			if (Object.keys(this.errors).length === 0) {
-				// Proceed with registration logic
 				this.register()
 			}
 		},
@@ -115,17 +130,24 @@ export default {
 	flex-direction: column;
 }
 
+.form-error {
+	color: $error-color;
+	font-size: map-get(map-get($font-styles, small), size);
+	font-weight: map-get(map-get($font-styles, large), font-weight);
+	margin-top: $spacing-small;
+}
+
 h2 {
 	font-size: map-get(map-get($font-styles, large), size);
 	font-weight: map-get(map-get($font-styles, large), font-weight);
-	margin: 0;
+	margin: $spacing-none;
 }
 
 h3 {
 	font-size: map-get(map-get($font-styles, medium), size);
 	font-weight: map-get(map-get($font-styles, medium), font-weight);
 	color: $font-color-secondary;
-	margin-top: 0;
+	margin-top: $spacing-none;
 	margin-bottom: $spacing-medium;
 }
 
@@ -136,5 +158,15 @@ h3 {
 .error-message {
 	color: $error-color;
 	margin-top: $spacing-small;
+}
+
+.password-field {
+	margin-bottom: 5px; /* Ajuste o valor conforme necessário */
+}
+
+.password-info {
+	color: #666666;
+	font-size: 12px;
+	margin-top: 5px;
 }
 </style>

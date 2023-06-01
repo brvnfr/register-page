@@ -76,10 +76,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import '@/assets/styles/variables.scss';
 .form {
 	max-width: 400px;
-	margin: 0 auto;
-	padding: 20px;
+	margin: $spacing-none auto;
+	padding: $spacing-large;
 }
 </style>

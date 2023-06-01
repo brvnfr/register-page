@@ -24,7 +24,7 @@ export default {
 @import '@/assets/styles/variables.scss';
 
 .cta-button {
-	background-color: $primary-color;
+	background-color: $button-color;
 	color: $color-white;
 	padding: $spacing-medium $spacing-large;
 	border: none;
@@ -33,9 +33,10 @@ export default {
 	font-size: map-get(map-get($font-styles, medium), size);
 	font-weight: map-get(map-get($font-styles, medium), font-weight);
 	transition: background-color $transition-duration $transition-easing;
-}
+	text-transform: uppercase;
 
-.cta-button:hover {
-	background-color: $brand-secondary;
+	&:hover {
+		background-color: $button-hover;
+	}
 }
 </style>

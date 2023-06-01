@@ -33,78 +33,78 @@ $font-styles: (
     size: 12px,
     font-weight: 400,
     font-family: $font-family
-  ),
-  small: (
-    size: 14px,
-    font-weight: 400,
-    font-family: $font-family
-  ),
-  medium: (
-    size: 14px,
-    font-weight: 400,
-    font-family: $font-family
-  ),
-  large: (
-    size: 20px,
-    font-weight: 700,
+    ),
+    small: (
+      size: 14px,
+      font-weight: 400,
+      font-family: $font-family
+      ),
+      medium: (
+        size: 14px,
+        font-weight: 400,
+        font-family: $font-family
+        ),
+        large: (
+          size: 20px,
+          font-weight: 700,
     font-family: $font-family
   ),
   x-large: (
     size:28,
     fontg-weight:700,
     font-family:$font-family
-  )
-);
+    )
+    );
+    
+    // usar com map-get
+    // ex:
+    // font-size: map-get(map-get($font-styles, medium), size);
+    // font-weight: map-get(map-get($font-styles, medium), weight);
+    
+    //Font Colors
+    $font-color-primary: #2A343E;
+    $font-color-secondary: #666666;
+    $font-color-light: #999999;
+    $font-color-white: #FAFAFC;
+    $font-color-black: #0a0a0a;
 
-// usar com map-get
-// ex:
-// font-size: map-get(map-get($font-styles, medium), size);
-// font-weight: map-get(map-get($font-styles, medium), weight);
-
-//Font Colors
-$font-color-primary: #2A343E;
-$font-color-secondary: #666666;
-$font-color-light: #999999;
-$font-color-white: #FAFAFC;
-$font-color-black: #0a0a0a;
-
-// Font Sizes
-$font-size-small: 16px;
-$font-size-medium: 18px;
-$font-size-large: 28px;
-
-// Font Weights
-$font-400: 400;
-$font-700: 700;
-
-// Spacements
-$spacing-small: 8px;
-$spacing-medium: 16px;
-$spacing-large: 24px;
-
-// Borders
-$border: 1px solid $brand-color-main;
-
-//Border Radius
-$border-radius: 5px;
-
-// Box Shadows
-$box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-
-
-
-
-// Icons
-$icon-size-small: 16px;
-$icon-size-medium: 24px;
-$icon-size-large: 32px;
-
-// Z-indexes
-$z-index-modal: 1000;
-$z-index-dropdown: 900;
-$z-index-overlay: 800;
-
-// Transition Effect
+    // Font Sizes
+    $font-size-small: 16px;
+    $font-size-medium: 18px;
+    $font-size-large: 28px;
+    
+    // Font Weights
+    $font-400: 400;
+    $font-700: 700;
+    
+    // Spacements
+    $spacing-small: 8px;
+    $spacing-medium: 16px;
+    $spacing-large: 24px;
+    $spacing-none: 0;
+    // Borders
+    $border: 1px solid $brand-color-main;
+    
+    //Border Radius
+    $border-radius: 5px;
+    
+    // Box Shadows
+    $box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    
+    
+    
+    
+    // Icons
+    $icon-size-small: 16px;
+    $icon-size-medium: 24px;
+    $icon-size-large: 32px;
+    
+    // Z-indexes
+    $z-index-modal: 1000;
+    $z-index-dropdown: 900;
+    $z-index-overlay: 800;
+    
+    // Transition Effect
 $transition-duration: 0.3s;
 $transition-easing: ease-in-out;
 
@@ -128,3 +128,10 @@ $box-size: 400px;
 } @else {
   $box-size: 400px;
 }
+
+//Lighten/Darken Variables
+$luminosity-increase: 15%; // variavel de enclarecimento da cor padrao do botao
+
+//Buttons
+$button-color: $brand-vivid-pink;
+$button-hover: lighten($brand-vivid-pink, $luminosity-increase); // Configura globalmente a cor e focus/hover dos botoes

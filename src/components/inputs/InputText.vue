@@ -49,13 +49,13 @@ export default {
 @import '@/assets/styles/variables.scss';
 
 .input-text {
-	margin-bottom: 20px;
+	margin-bottom: $spacing-large;
 	width: 94%;
 }
 
 .label {
 	font-weight: bold;
-	margin-bottom: 5px;
+	margin-bottom: $spacing-small;
 	font-size: map-get(map-get($font-styles, small), size);
 	font-weight: map-get(map-get($font-styles, small), font-weight);
 }
@@ -64,22 +64,22 @@ input {
 	width: 100%;
 	padding: 10px;
 	font-size: 16px;
-	border: 2px solid #ccc;
-	border-radius: 5px;
+	border: 1px solid #ccc;
+	border-radius: $border-radius;
 	transition: border-color 0.3s;
 }
 
 input:focus {
-	outline: none;
-	border-color: #007bff;
+	outline: 1px solid $brand-vivid-pink;
+	border-color: $brand-vivid-pink;
 }
 
 .input-error {
-	border-color: red;
+	border-color: $error-color;
 }
 
 .error-message {
 	color: red;
-	margin-top: 5px;
+	margin-top: $spacing-small;
 }
 </style>
