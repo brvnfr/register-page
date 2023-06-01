@@ -1,9 +1,9 @@
 <template>
-	<div class="register">
-		<div class="logo-container">
-			<img src="@/assets/images/brand/brand-logo.svg" alt="" />
-		</div>
-		<h1 class="title">Cadastro</h1>
+	<div class="logo-container">
+		<img src="@/assets/images/brand/brand-logo.svg" alt="" />
+	</div>
+	<h1 class="title">Cadastro</h1>
+	<div class="form-box">
 		<form>
 			<InputText
 				label="Nome"
@@ -65,34 +65,35 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/styles/variables.scss';
 
-.register {
-	max-width: 400px;
-	margin: 0 auto;
-	padding: $spacing-large;
+.logo-container {
+	display: flex;
+	justify-content: center;
+	margin-bottom: $spacing-large;
+}
 
-	.logo-container {
-		display: flex;
-		justify-content: center;
-		margin-bottom: $spacing-large;
+.title {
+	text-align: center;
+	margin-bottom: $spacing-large;
+}
+
+.form-box {
+	position: relative;
+	background-color: #fff;
+	width: 617px;
+	min-height: 492px;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	background: $color-white;
+
+	& > * {
+		margin-bottom: $spacing-medium;
 	}
 
-	.title {
-		text-align: center;
-		margin-bottom: $spacing-large;
-	}
-
-	form {
-		display: flex;
-		flex-direction: column;
-		background: $color-white;
-
-		& > * {
-			margin-bottom: $spacing-medium;
-		}
-
-		& > :last-child {
-			align-self: center;
-		}
+	& > :last-child {
+		align-self: center;
 	}
 }
 </style>

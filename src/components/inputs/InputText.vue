@@ -64,6 +64,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '@/assets/styles/variables.scss';
+
 .input-text {
 	margin-bottom: $spacing-medium;
 
@@ -74,10 +76,21 @@ export default {
 	}
 
 	&__input {
-		width: 100%;
-		padding: $spacing-small;
-		border: 1px solid $secondary-color;
-		border-radius: $border-radius;
+		border: 2px solid #ccc;
+		border-radius: 5px;
+		padding: 30px 16px;
+		gap: 10px;
+		transition: border-color 0.3s;
+		width: 551px;
+
+		&:hover,
+		&:focus {
+			border-color: $brand-vivid-pink;
+		}
+
+		&::selection {
+			background-color: $brand-vivid-pink;
+		}
 	}
 
 	&__error {
