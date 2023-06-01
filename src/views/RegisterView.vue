@@ -92,20 +92,45 @@
 				</form>
 			</div>
 			<div class="plan-column">
-				<table class="plan-table">
-					<thead>
-						<tr>
-							<th>Plano</th>
-							<th>Benefícios</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr v-for="plan in selectedPlan" :key="plan.id">
-							<td>{{ plan.name }}</td>
-							<td>{{ plan.benefits }}</td>
-						</tr>
-					</tbody>
-				</table>
+				<PricePlan
+					title="Escala"
+					price="R$ 447/mês"
+					additionalInfo="+1,5% por pedido pago"
+				>
+					<ul>
+						<li>Checkout transparente com vários templates</li>
+						<li>Construtor de checkout altamente personalizável</li>
+						<li>Integração com Shopify e Woocommerce</li>
+						<li>Mercado Pago, Appmax, Cielo, Pagar.me e Pagseguro</li>
+						<li>
+							Recuperação de carrinho abandonado via Whatsapp, sms e e-mail
+						</li>
+						<li>Recuperação de boleto bancário via Whatsapp, sms e e-mail</li>
+						<li>Recuperação de Pix via Whatsapp e e-mail</li>
+						<li>Monitoramento de até 50 lojas Shopify</li>
+						<li>Feed de Produtos de lojas monitoradas</li>
+						<li>Envio de mensagens ilimitadas via Whatsapp</li>
+						<li>
+							Multi-atendimento para Whatsapp (atendentes compartilhando o mesmo
+							número)
+						</li>
+						<li>Ilimitadas contas de equipe</li>
+						<li>Dashboard financeiro com lucro em tempo real</li>
+						<li>Rastreios ilimitados</li>
+						<li>Plugin de rastreamento</li>
+						<li>Link para landing page ou página de vendas própria</li>
+						<li>Upsell e downsell</li>
+						<li>Order bump</li>
+						<li>Desconto por faixa de preço</li>
+						<li>Prova social</li>
+						<li>Cupom de desconto</li>
+						<li>Desconto por forma de pagamento</li>
+						<li>Kit promocional</li>
+						<li>Certificado SSL Grátis</li>
+						<li>Prioridade no suporte</li>
+					</ul>
+					<button class="choose-plan-button">ESCOLHER ESSE PLANO</button>
+				</PricePlan>
 			</div>
 		</div>
 	</div>
@@ -114,11 +139,13 @@
 <script>
 import InputText from '@/components/inputs/InputText.vue'
 import CTAButton from '@/components/buttons/CTAButton.vue'
+import PricePlan from '@/components/layouts/PricePlan.vue'
 
 export default {
 	components: {
 		InputText,
 		CTAButton,
+		PricePlan,
 	},
 	data() {
 		return {
@@ -208,8 +235,9 @@ export default {
 	background-color: $color-white;
 	box-shadow: $box-shadow;
 	padding: $spacing-medium;
-	overflow: hidden;
-	width: 200px;
+	overflow: scroll;
+	max-height: 100vh;
+	width: 250px;
 	border-radius: $border-radius;
 }
 
