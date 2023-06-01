@@ -1,5 +1,16 @@
 <template>
 	<div class="container">
+		<div class="logo-brand">
+			<img
+				src="@/assets/images/brand/brand-logo.svg"
+				alt="brand-logo"
+				class="logo-img"
+			/>
+		</div>
+		<h1>
+			Você está muito perto de mudar a forma de <br />
+			<u>hospedar seu site</u>
+		</h1>
 		<div class="register-form">
 			<form class="form" @submit.prevent="handleSubmit">
 				<h2>Dados pessoais</h2>
@@ -39,7 +50,7 @@
 					:error="confirmPasswordError"
 				/>
 
-				<div class="horizontal-spacer"></div>
+				<hr class="horizontal-spacer" />
 
 				<h2 class="section-title">Dados do seu Site</h2>
 
@@ -54,6 +65,19 @@
 				<p class="form-caption">Exatamente igual ao título do seu site.</p>
 
 				<p v-if="formError" class="form-error">{{ formError }}</p>
+
+				<hr class="horizontal-spacer" />
+
+				<div class="checkbox-section">
+					<input type="checkbox" id="policyCheckbox" v-model="policyCheckbox" />
+					<label for="policyCheckbox">
+						Ao concluir com seu cadastro você concorda com nossos
+						<a href="/termos-de-uso" target="_blank">termos de Uso</a> e
+						<a href="/politicas-de-privacidade" target="_blank">
+							politicas de privacidade</a
+						>.
+					</label>
+				</div>
 
 				<CTAButton :button-class="submitButtonClass" @click="handleSubmit"
 					>Criar Conta</CTAButton
@@ -169,5 +193,28 @@ export default {
 
 h2:last-of-type {
 	margin-bottom: $spacing-large;
+}
+
+.checkbox-section {
+	display: flex;
+	align-items: center;
+	margin-top: $spacing-small;
+	margin-bottom: $spacing-large;
+	font-size: map-get(map-get($font-styles, small), size);
+	font-weight: map-get(map-get($font-styles, small), font-weight);
+	color: $font-color-primary;
+}
+
+.checkbox-section input[type='checkbox'] {
+	margin-right: $spacing-small;
+}
+
+.checkbox-section a {
+	color: $brand-vivid-pink;
+}
+
+.checkbox-section a:hover {
+	text-decoration: underline;
+	color: $brand-vivid-pink;
 }
 </style>
