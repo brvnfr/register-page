@@ -89,14 +89,6 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/styles/variables.scss';
 
-.header-container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 100vh; /* Define a altura da tela inteira */
-}
-
 .content {
 	display: flex;
 	flex-direction: column;
@@ -156,14 +148,12 @@ export default {
 .register-link {
 	margin-top: $spacing-medium;
 	text-align: center;
-}
-
-.register-link p {
-	margin-bottom: 0;
-}
-
-.register-link router-link {
-	margin-left: 5px;
-	color: $brand-vivid-pink;
+	& p {
+		margin-bottom: 0;
+	}
+	& router-link {
+		margin-left: 5px;
+		color: $brand-vivid-pink;
+	}
 }
 </style>

@@ -97,6 +97,12 @@
 	<div v-else class="content">
 		<!-- TODO div com os planos selecionaveis-->
 	</div>
+	<div class="login-link">
+		<p>
+			Ja possui uma conta?
+			<router-link to="/">Login</router-link>
+		</p>
+	</div>
 </template>
 
 <script>
@@ -339,14 +345,24 @@ h2:first-of-type {
 	& :checked {
 		--checkbox-color: $brand-vivid-pink;
 	}
+	a {
+		color: $brand-vivid-pink;
+		& :hover {
+			text-decoration: underline;
+			color: $brand-vivid-pink;
+		}
+	}
 }
 
-.checkbox-section a {
-	color: $brand-vivid-pink;
-}
-
-.checkbox-section a:hover {
-	text-decoration: underline;
-	color: $brand-vivid-pink;
+.login-link {
+	margin-top: $spacing-medium;
+	text-align: center;
+	& p {
+		margin-bottom: 0;
+	}
+	& router-link {
+		margin-left: 5px;
+		color: $brand-vivid-pink;
+	}
 }
 </style>
