@@ -257,25 +257,19 @@ export default {
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
+	gap: 20px;
 }
 
 .register-column {
-	margin-right: 20px;
-	@media (max-width: $breakpoint-medium) {
-		margin-right: 0;
-	}
-}
-
-.register-column {
+	position: relative;
+	overflow: hidden;
 	background-color: $color-white;
 	box-shadow: $box-shadow;
 	padding: $spacing-medium;
-	overflow: hidden;
-	width: 40%;
-	height: $column-height;
-	border-radius: $border-radius;
-	@media (max-width: $breakpoint-medium) {
-		padding: $spacing-large;
+	width: 400px;
+
+	& h2 {
+		text-justify: start;
 	}
 }
 
@@ -285,7 +279,6 @@ export default {
 	background-color: $color-white;
 	box-shadow: $box-shadow;
 	padding: $spacing-medium;
-	max-height: $column-height;
 	width: 250px;
 	border-radius: $border-radius;
 	@media (max-width: $breakpoint-medium) {
@@ -308,80 +301,9 @@ export default {
 }
 
 .form {
-	display: flex;
+	box-sizing: border-box;
 	flex-direction: column;
 	padding: $spacing-small;
-}
-
-.form-error {
-	color: $error-color;
-	font-size: map-get(map-get($font-styles, small), size);
-	font-weight: map-get(map-get($font-styles, large), font-weight);
-	margin-top: $spacing-x-small; /* Reduzir a margem superior */
-}
-
-.input-error {
-	border-color: $error-color;
-}
-
-.error-message {
-	color: $error-color;
-	margin-top: $spacing-x-small; /* Reduzir a margem superior */
-}
-
-.form-margin {
-	margin-bottom: calc($spacing-x-small - 5px); /* Reduzir a margem inferior */
-}
-
-.form-caption {
-	color: $font-color-secondary;
-	font-size: map-get(map-get($font-styles, x-small), size);
-	font-weight: map-get(map-get($font-styles, x-small), font-weight);
-	margin-top: calc($spacing-x-small - 3px); /* Reduzir a margem superior */
-	margin-bottom: $spacing-small; /* Reduzir a margem inferior */
-}
-
-h2:last-of-type {
-	margin-bottom: $spacing-small; /* Reduzir a margem inferior */
-}
-h2:first-of-type {
-	margin-bottom: $spacing-large;
-	text-align: center;
-	& u {
-		color: $brand-vivid-pink;
-	}
-}
-
-.checkbox-section {
-	display: flex;
-	align-items: center;
-	margin-top: $spacing-x-small;
-	margin-bottom: $spacing-small;
-	font-size: map-get(map-get($font-styles, small), size);
-	font-weight: map-get(map-get($font-styles, small), font-weight);
-	color: $font-color-primary;
-}
-
-.checkbox-section input[type='checkbox'] {
-	margin-right: $spacing-x-small;
-}
-
-.checkbox-section a {
-	color: $brand-vivid-pink;
-}
-
-.checkbox-section a:hover {
-	text-decoration: underline;
-	color: $brand-vivid-pink;
-}
-</style>
-
-<style scoped lang="scss">
-@import '@/assets/styles/variables.scss';
-
-.form {
-	display: flex;
-	flex-direction: column;
 }
 
 .form-error {

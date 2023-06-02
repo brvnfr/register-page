@@ -68,20 +68,20 @@ export default {
 	border-radius: $border-radius;
 	max-width: 350px;
 	margin: 0 auto;
-}
 
-.selected-plan::after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 300px; /* Ajuste a altura do degradê conforme necessário */
-	background-image: linear-gradient(transparent, rgb(255, 255, 255));
-	background-clip: content-box;
-	pointer-events: none;
-	@media (max-width: $breakpoint-medium) {
-		height: 30px;
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 300px; // Ajuste a altura do degradê conforme necessário
+		background-image: linear-gradient(transparent, rgb(255, 255, 255));
+		background-clip: content-box;
+		pointer-events: none;
+		@media (max-width: $breakpoint-medium) {
+			height: 30px;
+		}
 	}
 }
 
