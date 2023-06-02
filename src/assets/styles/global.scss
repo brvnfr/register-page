@@ -1,5 +1,48 @@
 
+// Scrollbar
 
+// Chrome, Safari e Opera
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $brand-vivid-pink;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: darken($brand-vivid-pink, 10%);
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+// Firefox 
+
+* {
+  scrollbar-color: $brand-vivid-pink transparent;
+  scrollbar-width: thin;
+}
+
+// Seletor de texto selecionado
+::selection {
+  background-color: $brand-vivid-pink;
+}
+
+// Links visitados
+a:visited {
+  color: $brand-vivid-pink;
+}
+
+// Links ativos/hover
+a:hover,
+a:active {
+  color: $brand-vivid-pink;
+}
+
+//body html
 body {
   font-family: $font-family;
   background-color: $bg-default;
@@ -9,7 +52,7 @@ body {
 
 }
 
-
+//Titulos e subtitulos
 h2 {
 	font-size: map-get(map-get($font-styles, large), size);
 	font-weight: map-get(map-get($font-styles, large), font-weight);
@@ -25,7 +68,7 @@ h3 {
 }
 
 
-
+// spacer
 .horizontal-spacer {
   border: none;
   border-top: 1px solid $brand-color-main;
@@ -33,7 +76,6 @@ h3 {
   @media (max-width: $breakpoint-medium) {
 		margin: $spacing-small 0
 	}
-  
 
 }
 

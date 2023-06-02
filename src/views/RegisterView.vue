@@ -336,6 +336,9 @@ h2:first-of-type {
 
 .checkbox-section input[type='checkbox'] {
 	margin-right: $spacing-x-small;
+	& :checked {
+		--checkbox-color: $brand-vivid-pink;
+	}
 }
 
 .checkbox-section a {
