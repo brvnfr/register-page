@@ -4,6 +4,8 @@ import App from '@/App.vue';
 import LoginView from '@/views/LoginView.vue';
 import RegisterView from '@/views/RegisterView.vue';
 import '@/assets/styles/global.scss';
+import '@fortawesome/fontawesome-free/css/all.css'
+
 
 const routes = [
   { path: '/', component: LoginView }, // tela de login como path default
@@ -14,6 +16,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
 
 createApp(App)
   .use(router)

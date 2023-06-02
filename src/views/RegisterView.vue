@@ -232,13 +232,25 @@ export default {
 }
 
 .plan-column {
+	position: relative;
+	overflow: hidden;
 	background-color: $color-white;
 	box-shadow: $box-shadow;
 	padding: $spacing-medium;
-	overflow: scroll;
-	max-height: 100vh;
+	max-height: 80vh;
 	width: 250px;
 	border-radius: $border-radius;
+}
+.plan-column::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 50px; /* Ajuste a altura do degradê conforme necessário */
+	background-image: linear-gradient(transparent, rgb(255, 252, 252));
+	background-clip: content-box;
+	pointer-events: none;
 }
 
 @media (max-width: 640px) {

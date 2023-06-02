@@ -72,7 +72,6 @@
 .price-plan {
 	text-align: center;
 	background-color: $color-white;
-	box-shadow: $box-shadow;
 	padding: $spacing-medium;
 	border-radius: $border-radius;
 	max-width: 400px;
