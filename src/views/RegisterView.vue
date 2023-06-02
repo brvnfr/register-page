@@ -85,13 +85,15 @@
 			</form>
 		</div>
 		<div class="plan-column">
-			<SelectedPlan :planOptions="planOptions" />
+			<SelectedPlan
+				:planOptions="planOptions"
+				:selectedPlan="selectedPlan"
+				@planSelected="handlePlanSelected"
 			/>
 		</div>
 	</div>
 	<div v-else class="content">
 		<!-- TODO div com os planos selecionaveis-->
-		<PricePlans />
 	</div>
 </template>
 
@@ -117,7 +119,7 @@ export default {
 			siteNameError: '',
 			errors: {},
 			formError: '',
-			selectedPlan: [],
+			selectedPlan: null,
 			planOptions: [
 				{
 					name: 'Hospedagem 1',
@@ -232,6 +234,10 @@ export default {
 		},
 		register() {
 			// Implement your registration logic here
+		},
+
+		handlePlanSelected(plan) {
+			this.selectedPlan = plan
 		},
 	},
 }
