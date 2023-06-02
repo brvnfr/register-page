@@ -7,7 +7,9 @@
 		<Slide v-for="(plan, index) in planOptions" :key="index">
 			<div class="selected-plan">
 				<h3>{{ plan.name }}</h3>
-				<p class="price">{{ plan.price }}</p>
+				<p class="price">
+					{{ isNaN(plan.price) ? plan.price : 'R$ ' + plan.price }}
+				</p>
 				<p class="price-description">{{ plan.description }}</p>
 				<p>{{ plan.setupFee }}</p>
 				<ul id="planFeatures" class="features">
