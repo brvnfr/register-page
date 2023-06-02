@@ -87,7 +87,7 @@
 			</form>
 		</div>
 		<div class="plan-column">
-			<PricePlan
+			<SelectedPlan
 				title="Escala"
 				price="R$ 447/mês"
 				additionalInfo="+1,5% por pedido pago"
@@ -99,13 +99,13 @@
 <script>
 import InputText from '@/components/inputs/InputText.vue'
 import CTAButton from '@/components/buttons/CTAButton.vue'
-import PricePlan from '@/components/layouts/PricePlan.vue'
+import SelectedPlan from '@/components/layouts/SelectedPlan.vue'
 
 export default {
 	components: {
 		InputText,
 		CTAButton,
-		PricePlan,
+		SelectedPlan,
 	},
 	data() {
 		return {
