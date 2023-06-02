@@ -4,7 +4,11 @@ import RegisterView from '@/views/RegisterView.vue';
 
 const routes = [
   {
-    path: '/',  // pagina de login como default path
+    path: '/',
+    redirect: '/login' // Redireciona para '/login'
+  },
+  {
+    path: '/login',
     name: 'Login',
     component: LoginView
   },
