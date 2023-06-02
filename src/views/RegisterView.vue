@@ -271,10 +271,11 @@ export default {
 	box-shadow: $box-shadow;
 	padding: $spacing-medium;
 	overflow: hidden;
-	width: 400px;
+	width: 40%;
 	height: $column-height;
 	border-radius: $border-radius;
 	@media (max-width: $breakpoint-medium) {
+		padding: $spacing-large;
 	}
 }
 
@@ -292,7 +293,7 @@ export default {
 	}
 }
 
-@media (max-width: $breakpoint-medium) {
+@media (max-width: 712px) {
 	.content {
 		flex-direction: column-reverse;
 	}
@@ -377,20 +378,6 @@ h2:first-of-type {
 
 <style scoped lang="scss">
 @import '@/assets/styles/variables.scss';
-
-.register-column {
-	background-color: $color-white;
-	box-shadow: $box-shadow;
-	padding: $spacing-medium;
-	width: $box-size;
-	overflow: hidden;
-}
-@media (max-width: 640px) {
-	.register-column {
-		width: 100%;
-		padding: $spacing-small;
-	}
-}
 
 .form {
 	display: flex;

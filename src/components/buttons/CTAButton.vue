@@ -24,6 +24,7 @@ export default {
 @import '@/assets/styles/variables.scss';
 
 .cta-button {
+	width: 100%;
 	background-color: $button-color;
 	color: $color-white;
 	padding: $spacing-medium $spacing-large;
