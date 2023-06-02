@@ -74,9 +74,9 @@
 					<input type="checkbox" id="policyCheckbox" v-model="policyCheckbox" />
 					<label for="policyCheckbox">
 						Ao concluir com seu cadastro você concorda com nossos
-						<a href="/termos-de-uso" target="_blank">termos de Uso</a> e
+						<a href="/termos-de-uso" target="_blank">Termos de Uso</a> e
 						<a href="/politicas-de-privacidade" target="_blank"
-							>politicas de privacidade</a
+							>Politicas de Privacidade</a
 						>.
 					</label>
 				</div>
@@ -242,8 +242,8 @@ export default {
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	height: 50px; /* Ajuste a altura do degradê conforme necessário */
-	background-image: linear-gradient(transparent, rgb(255, 252, 252));
+	height: 700px; /* Ajuste a altura do degradê conforme necessário */
+	background-image: linear-gradient(transparent, rgb(255, 255, 255));
 	background-clip: content-box;
 	pointer-events: none;
 }
@@ -324,24 +324,6 @@ h2:first-of-type {
 .checkbox-section a:hover {
 	text-decoration: underline;
 	color: $brand-vivid-pink;
-}
-
-.plan-table {
-	width: 100%;
-	background-color: $color-white;
-	box-shadow: $box-shadow;
-	border-radius: $border-radius;
-
-	th,
-	td {
-		padding: $spacing-small;
-		text-align: left;
-	}
-
-	th {
-		background-color: $color-white;
-		color: $color-white;
-	}
 }
 </style>
 
