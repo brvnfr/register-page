@@ -22,6 +22,7 @@
 					label="Nome Completo"
 					name="name"
 					v-model="name"
+					:value="name"
 					:error="errors.name"
 					placeholder="Informe seu nome completo"
 				/>
@@ -30,6 +31,7 @@
 					label="Email"
 					name="email"
 					v-model="email"
+					:value="email"
 					:error="errors.email"
 					placeholder="Informe seu e-mail"
 				/>
@@ -38,6 +40,7 @@
 					label="Senha"
 					name="password"
 					v-model="password"
+					:value="password"
 					:error="errors.password"
 					type="password"
 					class="form-margin"
@@ -48,6 +51,7 @@
 					label="Confirme sua senha"
 					name="confirmPassword"
 					v-model="confirmPassword"
+					:value="confirmPassword"
 					type="password"
 					:error="confirmPasswordError"
 				/>
