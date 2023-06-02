@@ -72,7 +72,9 @@ input:focus {
 }
 
 .error-message {
-	color: red;
-	margin-top: $spacing-small;
+	color: $error-color;
+	font-size: map-get(map-get($font-styles, x-small), size);
+	font-weight: map-get(map-get($font-styles, x-large), font-weight);
+	margin-top: $spacing-x-small; /* Reduzir a margem superior */
 }
 </style>

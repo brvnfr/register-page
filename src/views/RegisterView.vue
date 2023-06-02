@@ -70,8 +70,6 @@
 				/>
 				<p class="form-caption">Exatamente igual ao título do seu site.</p>
 
-				<p v-if="formError" class="form-error">{{ formError }}</p>
-
 				<hr class="horizontal-spacer" />
 
 				<div class="checkbox-section">
@@ -122,7 +120,6 @@ export default {
 			siteName: '',
 			siteNameError: '',
 			errors: {},
-			formError: '',
 			selectedPlan: null,
 			planOptions: [
 				{
@@ -205,13 +202,7 @@ export default {
 			isPlanSelected: false,
 		}
 	},
-	computed: {
-		submitButtonClass() {
-			return {
-				'input-error': Object.keys(this.errors).length > 0,
-			}
-		},
-	},
+	computed: {},
 	methods: {
 		handleSubmit() {
 			this.errors = {}
@@ -308,22 +299,6 @@ export default {
 	box-sizing: border-box;
 	flex-direction: column;
 	padding: $spacing-small;
-}
-
-.form-error {
-	color: $error-color;
-	font-size: map-get(map-get($font-styles, small), size);
-	font-weight: map-get(map-get($font-styles, large), font-weight);
-	margin-top: $spacing-x-small; /* Reduzir a margem superior */
-}
-
-.input-error {
-	border-color: $error-color;
-}
-
-.error-message {
-	color: $error-color;
-	margin-top: $spacing-x-small; /* Reduzir a margem superior */
 }
 
 .form-margin {
