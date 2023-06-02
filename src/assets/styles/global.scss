@@ -3,6 +3,10 @@
 body {
   font-family: $font-family;
   background-color: $bg-default;
+  @media (max-width: $breakpoint-medium) {
+    margin:0;
+  }
+
 }
 
 
@@ -26,6 +30,10 @@ h3 {
   border: none;
   border-top: 1px solid $brand-color-main;
   margin: $spacing-medium 0;
+  @media (max-width: $breakpoint-medium) {
+		margin: $spacing-small 0
+	}
+  
 
 }
 

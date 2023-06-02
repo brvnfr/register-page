@@ -259,9 +259,11 @@ export default {
 	justify-content: center;
 }
 
-.register-column,
-.plan-column {
+.register-column {
 	margin-right: 20px;
+	@media (max-width: $breakpoint-medium) {
+		margin-right: 0;
+	}
 }
 
 .register-column {
@@ -272,6 +274,9 @@ export default {
 	width: 400px;
 	height: $column-height;
 	border-radius: $border-radius;
+	@media (max-width: $breakpoint-medium) {
+		padding: 40px;
+	}
 }
 
 .plan-column {
@@ -283,18 +288,10 @@ export default {
 	max-height: $column-height;
 	width: 250px;
 	border-radius: $border-radius;
+	@media (max-width: $breakpoint-medium) {
+		margin-bottom: $spacing-small;
+	}
 }
-// .plan-column::after {
-// 	content: '';
-// 	position: absolute;
-// 	bottom: 0;
-// 	left: 0;
-// 	width: 100%;
-// 	height: 700px; /* Ajuste a altura do degradê conforme necessário */
-// 	background-image: linear-gradient(transparent, rgb(255, 255, 255));
-// 	background-clip: content-box;
-// 	pointer-events: none;
-// }
 
 @media (max-width: $breakpoint-medium) {
 	.content {
@@ -302,6 +299,7 @@ export default {
 	}
 	.register-column {
 		width: 100%;
+		padding: $spacing-small;
 	}
 	.plan-column {
 		width: 100%;
