@@ -1,5 +1,5 @@
 <template>
-	<Carousel :items-to-show="1">
+	<Carousel :items-to-show="1" :wrap-around="true">
 		<template #addons>
 			<Navigation class="carousel-navigation" />
 			<Pagination class="carousel-pagination" />
