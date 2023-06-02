@@ -86,7 +86,7 @@ export default {
 }
 
 .selected-plan h3 {
-	color: $brand-vivid-pink;
+	color: $font-color-primary;
 	font-weight: bold;
 	font-size: 1.5rem;
 }
@@ -94,6 +94,7 @@ export default {
 .price {
 	font-size: 2rem;
 	margin-top: $spacing-small;
+	color: $brand-vivid-pink;
 }
 
 .price-description {
