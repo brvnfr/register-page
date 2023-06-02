@@ -12,7 +12,7 @@
 			<u>hospedar seu site</u>
 		</h2>
 	</div>
-	<div class="content">
+	<div v-if="!isPlanSelected" class="content">
 		<div class="register-column">
 			<form class="form" @submit.prevent="handleSubmit">
 				<h2>Dados pessoais</h2>
@@ -81,9 +81,7 @@
 					</label>
 				</div>
 
-				<CTAButton :button-class="submitButtonClass" @click="handleSubmit"
-					>Criar Conta</CTAButton
-				>
+				<CTAButton @click="handleSubmit">Criar Conta</CTAButton>
 			</form>
 		</div>
 		<div class="plan-column">
@@ -93,6 +91,10 @@
 				additionalInfo="+1,5% por pedido pago"
 			/>
 		</div>
+	</div>
+	<div v-else class="content">
+		<!-- TODO div com os planos selecionaveis-->
+		<PricePlans />
 	</div>
 </template>
 
@@ -118,11 +120,8 @@ export default {
 			siteNameError: '',
 			errors: {},
 			formError: '',
-			selectedPlan: [
-				{ id: 1, name: 'Plano 1', benefits: 'Benefícios do Plano 1' },
-				{ id: 2, name: 'Plano 2', benefits: 'Benefícios do Plano 2' },
-				{ id: 3, name: 'Plano 3', benefits: 'Benefícios do Plano 3' },
-			],
+			selectedPlan: [],
+			isPlanSelected: true,
 		}
 	},
 	computed: {
@@ -189,7 +188,7 @@ export default {
 	box-shadow: $box-shadow;
 	padding: $spacing-medium;
 	overflow: hidden;
-	width: $box-size;
+	width: 400px;
 	height: $column-height;
 	border-radius: $border-radius;
 }
@@ -204,23 +203,25 @@ export default {
 	width: 250px;
 	border-radius: $border-radius;
 }
-.plan-column::after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 700px; /* Ajuste a altura do degradê conforme necessário */
-	background-image: linear-gradient(transparent, rgb(255, 255, 255));
-	background-clip: content-box;
-	pointer-events: none;
-}
+// .plan-column::after {
+// 	content: '';
+// 	position: absolute;
+// 	bottom: 0;
+// 	left: 0;
+// 	width: 100%;
+// 	height: 700px; /* Ajuste a altura do degradê conforme necessário */
+// 	background-image: linear-gradient(transparent, rgb(255, 255, 255));
+// 	background-clip: content-box;
+// 	pointer-events: none;
+// }
 
 @media (max-width: $breakpoint-medium) {
 	.content {
 		flex-direction: column-reverse;
 	}
-	.register-column,
+	.register-column {
+		width: 100%;
+	}
 	.plan-column {
 		width: 100%;
 		padding: $spacing-small;

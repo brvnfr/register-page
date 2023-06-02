@@ -1,5 +1,5 @@
 <template>
-	<div class="price-plan">
+	<div class="selected-plan">
 		<h3>Escala</h3>
 		<p class="price">R$ 447/mês</p>
 		<p class="price-description">+1,5% por pedido pago</p>
@@ -63,13 +63,36 @@
 			<li><i class="fas fa-check"></i> Prioridade no suporte</li>
 		</ul>
 
-		<button class="choose-plan-button">ESCOLHER ESSE PLANO</button>
+		<CTAButton class="choose-plan-button" @click="handleChoosePlan"
+			>Escolher esse Plano</CTAButton
+		>
 	</div>
 </template>
+<script>
+import CTAButton from '@/components/buttons/CTAButton.vue'
+
+export default {
+	components: {
+		CTAButton,
+	},
+	data() {
+		return {
+			selectedPlan: [],
+			planName: '',
+		}
+	},
+	computed: {},
+	methods: {
+		handleChoosePlan() {
+			// Metodo para  atualizar o dado isPlanSelected para false  e mandar o evento para o  componente pai, para fazer a div de escolha de planos seja renderizada pelo v-if.
+		},
+	},
+}
+</script>
 
 <style scoped lang="scss">
 @import '@/assets/styles/variables.scss';
-.price-plan {
+.selected-plan {
 	text-align: center;
 	background-color: $color-white;
 	padding: $spacing-medium;
@@ -78,7 +101,19 @@
 	margin: 0 auto;
 }
 
-.price-plan h3 {
+.selected-plan::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 700px; /* Ajuste a altura do degradê conforme necessário */
+	background-image: linear-gradient(transparent, rgb(255, 255, 255));
+	background-clip: content-box;
+	pointer-events: none;
+}
+
+.selected-plan h3 {
 	color: $brand-vivid-pink;
 	font-weight: bold;
 	font-size: 1.5rem;
