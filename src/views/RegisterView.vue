@@ -14,7 +14,7 @@
 	</div>
 	<div v-if="!isPlanSelected" class="content">
 		<div class="register-column">
-			<form class="form" @submit.prevent="handleSubmit">
+			<form @submit.prevent="handleSubmit">
 				<h2>Dados pessoais</h2>
 				<h3>Informe seus dados pessoais para acesso à sua conta</h3>
 
@@ -275,7 +275,6 @@ export default {
 	height: $column-height;
 	border-radius: $border-radius;
 	@media (max-width: $breakpoint-medium) {
-		padding: 40px;
 	}
 }
 
@@ -310,6 +309,7 @@ export default {
 .form {
 	display: flex;
 	flex-direction: column;
+	padding: $spacing-small;
 }
 
 .form-error {
