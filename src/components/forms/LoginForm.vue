@@ -28,6 +28,7 @@
 			<div v-if="errors.password" class="error-message">
 				{{ errors.password }}
 			</div>
+			<p class="forgot-password">Esqueci minha senha</p>
 		</div>
 
 		<CTAButton @click="handleSubmit">Entrar</CTAButton>
@@ -76,9 +77,6 @@ export default {
 	margin-bottom: $spacing-medium;
 }
 
-input:last-of-type {
-	margin-bottom: $spacing-medium;
-}
 label {
 	font-weight: bold;
 	font-size: map-get(map-get($font-styles, small), size);
@@ -126,5 +124,15 @@ input:focus {
 	&:hover {
 		color: $brand-vivid-pink;
 	}
+}
+
+.form-caption {
+	display: flex;
+	text-justify: end;
+	color: $font-color-secondary;
+	font-size: map-get(map-get($font-styles, x-small), size);
+	font-weight: map-get(map-get($font-styles, x-small), font-weight);
+	margin-top: calc($spacing-x-small - 3px); /* Reduzir a margem superior */
+	margin-bottom: $spacing-small; /* Reduzir a margem inferior */
 }
 </style>
