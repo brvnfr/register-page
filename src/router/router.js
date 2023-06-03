@@ -19,13 +19,9 @@ const routes = [
     component: RegisterView
   },
   {
-    path: '/404',
+    path: '/:catchAll(.*)',
     name: 'NotFound',
     component: NotFound
-  },
-  {
-    path: '/:catchAll(.*)',
-    redirect: '/404'
   }
 ];
 
