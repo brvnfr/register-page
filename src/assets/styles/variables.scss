@@ -44,6 +44,12 @@ $font-styles: (
         font-weight: 400,
         font-family: $font-family
         ),
+
+        medium-bold: (
+        size: 14px,
+        font-weight: bold,
+        font-family: $font-family
+        ),
         large: (
           size: 20px,
           font-weight: 700,
@@ -51,7 +57,7 @@ $font-styles: (
   ),
   x-large: (
     size:28,
-    fontg-weight:700,
+    font-weight:700,
     font-family:$font-family
     )
     );

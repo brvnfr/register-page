@@ -11,14 +11,21 @@
 				<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
 				<h3>{{ plan.name }}</h3>
 				<p class="price">
-					{{ isNaN(plan.price) ? plan.price : 'R$ ' + plan.price }}
+					{{ isNaN(plan.price) ? plan.price : plan.price + '/mês' }}
 				</p>
 				<p class="price-description">{{ plan.description }}</p>
 				<p>{{ plan.setupFee }}</p>
 				<hr class="horizontal-spacer" />
 				<ul class="features">
-					<li v-for="(detail, detailIndex) in plan.features" :key="detailIndex">
-						<i class="fas fa-check"></i>
+					<li
+						v-for="(detail, detailIndex) in plan.features"
+						:key="detailIndex"
+						:class="{ 'bold-text': [0, 6, 7, 11, 13].includes(detailIndex) }"
+					>
+						<i
+							v-if="![0, 6, 7, 11, 13].includes(detailIndex)"
+							class="fas fa-check"
+						></i>
 						{{ detail }}
 					</li>
 				</ul>
@@ -41,7 +48,7 @@
 					<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
 					<h3>{{ plan.name }}</h3>
 					<p class="price">
-						{{ isNaN(plan.price) ? plan.price : 'R$ ' + plan.price }}
+						{{ isNaN(plan.price) ? plan.price : plan.price + '/mês' }}
 					</p>
 					<p class="price-description">{{ plan.description }}</p>
 					<p>{{ plan.setupFee }}</p>
@@ -50,8 +57,12 @@
 						<li
 							v-for="(detail, detailIndex) in plan.features"
 							:key="detailIndex"
+							:class="{ 'bold-text': [0, 6, 7, 11, 13].includes(detailIndex) }"
 						>
-							<i class="fas fa-check"></i>
+							<i
+								v-if="![0, 6, 7, 11, 13].includes(detailIndex)"
+								class="fas fa-check"
+							></i>
 							{{ detail }}
 						</li>
 					</ul>
@@ -168,5 +179,9 @@ export default {
 	.carousel-container {
 		display: block;
 	}
+}
+.bold-text {
+	font-size: map-get(map-get($font-styles, medium-bold), size);
+	font-weight: map-get(map-get($font-styles, medium-bold), font-weight);
 }
 </style>
