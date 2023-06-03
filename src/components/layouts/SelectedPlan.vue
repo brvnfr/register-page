@@ -55,7 +55,7 @@
 					<hr class="horizontal-spacer" />
 					<ul id="desktopOnly" class="features">
 						<li
-							v-for="(detail, detailIndex) in plan.features.slice(0, 5)"
+							v-for="(detail, detailIndex) in plan.features.slice(0, 4)"
 							:key="detailIndex"
 							:class="{ 'bold-text': [0, 6].includes(detailIndex) }"
 						>

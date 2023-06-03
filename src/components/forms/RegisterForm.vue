@@ -220,7 +220,7 @@ label {
 input {
 	box-sizing: border-box;
 	width: 100%;
-	padding: $spacing-medium;
+	padding: calc($spacing-medium - 4px);
 	font-size: 16px;
 	border: 1px solid #ccc;
 	border-radius: $border-radius;
