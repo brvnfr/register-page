@@ -1,5 +1,14 @@
 <template>
 	<div class="dashboard-view">
+		<div class="sidebar">
+			<div class="logo-brand">
+				<img
+					src="@/assets/images/brand/brand-logo.svg"
+					alt="brand-logo"
+					class="logo-img"
+				/>
+			</div>
+		</div>
 		<div class="main">
 			<div class="top-navigation">
 				<button class="user-profile" @click="toggleDropdown">
@@ -42,8 +51,8 @@ export default {
 
 .sidebar {
 	width: 250px;
-	background-color: #333;
-	color: #fff;
+	background-color: #ebebeb;
+	color: #333;
 }
 
 .main {
