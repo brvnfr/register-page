@@ -32,7 +32,6 @@
 						{{ plan.profile }}
 					</p>
 				</span>
-				<p>{{ plan.setupFee }}</p>
 				<hr class="horizontal-spacer" />
 				<ul class="features">
 					<li
@@ -91,7 +90,6 @@
 							{{ plan.profile }}
 						</p>
 					</span>
-					<p>{{ plan.setupFee }}</p>
 					<hr class="horizontal-spacer" />
 					<ul class="features">
 						<li
