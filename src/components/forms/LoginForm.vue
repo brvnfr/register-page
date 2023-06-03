@@ -73,9 +73,12 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/styles/variables.scss';
 .form .input {
-	margin-bottom: $spacing-medium; /* Ajuste o valor da margem conforme necessário */
+	margin-bottom: $spacing-medium;
 }
 
+input:last-of-type {
+	margin-bottom: $spacing-medium;
+}
 label {
 	font-weight: bold;
 	font-size: map-get(map-get($font-styles, small), size);

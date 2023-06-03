@@ -80,7 +80,7 @@ export default {
 	overflow: hidden;
 	background-color: $color-white;
 	box-shadow: $box-shadow;
-	padding: $spacing-medium;
+	padding: $spacing-large;
 	width: 400px;
 
 	& h2 {
