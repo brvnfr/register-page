@@ -11,9 +11,27 @@
 				<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
 				<h3>{{ plan.name }}</h3>
 				<p class="price">
-					{{ isNaN(plan.price) ? plan.price : plan.price + '/mês' }}
+					<span class="currency">R$</span>
+					<span class="price-value">{{ plan.price }}</span>
+					<span class="unit">/mês</span>
 				</p>
-				<p class="price-description">{{ plan.description }}</p>
+
+				<span
+					class="plan-description"
+					v-for="(description, index) in plan.description"
+					:key="index"
+				>
+					<p>
+						{{ description }}
+					</p>
+				</span>
+				<hr class="horizontal-spacer" />
+
+				<span>
+					<p>
+						{{ plan.profile }}
+					</p>
+				</span>
 				<p>{{ plan.setupFee }}</p>
 				<hr class="horizontal-spacer" />
 				<ul class="features">
@@ -44,13 +62,35 @@
 				<Navigation />
 			</template>
 			<Slide v-for="(plan, index) in planOptions" :key="index">
-				<div :key="index" class="price-plan" @click="handleChoosePlan(plan)">
+				<div
+					class="price-plan"
+					:class="{ 'plan-middle': index === 1 }"
+					@click="handleChoosePlan(plan)"
+				>
 					<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
 					<h3>{{ plan.name }}</h3>
 					<p class="price">
-						{{ isNaN(plan.price) ? plan.price : plan.price + '/mês' }}
+						<span class="currency">R$</span>
+						<span class="price-value">{{ plan.price }}</span>
+						<span class="unit">/mês</span>
 					</p>
-					<p class="price-description">{{ plan.description }}</p>
+
+					<span
+						class="plan-description"
+						v-for="(description, index) in plan.description"
+						:key="index"
+					>
+						<p>
+							{{ description }}
+						</p>
+					</span>
+					<hr class="horizontal-spacer" />
+
+					<span class="plan-profile">
+						<p>
+							{{ plan.profile }}
+						</p>
+					</span>
 					<p>{{ plan.setupFee }}</p>
 					<hr class="horizontal-spacer" />
 					<ul class="features">
@@ -137,13 +177,20 @@ export default {
 	font-size: 1.5rem;
 }
 
-.price {
+.price-value {
 	font-size: 2rem;
 	margin-top: $spacing-small;
 	color: $brand-vivid-pink;
+	padding: 2px;
 }
 
-.price-description {
+.currency,
+.unit {
+	font-size: 0.8em;
+	color: $brand-vivid-pink;
+}
+
+.plan-description {
 	color: $font-color-secondary;
 	font-size: 1rem;
 }
