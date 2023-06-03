@@ -4,7 +4,7 @@
 		:id="name"
 		:name="name"
 		:value="value"
-		@input="$emit('update:modelValue', $event.target.value)"
+		@input="$emit('input', $event.target.value)"
 		:placeholder="placeholder"
 		:type="type"
 		:class="{ 'input-error': error }"

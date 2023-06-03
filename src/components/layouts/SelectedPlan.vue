@@ -8,11 +8,20 @@
 		>
 			<template #addons>
 				<div class="custom-navigation">
-					<button @click="prev" class="prev-button">
+					<button
+						aria-label="Previous Plan"
+						id="previousPlan"
+						@click="previousPlan"
+						class="previous-plan-button"
+					>
 						<i class="fa-solid fa-chevron-left"></i>
 					</button>
 					<Pagination />
-					<button @click="next" class="next-button">
+					<button
+						aria-label="Next Plan"
+						@click="nextPlan"
+						class="next-plan-button"
+					>
 						<i class="fa-solid fa-chevron-right"></i>
 					</button>
 				</div>
@@ -70,11 +79,11 @@ export default {
 		handleChoosePlan() {
 			// Metodo para  atualizar o dado isPlanSelected para false  e mandar o evento para o  componente pai, para fazer a div de escolha de planos seja renderizada pelo v-if.
 		},
-		next() {
+		nextPlan() {
 			this.$refs.carousel.next() // botoes custom carousel
 		},
 
-		prev() {
+		previousPlan() {
 			this.$refs.carousel.prev()
 		},
 	},
@@ -169,8 +178,8 @@ export default {
 	}
 }
 
-.prev-button,
-.next-button {
+.previous-plan-button,
+.next-plan-button {
 	background-color: #0000005d;
 	color: $color-white;
 	border: none;
@@ -181,8 +190,8 @@ export default {
 	transition: background-color 0.3s ease;
 }
 
-.prev-button:hover,
-.next-button:hover {
+.previous-plan-button:hover,
+.next-plan-button:hover {
 	background-color: #0000007e;
 }
 </style>
