@@ -27,6 +27,11 @@
 	</div>
 	<div v-else class="content">
 		<!-- TODO div com os planos selecionaveis-->
+		<PlanOptions
+			:planOptions="planOptions"
+			:selectedPlan="selectedPlan"
+			@planSelected="handlePlanSelected"
+		/>
 	</div>
 	<div class="login-link">
 		<p>
@@ -38,13 +43,15 @@
 
 <script>
 import RegisterForm from '@/components/forms/RegisterForm.vue'
-
 import SelectedPlan from '@/components/layouts/SelectedPlan.vue'
+import PlanOptions from '@/components/layouts/PlanOptions.vue'
+import plans from '@/data/plans.json'
 
 export default {
 	components: {
 		SelectedPlan,
 		RegisterForm,
+		PlanOptions,
 	},
 	data() {
 		return {
@@ -58,85 +65,8 @@ export default {
 			siteNameError: '',
 			errors: {},
 			selectedPlan: null,
-			planOptions: [
-				{
-					name: 'Hospedagem 1',
-					price: 'Grátis',
-					description: 'Você não paga nada para usar',
-					features: [
-						'Sem taxa de setup',
-						'Ideal para quem está começando',
-						'Seu site em servidores nos Estados Unidos',
-						'Servidores em nossos data center americanos',
-						'ASP, ASP.NET 2.0/3.0/3.5/ e 4.0/4.5/4.5.1/4.5.2 (medium trust) ou PHP 5.3, 5.4, 5.5, 5.6 e 7.0',
-						'1 usuário de FTP para upload ou download',
-						'1 conta de e-mails profissionais',
-						'1 subdomínio gratuito',
-						'Suporte 24 horas, 7 dias por semana grátis',
-						'Aplicativos disponíveis: Wordpress, Drupal, entre outros',
-						'Webmail RoundCube',
-						'AntiSpam',
-						'Painel de gerenciamento de DNS',
-						'Painel de controle web',
-						'Configurações de PHP personalizáveis',
-						'Certificado SSL Grátis',
-						'Transferência ilimitada',
-					],
-				},
-				{
-					name: 'Hospedagem 2',
-					price: '499',
-					description: 'Cobrado mensalmente',
-					features: [
-						'Sem taxa de setup',
-						'Ideal para site com mais de 30k de visitas',
-						'Seu site em servidores no Brasil',
-						'Servidores em nosso de São Paulo',
-						'ASP, ASP.NET 2.0/3.0/3.5/ e 4.0/4.5/4.5.1/4.5.2 (medium trust) ou PHP 5.3, 5.4, 5.5, 5.6 e 7.0',
-						'10 usuários de FTP para upload ou download',
-						'30 contas de e-mails profissionais',
-						'10 subdomínios gratuitos',
-						'Suporte 24 horas, 7 dias por semana grátis',
-						'Aplicativos disponíveis: Wordpress, Drupal, entre outros',
-						'Migração Gratuita',
-						'Migramos todos seus sites para nossos servidores',
-						'Webmail RoundCube',
-						'AntiSpam',
-						'Painel de gerenciamento de DNS',
-						'Painel de controle web',
-						'Configurações de PHP personalizáveis',
-						'Certificado SSL Grátis',
-						'Transferência ilimitada',
-					],
-				},
-				{
-					name: 'Hospedagem 3',
-					price: '999',
-					description: 'Cobrado mensalmente',
-					features: [
-						'Sem taxa de setup',
-						'Ideal para site com mais de 60k de visitas',
-						'Seu site em servidores no Brasil',
-						'Servidores em nosso de São Paulo',
-						'ASP, ASP.NET 2.0/3.0/3.5/ e 4.0/4.5/4.5.1/4.5.2 (medium trust) ou PHP 5.3, 5.4, 5.5, 5.6 e 7.0',
-						'Usuários de FTP ilimitados para upload ou download',
-						'Contas de e-mails profissionais ilimitadas',
-						'50 subdomínios gratuitos',
-						'Suporte 24 horas, 7 dias por semana grátis',
-						'Aplicativos disponíveis: Wordpress, Drupal, entre outros',
-						'Migração Gratuita',
-						'Migramos todos seus sites para nossos servidores',
-						'Webmail RoundCube',
-						'AntiSpam',
-						'Painel de gerenciamento de DNS',
-						'Painel de controle web',
-						'Configurações de PHP personalizáveis',
-						'Certificado SSL Grátis',
-						'Transferência ilimitada',
-					],
-				},
-			],
-			isPlanSelected: false,
+			planOptions: plans,
+			isPlanSelected: true,
 		}
 	},
 	computed: {},
