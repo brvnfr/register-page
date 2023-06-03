@@ -11,10 +11,17 @@
 		</div>
 		<div class="main">
 			<div class="top-navigation">
-				<button class="user-profile" @click="toggleDropdown">
+				<div class="logo-brand-mobile">
+					<img
+						src="@/assets/images/brand/brand-logo.svg"
+						alt="brand-logo"
+						class="logo-img"
+					/>
+				</div>
+				<div class="user-profile" @click="toggleDropdown">
 					<i class="fas fa-user avatar"></i>
-				</button>
-				<div class="dropdown" v-show="showDropdown">
+				</div>
+				<div class="dropdown" :class="{ 'show-dropdown': showDropdown }">
 					<ul>
 						<li>Conta</li>
 						<li>Configurações</li>
@@ -43,7 +50,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .dashboard-view {
 	display: flex;
 	height: 100vh;
@@ -67,6 +74,7 @@ export default {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
+	position: relative; // Adicionado para posicionar o dropdown
 }
 
 .user-profile {
@@ -95,6 +103,11 @@ export default {
 	border-radius: 4px;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 	display: none;
+	z-index: 9999;
+}
+
+.show-dropdown {
+	display: block;
 }
 
 .dropdown ul {
@@ -111,5 +124,21 @@ export default {
 .dashboard-content {
 	flex: 1;
 	padding: 20px;
+}
+
+.logo-brand-mobile {
+	display: none;
+}
+
+@media (max-width: 768px) {
+	.top-navigation {
+		justify-content: space-between;
+	}
+	.sidebar {
+		display: none;
+	}
+	.logo-brand-mobile {
+		display: flex;
+	}
 }
 </style>
