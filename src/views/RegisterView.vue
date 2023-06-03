@@ -167,6 +167,7 @@ export default {
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
+	gap: 20px;
 }
 
 .register-column {
