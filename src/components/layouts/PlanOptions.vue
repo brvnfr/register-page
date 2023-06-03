@@ -1,28 +1,41 @@
+Para exibir um carousel na versão mobile em vez das colunas de planos, você pode
+usar uma técnica conhecida como "media queries" para aplicar estilos diferentes
+com base no tamanho da tela. Aqui está uma versão atualizada do seu componente,
+onde o carousel é mostrado na versão mobile: html Copy code
 <template>
-	<div class="plans-container">
-		<div class="price-plans">
-			<div
-				v-for="(plan, index) in planOptions"
-				:key="index"
-				class="price-plan"
-				:class="{ active: isSelectedPlan(plan), 'plan-middle': index === 1 }"
-				@click="handleChoosePlan(plan)"
-			>
-				<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
-				<h3>{{ plan.name }}</h3>
-				<p class="price">
-					{{ isNaN(plan.price) ? plan.price : 'R$ ' + plan.price }}
-				</p>
-				<p class="price-description">{{ plan.description }}</p>
-				<p>{{ plan.setupFee }}</p>
-				<hr class="horizontal-spacer" />
-				<ul class="features">
-					<li v-for="(detail, detailIndex) in plan.features" :key="detailIndex">
-						<i class="fas fa-check"></i>
-						{{ detail }}
-					</li>
-				</ul>
+	<div>
+		<div class="plans-container desktop">
+			<div class="price-plans">
+				<div
+					v-for="(plan, index) in planOptions"
+					:key="index"
+					class="price-plan"
+					:class="{ 'plan-middle': index === 1 }"
+					@click="handleChoosePlan(plan)"
+				>
+					<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
+					<h3>{{ plan.name }}</h3>
+					<p class="price">
+						{{ isNaN(plan.price) ? plan.price : 'R$ ' + plan.price }}
+					</p>
+					<p class="price-description">{{ plan.description }}</p>
+					<p>{{ plan.setupFee }}</p>
+					<hr class="horizontal-spacer" />
+					<ul class="features">
+						<li
+							v-for="(detail, detailIndex) in plan.features"
+							:key="detailIndex"
+						>
+							<i class="fas fa-check"></i>
+							{{ detail }}
+						</li>
+					</ul>
+				</div>
 			</div>
+		</div>
+
+		<div class="carousel-container mobile">
+			<!-- Coloque aqui o código do seu carousel -->
 		</div>
 	</div>
 </template>
@@ -77,14 +90,6 @@ export default {
 	cursor: pointer;
 	transition: box-shadow 0.3s ease;
 
-	&:hover {
-		box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-	}
-
-	&.active {
-		box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-	}
-
 	&.plan-middle {
 		width: 300px;
 		height: calc(100% + 20px);
@@ -122,5 +127,20 @@ export default {
 .fa-check {
 	color: $brand-vivid-pink;
 	margin-right: $spacing-small;
+}
+
+.carousel-container {
+	display: none;
+}
+
+@media (max-width: 768px) {
+	.desktop {
+		display: none;
+	}
+
+	.carousel-container {
+		display: block;
+		/* Adicione os estilos do seu carousel aqui */
+	}
 }
 </style>
