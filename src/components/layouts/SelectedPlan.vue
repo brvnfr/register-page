@@ -89,7 +89,6 @@ export default {
 	background-color: $color-white;
 	padding: $spacing-medium;
 	border-radius: $border-radius;
-	max-width: 350px;
 	margin: 0 auto;
 
 	&::after {

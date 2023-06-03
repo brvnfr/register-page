@@ -267,7 +267,7 @@ export default {
 	background-color: $color-white;
 	box-shadow: $box-shadow;
 	padding: $spacing-medium;
-	width: 400px;
+	width: 40%;
 
 	& h2 {
 		text-justify: start;
@@ -282,9 +282,6 @@ export default {
 	padding: $spacing-medium;
 	width: 250px;
 	border-radius: $border-radius;
-	@media (max-width: $breakpoint-medium) {
-		margin-bottom: $spacing-small;
-	}
 }
 
 @media (max-width: 712px) {
@@ -292,11 +289,11 @@ export default {
 		flex-direction: column-reverse;
 	}
 	.register-column {
-		width: 100%;
+		width: 95%;
 		padding: $spacing-small;
 	}
 	.plan-column {
-		width: 100%;
+		width: 95%;
 		padding: $spacing-small;
 	}
 }

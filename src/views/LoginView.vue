@@ -107,15 +107,12 @@ export default {
 	background-color: $color-white;
 	box-shadow: $box-shadow;
 	padding: $spacing-medium;
-	width: 400px;
+	width: 40%;
 }
 
 @media (max-width: 712px) {
-	.content {
-		flex-direction: column-reverse;
-	}
 	.login-card {
-		width: 100%;
+		width: 95%;
 		padding: $spacing-small;
 	}
 }
