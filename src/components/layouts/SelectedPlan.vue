@@ -38,7 +38,7 @@
 					<hr id="ignoreMobileView" class="horizontal-spacer" />
 					<ul id="ignoreMobileView" class="features">
 						<li
-							v-for="(detail, detailIndex) in plan.features.slice(0, 8)"
+							v-for="(detail, detailIndex) in plan.features.slice(0, 9)"
 							:key="detailIndex"
 						>
 							<i class="fas fa-check" />

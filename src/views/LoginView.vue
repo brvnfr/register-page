@@ -8,31 +8,7 @@
 			/>
 		</div>
 		<div class="login-card">
-			<form @submit.prevent="handleSubmit">
-				<h2>Entre na sua conta</h2>
-				<h3>Para acessar sua conta informe seu e-mail e senha</h3>
-
-				<InputText
-					label="Email"
-					name="email"
-					v-model="email"
-					:value="email"
-					:error="errors.email"
-					placeholder="Informe seu e-mail"
-				/>
-
-				<InputText
-					label="Senha"
-					name="password"
-					v-model="password"
-					:value="password"
-					:error="errors.password"
-					type="password"
-					class="form-margin"
-				/>
-				<a href="/forgot-password" class="forgot-password">Esqueci a senha</a>
-				<CTAButton @click="handleSubmit">Entrar</CTAButton>
-			</form>
+			<LoginForm @submit="handleSubmit" />
 		</div>
 		<div class="register-link">
 			<p>
@@ -43,13 +19,11 @@
 	</div>
 </template>
 <script>
-import InputText from '@/components/inputs/InputText.vue'
-import CTAButton from '@/components/buttons/CTAButton.vue'
+import LoginForm from '@/components/forms/LoginForm.vue'
 
 export default {
 	components: {
-		InputText,
-		CTAButton,
+		LoginForm,
 	},
 	data() {
 		return {
@@ -108,37 +82,16 @@ export default {
 	box-shadow: $box-shadow;
 	padding: $spacing-medium;
 	width: 400px;
+
+	& h2 {
+		text-justify: start;
+	}
 }
 
 @media (max-width: 712px) {
 	.login-card {
 		width: 95%;
 		padding: $spacing-small;
-	}
-}
-
-.form {
-	box-sizing: border-box;
-	flex-direction: column;
-	padding: $spacing-small;
-}
-
-.form-margin {
-	margin-bottom: calc($spacing-x-small - 5px); /* Reduzir a margem inferior */
-}
-
-.forgot-password {
-	text-decoration: underline;
-	display: flex;
-	justify-content: end;
-	color: $font-color-secondary;
-	font-size: map-get(map-get($font-styles, x-small), size);
-	font-weight: map-get(map-get($font-styles, x-small), font-weight);
-	margin-top: calc($spacing-x-small - 3px); /* Reduzir a margem superior */
-	margin-bottom: $spacing-medium; /* Reduzir a margem inferior */
-
-	&:hover {
-		color: $brand-vivid-pink;
 	}
 }
 

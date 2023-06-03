@@ -14,94 +14,7 @@
 	</div>
 	<div v-if="!isPlanSelected" class="content">
 		<div class="register-column">
-			<form class="form" @submit.prevent="handleSubmit">
-				<h2>Dados pessoais</h2>
-				<h3>Informe seus dados pessoais para acesso à sua conta</h3>
-
-				<div class="input">
-					<label for="name">Nome Completo</label>
-					<input
-						id="name"
-						name="name"
-						v-model="name"
-						:class="{ 'input-error': errors.name }"
-						placeholder="Informe seu nome completo"
-					/>
-					<div v-if="errors.name" class="error-message">{{ errors.name }}</div>
-				</div>
-				<div class="input">
-					<label for="email">Email</label>
-					<input
-						id="email"
-						name="email"
-						v-model="email"
-						:class="{ 'input-error': errors.email }"
-						placeholder="Informe seu e-mail"
-					/>
-					<div v-if="errors.email" class="error-message">
-						{{ errors.email }}
-					</div>
-				</div>
-				<div class="input">
-					<label for="password">Senha</label>
-					<input
-						id="password"
-						name="password"
-						v-model="password"
-						:class="{ 'input-error': errors.password }"
-						type="password"
-						class="form-margin"
-					/>
-					<div v-if="errors.password" class="error-message">
-						{{ errors.password }}
-					</div>
-					<p class="form-caption">No mínimo 8 caracteres.</p>
-				</div>
-
-				<div class="input">
-					<label for="confirmPassword">Confirme sua senha</label>
-					<input
-						id="confirmPassword"
-						name="confirmPassword"
-						v-model="confirmPassword"
-						:class="{ 'input-error': confirmPasswordError }"
-						type="password"
-					/>
-					<div v-if="confirmPasswordError" class="error-message">
-						{{ confirmPasswordError }}
-					</div>
-				</div>
-
-				<hr class="horizontal-spacer" />
-
-				<h2 class="section-title">Dados do seu Site</h2>
-
-				<div class="input">
-					<label for="siteName">Nome do site</label>
-					<input
-						id="siteName"
-						label="Nome do seu Site"
-						name="siteName"
-						v-model="siteName"
-						:class="{ 'input-error': errors.siteName }"
-					/>
-					<p class="form-caption">Exatamente igual ao título do seu site.</p>
-				</div>
-				<hr class="horizontal-spacer" />
-
-				<div class="checkbox-section">
-					<input type="checkbox" id="policyCheckbox" v-model="policyCheckbox" />
-					<label for="policyCheckbox">
-						Ao concluir com seu cadastro você concorda com nossos
-						<a href="/termos-de-uso" target="_blank">Termos de Uso</a> e
-						<a href="/politicas-de-privacidade" target="_blank"
-							>Politicas de Privacidade</a
-						>
-					</label>
-				</div>
-
-				<CTAButton @click="handleSubmit">Criar Conta</CTAButton>
-			</form>
+			<RegisterForm @submit="handleSubmit" />
 		</div>
 		<div class="plan-column">
 			<div class="selected-plan-tag">Plano Escolhido</div>
@@ -124,13 +37,14 @@
 </template>
 
 <script>
-import CTAButton from '@/components/buttons/CTAButton.vue'
+import RegisterForm from '@/components/forms/RegisterForm.vue'
+
 import SelectedPlan from '@/components/layouts/SelectedPlan.vue'
 
 export default {
 	components: {
-		CTAButton,
 		SelectedPlan,
+		RegisterForm,
 	},
 	data() {
 		return {
@@ -227,31 +141,9 @@ export default {
 	},
 	computed: {},
 	methods: {
-		handleSubmit() {
-			this.errors = {}
-
-			if (!this.name) {
-				this.errors.name = 'Nome completo obrigatório.'
-			}
-
-			if (!this.email) {
-				this.errors.email = 'E-mail obrigatório.'
-			}
-
-			if (!this.password) {
-				this.errors.password = 'Senha obrigatória.'
-			}
-			if (this.confirmPassword !== this.password) {
-				this.confirmPasswordError = 'As senhas não correspondem'
-				return
-			}
-
-			if (Object.keys(this.errors).length === 0) {
-				this.register()
-			}
-		},
-		register() {
-			// Implement your registration logic here
+		handleSubmit(formData) {
+			// Lógica para tratar os dados do formulário recebidos do componente RegisterForm
+			console.log(formData)
 		},
 
 		handlePlanSelected(plan) {
@@ -335,95 +227,11 @@ export default {
 	}
 }
 
-.form {
-	box-sizing: border-box;
-	flex-direction: column;
-	padding: $spacing-small;
-}
-
-.form-margin {
-	margin-bottom: calc($spacing-x-small - 5px); /* Reduzir a margem inferior */
-}
-
-.form-caption {
-	color: $font-color-secondary;
-	font-size: map-get(map-get($font-styles, x-small), size);
-	font-weight: map-get(map-get($font-styles, x-small), font-weight);
-	margin-top: calc($spacing-x-small - 3px); /* Reduzir a margem superior */
-	margin-bottom: $spacing-small; /* Reduzir a margem inferior */
-}
-
-.form .input {
-	margin-bottom: $spacing-medium; /* Ajuste o valor da margem conforme necessário */
-}
-
-label {
-	font-weight: bold;
-	font-size: map-get(map-get($font-styles, small), size);
-	font-weight: map-get(map-get($font-styles, small), font-weight);
-}
-
-input {
-	box-sizing: border-box;
-	width: 100%;
-	padding: $spacing-medium;
-	font-size: 16px;
-	border: 1px solid #ccc;
-	border-radius: $border-radius;
-	transition: border-color 0.3s;
-}
-input[type='checkbox'] {
-	width: 16px;
-	font-size: 20px;
-}
-input:focus {
-	outline: 1px solid $brand-vivid-pink;
-	border-color: $brand-vivid-pink;
-}
-
-.input-error {
-	border-color: $error-color;
-}
-
-.error-message {
-	color: $error-color;
-	font-size: map-get(map-get($font-styles, x-small), size);
-	font-weight: map-get(map-get($font-styles, x-large), font-weight);
-	margin-top: $spacing-x-small; /* Reduzir a margem superior */
-}
-
-h2:last-of-type {
-	margin-bottom: $spacing-small; /* Reduzir a margem inferior */
-}
 h2:first-of-type {
 	margin-bottom: $spacing-large;
 	text-align: center;
 	& u {
 		color: $brand-vivid-pink;
-	}
-}
-
-.checkbox-section {
-	display: flex;
-	align-items: center;
-	margin-top: $spacing-x-small;
-	margin-bottom: $spacing-small;
-	font-size: map-get(map-get($font-styles, small), size);
-	font-weight: map-get(map-get($font-styles, small), font-weight);
-	color: $font-color-primary;
-}
-
-.checkbox-section input[type='checkbox'] {
-	margin-right: $spacing-x-small;
-	& :checked {
-		--checkbox-color: $brand-vivid-pink;
-	}
-	a {
-		color: $brand-vivid-pink;
-		& :hover {
-			text-decoration: underline;
-			color: $brand-vivid-pink;
-		}
 	}
 }
 

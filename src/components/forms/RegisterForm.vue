@@ -186,3 +186,91 @@ export default {
 	},
 }
 </script>
+<style lang="scss" scoped>
+@import '@/assets/styles/variables.scss';
+
+.form {
+	box-sizing: border-box;
+	flex-direction: column;
+	padding: $spacing-small;
+}
+
+.form-margin {
+	margin-bottom: calc($spacing-x-small - 5px); /* Reduzir a margem inferior */
+}
+
+.form-caption {
+	color: $font-color-secondary;
+	font-size: map-get(map-get($font-styles, x-small), size);
+	font-weight: map-get(map-get($font-styles, x-small), font-weight);
+	margin-top: calc($spacing-x-small - 3px); /* Reduzir a margem superior */
+	margin-bottom: $spacing-small; /* Reduzir a margem inferior */
+}
+
+.form .input {
+	margin-bottom: $spacing-medium; /* Ajuste o valor da margem conforme necessário */
+}
+
+label {
+	font-weight: bold;
+	font-size: map-get(map-get($font-styles, small), size);
+	font-weight: map-get(map-get($font-styles, small), font-weight);
+}
+
+input {
+	box-sizing: border-box;
+	width: 100%;
+	padding: $spacing-medium;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: $border-radius;
+	transition: border-color 0.3s;
+}
+input[type='checkbox'] {
+	width: 16px;
+	font-size: 20px;
+}
+input:focus {
+	outline: 1px solid $brand-vivid-pink;
+	border-color: $brand-vivid-pink;
+}
+
+.input-error {
+	border-color: $error-color;
+}
+
+.error-message {
+	color: $error-color;
+	font-size: map-get(map-get($font-styles, x-small), size);
+	font-weight: map-get(map-get($font-styles, x-large), font-weight);
+	margin-top: $spacing-x-small; /* Reduzir a margem superior */
+}
+
+h2:last-of-type {
+	margin-bottom: $spacing-small; /* Reduzir a margem inferior */
+}
+
+.checkbox-section {
+	display: flex;
+	align-items: center;
+	margin-top: $spacing-x-small;
+	margin-bottom: $spacing-small;
+	font-size: map-get(map-get($font-styles, small), size);
+	font-weight: map-get(map-get($font-styles, small), font-weight);
+	color: $font-color-primary;
+}
+
+.checkbox-section input[type='checkbox'] {
+	margin-right: $spacing-x-small;
+	& :checked {
+		--checkbox-color: $brand-vivid-pink;
+	}
+	a {
+		color: $brand-vivid-pink;
+		& :hover {
+			text-decoration: underline;
+			color: $brand-vivid-pink;
+		}
+	}
+}
+</style>
