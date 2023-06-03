@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import LoginView from '@/views/LoginView.vue';
 import RegisterView from '@/views/RegisterView.vue';
+import NotFound from '@/views/NotFound.vue';
 
 const routes = [
   {
@@ -16,6 +17,11 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: RegisterView
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: NotFound
   }
 ];
 

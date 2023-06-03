@@ -28,7 +28,9 @@
 			<div v-if="errors.password" class="error-message">
 				{{ errors.password }}
 			</div>
-			<p class="forgot-password">Esqueci minha senha</p>
+			<a href="/login/forgot-password" class="forgot-password"
+				>Esqueci minha senha</a
+			>
 		</div>
 
 		<CTAButton @click="handleSubmit">Entrar</CTAButton>
