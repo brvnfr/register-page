@@ -175,7 +175,7 @@ h2:first-of-type {
 }
 
 .login-link {
-	margin-top: $spacing-medium;
+	margin: $spacing-large 0;
 	text-align: center;
 	& p {
 		margin-bottom: 0;
