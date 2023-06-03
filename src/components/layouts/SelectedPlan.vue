@@ -26,8 +26,8 @@
 					</p>
 					<p class="price-description">{{ plan.description }}</p>
 					<p>{{ plan.setupFee }}</p>
-					<hr class="horizontal-spacer" />
-					<ul id="planFeatures" class="features">
+					<hr id="ignoreMobileView" class="horizontal-spacer" />
+					<ul id="ignoreMobileView" class="features">
 						<li
 							v-for="(detail, detailIndex) in plan.features.slice(0, 8)"
 							:key="detailIndex"
@@ -154,8 +154,8 @@ export default {
 	color: $brand-vivid-pink;
 	margin-right: $spacing-small;
 }
-
-#planFeatures {
+//
+#ignoreMobileView {
 	@media (max-width: $breakpoint-medium) {
 		display: none;
 	}
@@ -184,6 +184,6 @@ export default {
 
 .prev-button:hover,
 .next-button:hover {
-	color: $color-white;
+	background-color: #0000007e;
 }
 </style>
