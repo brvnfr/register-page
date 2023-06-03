@@ -36,14 +36,8 @@
 			<template #addons>
 				<Navigation />
 			</template>
-
 			<Slide v-for="(plan, index) in planOptions" :key="index">
-				<div
-					:key="index"
-					class="price-plan"
-					:class="{ 'plan-middle': index === 1 }"
-					@click="handleChoosePlan(plan)"
-				>
+				<div :key="index" class="price-plan" @click="handleChoosePlan(plan)">
 					<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
 					<h3>{{ plan.name }}</h3>
 					<p class="price">
@@ -68,13 +62,15 @@
 </template>
 
 <script>
-import { Carousel, Slide } from 'vue3-carousel'
+import { Carousel, Slide, Navigation } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 
 export default {
 	components: {
 		Carousel,
 		Slide,
+
+		Navigation,
 	},
 	data() {
 		return {
@@ -105,7 +101,6 @@ export default {
 @import '@/assets/styles/variables.scss';
 
 .plans-container {
-	width: 55vw;
 }
 
 .price-plans {
@@ -123,11 +118,6 @@ export default {
 	width: 300px;
 	cursor: pointer;
 	transition: box-shadow 0.3s ease;
-
-	&.plan-middle {
-		width: 300px;
-		height: calc(100% + 20px);
-	}
 }
 
 .price-plan h3 {
@@ -170,6 +160,9 @@ export default {
 @media (max-width: 768px) {
 	.desktop {
 		display: none;
+	}
+	.price-plan {
+		width: 80%;
 	}
 
 	.carousel-container {
