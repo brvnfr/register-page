@@ -1,24 +1,19 @@
 <template>
 	<div class="dashboard-view">
-		<div class="sidebar"></div>
 		<div class="main">
 			<div class="top-navigation">
-				<!--sidebar links -->
-				<div class="user-profile" @click="toggleDropdown">
-					<img class="avatar" src="avatar.jpg" alt="Avatar" />
-					<div class="dropdown" v-show="showDropdown">
-						<!--configurações da conta  -->
-						<ul>
-							<li>Configuração 1</li>
-							<li>Configuração 2</li>
-							<li>Configuração 3</li>
-						</ul>
-					</div>
+				<button class="user-profile" @click="toggleDropdown">
+					<i class="fas fa-user avatar"></i>
+				</button>
+				<div class="dropdown" v-show="showDropdown">
+					<ul>
+						<li>Conta</li>
+						<li>Configurações</li>
+						<li>Sair</li>
+					</ul>
 				</div>
 			</div>
-			<div class="dashboard-content">
-				<!-- Conteúdo  -->
-			</div>
+			<div class="dashboard-content"></div>
 		</div>
 	</div>
 </template>
@@ -59,23 +54,27 @@ export default {
 
 .top-navigation {
 	background-color: #f0f0f0;
-	padding: 10px;
+	padding: 16px 24px;
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
 }
 
 .user-profile {
-	position: relative;
+	border: none;
+	background-color: gray;
 	cursor: pointer;
 	display: flex;
+	justify-content: center;
 	align-items: center;
-}
-
-.avatar {
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
+}
+
+.avatar {
+	font-size: 24px;
+	color: light-gray;
 }
 
 .dropdown {
