@@ -53,6 +53,14 @@ export default {
 		RegisterForm,
 		PlanOptions,
 	},
+	watch: {
+		// whenever question changes, this function will run
+		selectedPlan(updated) {
+			if (updated.includes('?')) {
+				console.log('retornou selectedPlan:', updated)
+			}
+		},
+	},
 	data() {
 		return {
 			name: '',
@@ -69,6 +77,7 @@ export default {
 			isPlanSelected: true,
 		}
 	},
+
 	computed: {},
 	methods: {
 		handleSubmit(formData) {
