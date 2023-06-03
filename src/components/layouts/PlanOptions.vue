@@ -1,9 +1,44 @@
 <template>
-	<div>
-		<div class="plans-container desktop">
-			<div class="price-plans">
+	<div class="plans-container desktop">
+		<div class="price-plans">
+			<div
+				v-for="(plan, index) in planOptions"
+				:key="index"
+				class="price-plan"
+				:class="{ 'plan-middle': index === 1 }"
+				@click="handleChoosePlan(plan)"
+			>
+				<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
+				<h3>{{ plan.name }}</h3>
+				<p class="price">
+					{{ isNaN(plan.price) ? plan.price : 'R$ ' + plan.price }}
+				</p>
+				<p class="price-description">{{ plan.description }}</p>
+				<p>{{ plan.setupFee }}</p>
+				<hr class="horizontal-spacer" />
+				<ul class="features">
+					<li v-for="(detail, detailIndex) in plan.features" :key="detailIndex">
+						<i class="fas fa-check"></i>
+						{{ detail }}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="carousel-container mobile">
+		<Carousel
+			ref="carousel"
+			:items-to-show="1"
+			:wrap-around="true"
+			v-model="currentSlide"
+		>
+			<template #addons>
+				<Navigation />
+			</template>
+
+			<Slide v-for="(plan, index) in planOptions" :key="index">
 				<div
-					v-for="(plan, index) in planOptions"
 					:key="index"
 					class="price-plan"
 					:class="{ 'plan-middle': index === 1 }"
@@ -27,48 +62,8 @@
 						</li>
 					</ul>
 				</div>
-			</div>
-		</div>
-
-		<div class="carousel-container mobile">
-			<Carousel
-				ref="carousel"
-				:items-to-show="1"
-				:wrap-around="true"
-				v-model="currentSlide"
-			>
-				<template #addons>
-					<Navigation />
-				</template>
-
-				<Slide v-for="(plan, index) in planOptions" :key="index">
-					<div
-						:key="index"
-						class="price-plan"
-						:class="{ 'plan-middle': index === 1 }"
-						@click="handleChoosePlan(plan)"
-					>
-						<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
-						<h3>{{ plan.name }}</h3>
-						<p class="price">
-							{{ isNaN(plan.price) ? plan.price : 'R$ ' + plan.price }}
-						</p>
-						<p class="price-description">{{ plan.description }}</p>
-						<p>{{ plan.setupFee }}</p>
-						<hr class="horizontal-spacer" />
-						<ul class="features">
-							<li
-								v-for="(detail, detailIndex) in plan.features"
-								:key="detailIndex"
-							>
-								<i class="fas fa-check"></i>
-								{{ detail }}
-							</li>
-						</ul>
-					</div>
-				</Slide>
-			</Carousel>
-		</div>
+			</Slide>
+		</Carousel>
 	</div>
 </template>
 
