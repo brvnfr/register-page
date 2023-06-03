@@ -1,5 +1,5 @@
 <template>
-	<!-- <div class="header-container">
+	<div class="container">
 		<div class="logo-brand">
 			<img
 				src="@/assets/images/brand/brand-logo.svg"
@@ -11,8 +11,6 @@
 			Você está muito perto de mudar a forma de <br />
 			<u>hospedar seu site</u>
 		</h2>
-	</div> -->
-	<div class="container">
 		<div v-if="!isPlanSelected" class="content">
 			<div class="register-column">
 				<RegisterForm @submit="handleSubmit" />
@@ -97,7 +95,7 @@ export default {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	height: 100%;
 }
 
 .content {
