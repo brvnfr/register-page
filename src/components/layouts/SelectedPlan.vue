@@ -1,9 +1,5 @@
 <template>
 	<div>
-		<div>
-			<button @click="prev" class="prev-button">Prev</button>
-			<button @click="next" class="next-button">Next</button>
-		</div>
 		<Carousel
 			ref="carousel"
 			:items-to-show="1"
@@ -11,8 +7,15 @@
 			v-model="currentSlide"
 		>
 			<template #addons>
-				<Navigation class="carousel-navigation" />
-				<Pagination class="carousel-pagination" />
+				<div class="custom-navigation">
+					<button @click="prev" class="prev-button">
+						<i class="fa-solid fa-chevron-left"></i>
+					</button>
+					<Pagination />
+					<button @click="next" class="next-button">
+						<i class="fa-solid fa-chevron-right"></i>
+					</button>
+				</div>
 			</template>
 
 			<Slide v-for="(plan, index) in planOptions" :key="index">
@@ -39,13 +42,12 @@
 	</div>
 </template>
 <script>
-import { Carousel, Slide, Navigation, Pagination } from 'vue3-carousel'
+import { Carousel, Slide, Pagination } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 export default {
 	components: {
 		Carousel,
 		Slide,
-		Navigation,
 		Pagination,
 	},
 	data() {
@@ -159,24 +161,29 @@ export default {
 	}
 }
 
-.carousel-navigation {
+.custom-navigation {
 	display: flex;
-	justify-content: space-between;
-	& button {
-		background-color: transparent;
-		border: none;
-		font-size: 24px;
-		cursor: pointer;
+	justify-content: space-around;
+	padding: $spacing-small;
+	& ol {
+		padding: 0;
 	}
 }
 
-.carousel-navigation .carousel-navigation .prev-button {
-	color: red;
-	margin-right: 10px;
+.prev-button,
+.next-button {
+	background-color: #0000005d;
+	color: $color-white;
+	border: none;
+	border-radius: 50%;
+	font-size: 16px;
+	outline: none;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
 }
 
-.carousel-navigation .next-button {
-	color: blue;
-	margin-left: 10px;
+.prev-button:hover,
+.next-button:hover {
+	color: $color-white;
 }
 </style>
