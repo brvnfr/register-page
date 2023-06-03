@@ -31,17 +31,35 @@
 				<div class="selected-plan">
 					<h3>{{ plan.name }}</h3>
 					<p class="price">
-						{{ isNaN(plan.price) ? plan.price : 'R$ ' + plan.price }}
+						<span v-if="!isNaN(plan.price)" class="currency">R$</span>
+						<span class="price-value">{{ plan.price }}</span>
+						<span v-if="!isNaN(plan.price)" class="unit">/mês</span>
 					</p>
-					<p class="price-description">{{ plan.description }}</p>
-					<p>{{ plan.setupFee }}</p>
-					<hr id="ignoreMobileView" class="horizontal-spacer" />
-					<ul id="ignoreMobileView" class="features">
+
+					<span
+						class="plan-description"
+						v-for="(description, index) in plan.description"
+						:key="index"
+					>
+						<p>
+							{{ description }}
+						</p>
+					</span>
+					<hr class="horizontal-spacer" />
+
+					<span class="plan-profile">
+						<p>
+							{{ plan.profile }}
+						</p>
+					</span>
+					<hr class="horizontal-spacer" />
+					<ul class="features">
 						<li
-							v-for="(detail, detailIndex) in plan.features.slice(0, 7)"
+							v-for="(detail, detailIndex) in plan.features.slice(0, 5)"
 							:key="detailIndex"
+							:class="{ 'bold-text': [0, 6].includes(detailIndex) }"
 						>
-							<i class="fas fa-check" />
+							<i v-if="![0, 6].includes(detailIndex)" class="fas fa-check"></i>
 							{{ detail }}
 						</li>
 					</ul>
@@ -142,6 +160,12 @@ export default {
 
 .features li {
 	margin-bottom: $spacing-small;
+}
+
+.bold-text {
+	font-size: map-get(map-get($font-styles, medium-bold), size);
+	font-weight: map-get(map-get($font-styles, medium-bold), font-weight);
+	margin-bottom: $spacing-large 0;
 }
 
 .choose-plan-button {

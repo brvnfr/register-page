@@ -115,8 +115,6 @@ input:focus {
 }
 .forgot-password {
 	text-decoration: underline;
-	display: flex;
-	justify-content: end;
 	color: $font-color-secondary;
 	font-size: map-get(map-get($font-styles, x-small), size);
 	font-weight: map-get(map-get($font-styles, x-small), font-weight);

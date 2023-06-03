@@ -62,17 +62,8 @@ export default {
 	},
 	data() {
 		return {
-			name: '',
-			email: '',
-			password: '',
-			confirmPassword: '',
-			confirmPasswordError: '',
-			siteName: '',
-			policyCheckbox: false,
-			siteNameError: '',
-			errors: {},
 			selectedPlan: null,
-			isPlanSelected: true,
+			isPlanSelected: false,
 		}
 	},
 

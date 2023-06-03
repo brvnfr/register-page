@@ -148,13 +148,7 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/styles/variables.scss';
 
-.plans-container {
-}
-
 .price-plans {
-	display: flex;
-	justify-content: space-around;
-	align-items: start;
 	gap: 10px;
 }
 
@@ -193,13 +187,20 @@ export default {
 
 .features {
 	list-style: none;
-	margin: $spacing-medium 0;
 	padding: 0;
 	text-align: left;
+	font-size: map-get(map-get($font-styles, medium), size);
+	font-weight: map-get(map-get($font-styles, medium), font-weight);
 }
 
 .features li {
-	margin-bottom: $spacing-small;
+	margin: calc($spacing-medium - 4px) 0;
+}
+
+.bold-text {
+	font-size: map-get(map-get($font-styles, medium-bold), size);
+	font-weight: map-get(map-get($font-styles, medium-bold), font-weight);
+	margin-bottom: $spacing-large 0;
 }
 
 .fa-check {
@@ -222,9 +223,5 @@ export default {
 	.carousel-container {
 		display: block;
 	}
-}
-.bold-text {
-	font-size: map-get(map-get($font-styles, medium-bold), size);
-	font-weight: map-get(map-get($font-styles, medium-bold), font-weight);
 }
 </style>
