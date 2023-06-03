@@ -267,7 +267,7 @@ export default {
 	background-color: $color-white;
 	box-shadow: $box-shadow;
 	padding: $spacing-medium;
-	width: 40%;
+	width: 400px;
 
 	& h2 {
 		text-justify: start;

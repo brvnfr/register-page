@@ -107,7 +107,7 @@ export default {
 	background-color: $color-white;
 	box-shadow: $box-shadow;
 	padding: $spacing-medium;
-	width: 40%;
+	width: 400px;
 }
 
 @media (max-width: 712px) {
