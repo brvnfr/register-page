@@ -32,7 +32,7 @@
 				@planSelected="handlePlanSelected"
 			/>
 		</div>
-		<div class="login-link">
+		<div class="register-link">
 			<p>
 				Ja possui uma conta?
 				<router-link to="/">Login</router-link>
@@ -95,14 +95,15 @@ export default {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 100%;
+	height: 100vh;
 }
 
 .content {
 	display: flex;
+	justify-content: center;
+	align-items: center;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: center;
 	gap: 20px;
 }
 
@@ -174,8 +175,8 @@ h2:first-of-type {
 	}
 }
 
-.login-link {
-	margin: $spacing-large 0;
+.register-link {
+	margin: $spacing-small 0;
 	text-align: center;
 	& p {
 		margin-bottom: 0;
