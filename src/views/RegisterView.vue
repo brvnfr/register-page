@@ -45,7 +45,6 @@
 import RegisterForm from '@/components/forms/RegisterForm.vue'
 import SelectedPlan from '@/components/layouts/SelectedPlan.vue'
 import PlanOptions from '@/components/layouts/PlanOptions.vue'
-import plans from '@/data/plans.json'
 
 export default {
 	components: {
@@ -73,7 +72,6 @@ export default {
 			siteNameError: '',
 			errors: {},
 			selectedPlan: null,
-			planOptions: plans,
 			isPlanSelected: true,
 		}
 	},

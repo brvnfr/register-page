@@ -53,6 +53,8 @@
 <script>
 import { Carousel, Slide, Pagination } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
+import plans from '@/data/plans.json'
+
 export default {
 	components: {
 		Carousel,
@@ -63,12 +65,10 @@ export default {
 		return {
 			planName: '',
 			currentSlide: 0,
+			planOptions: plans,
 		}
 	},
 	props: {
-		planOptions: {
-			type: Array,
-		},
 		selectedPlan: {
 			type: Object,
 			default: () => {},

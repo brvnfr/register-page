@@ -11,9 +11,9 @@
 				<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
 				<h3>{{ plan.name }}</h3>
 				<p class="price">
-					<span class="currency">R$</span>
+					<span v-if="!isNaN(plan.price)" class="currency">R$</span>
 					<span class="price-value">{{ plan.price }}</span>
-					<span class="unit">/mês</span>
+					<span v-if="!isNaN(plan.price)" class="unit">/mês</span>
 				</p>
 
 				<span
@@ -70,9 +70,9 @@
 					<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
 					<h3>{{ plan.name }}</h3>
 					<p class="price">
-						<span class="currency">R$</span>
+						<span v-if="!isNaN(plan.price)" class="currency">R$</span>
 						<span class="price-value">{{ plan.price }}</span>
-						<span class="unit">/mês</span>
+						<span v-if="!isNaN(plan.price)" class="unit">/mês</span>
 					</p>
 
 					<span
@@ -115,6 +115,7 @@
 <script>
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
+import plans from '@/data/plans.json'
 
 export default {
 	components: {
@@ -126,12 +127,10 @@ export default {
 	data() {
 		return {
 			planName: '',
+			planOptions: plans,
 		}
 	},
 	props: {
-		planOptions: {
-			type: Array,
-		},
 		selectedPlan: {
 			type: Object,
 			default: () => {},
@@ -181,7 +180,6 @@ export default {
 	font-size: 2rem;
 	margin-top: $spacing-small;
 	color: $brand-vivid-pink;
-	padding: 2px;
 }
 
 .currency,
