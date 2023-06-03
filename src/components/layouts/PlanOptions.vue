@@ -1,7 +1,3 @@
-Para exibir um carousel na versão mobile em vez das colunas de planos, você pode
-usar uma técnica conhecida como "media queries" para aplicar estilos diferentes
-com base no tamanho da tela. Aqui está uma versão atualizada do seu componente,
-onde o carousel é mostrado na versão mobile: html Copy code
 <template>
 	<div>
 		<div class="plans-container desktop">
@@ -35,13 +31,56 @@ onde o carousel é mostrado na versão mobile: html Copy code
 		</div>
 
 		<div class="carousel-container mobile">
-			<!-- Coloque aqui o código do seu carousel -->
+			<Carousel
+				ref="carousel"
+				:items-to-show="1"
+				:wrap-around="true"
+				v-model="currentSlide"
+			>
+				<template #addons>
+					<Navigation />
+				</template>
+
+				<Slide v-for="(plan, index) in planOptions" :key="index">
+					<div
+						:key="index"
+						class="price-plan"
+						:class="{ 'plan-middle': index === 1 }"
+						@click="handleChoosePlan(plan)"
+					>
+						<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
+						<h3>{{ plan.name }}</h3>
+						<p class="price">
+							{{ isNaN(plan.price) ? plan.price : 'R$ ' + plan.price }}
+						</p>
+						<p class="price-description">{{ plan.description }}</p>
+						<p>{{ plan.setupFee }}</p>
+						<hr class="horizontal-spacer" />
+						<ul class="features">
+							<li
+								v-for="(detail, detailIndex) in plan.features"
+								:key="detailIndex"
+							>
+								<i class="fas fa-check"></i>
+								{{ detail }}
+							</li>
+						</ul>
+					</div>
+				</Slide>
+			</Carousel>
 		</div>
 	</div>
 </template>
 
 <script>
+import { Carousel, Slide } from 'vue3-carousel'
+import 'vue3-carousel/dist/carousel.css'
+
 export default {
+	components: {
+		Carousel,
+		Slide,
+	},
 	data() {
 		return {
 			planName: '',
@@ -140,7 +179,6 @@ export default {
 
 	.carousel-container {
 		display: block;
-		/* Adicione os estilos do seu carousel aqui */
 	}
 }
 </style>
