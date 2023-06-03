@@ -68,7 +68,7 @@ export default {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 100vh; /* Define a altura da tela inteira */
+	height: 100vh;
 }
 
 .logo-brand {

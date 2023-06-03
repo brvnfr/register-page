@@ -43,6 +43,10 @@ a:active {
 }
 
 //body html
+body,html {
+  margin: 0;
+  padding: 0;
+}
 body {
   font-family: $font-family;
   background-color: $bg-default;
