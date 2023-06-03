@@ -87,6 +87,7 @@
 			</form>
 		</div>
 		<div class="plan-column">
+			<div class="selected-plan-tag">Plano Escolhido</div>
 			<SelectedPlan
 				:planOptions="planOptions"
 				:selectedPlan="selectedPlan"
@@ -274,9 +275,29 @@ export default {
 	}
 }
 
+.selected-plan-tag {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	top: -33px;
+	left: 50%;
+	width: 150px;
+	text-transform: uppercase;
+	transform: translateX(-50%);
+	padding: 5px;
+	background-color: $color-black;
+	color: $color-white;
+	font-size: map-get(map-get($font-styles, medium), size);
+	font-weight: map-get(map-get($font-styles, medium), font-weight);
+	border-radius: 10px;
+	z-index: 100;
+	@media (max-width: 712px) {
+		top: 10px;
+	}
+}
+
 .plan-column {
 	position: relative;
-	overflow: hidden;
 	background-color: $color-white;
 	box-shadow: $box-shadow;
 	padding: $spacing-medium;
