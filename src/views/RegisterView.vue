@@ -1,5 +1,5 @@
 <template>
-	<div class="header-container">
+	<!-- <div class="header-container">
 		<div class="logo-brand">
 			<img
 				src="@/assets/images/brand/brand-logo.svg"
@@ -11,33 +11,35 @@
 			Você está muito perto de mudar a forma de <br />
 			<u>hospedar seu site</u>
 		</h2>
-	</div>
-	<div v-if="!isPlanSelected" class="content">
-		<div class="register-column">
-			<RegisterForm @submit="handleSubmit" />
+	</div> -->
+	<div class="container">
+		<div v-if="!isPlanSelected" class="content">
+			<div class="register-column">
+				<RegisterForm @submit="handleSubmit" />
+			</div>
+			<div class="plan-column">
+				<div class="selected-plan-tag">Plano Escolhido</div>
+				<SelectedPlan
+					:planOptions="planOptions"
+					:selectedPlan="selectedPlan"
+					@planSelected="handlePlanSelected"
+				/>
+			</div>
 		</div>
-		<div class="plan-column">
-			<div class="selected-plan-tag">Plano Escolhido</div>
-			<SelectedPlan
+		<div v-else class="content">
+			<!-- TODO div com os planos selecionaveis-->
+			<PlanOptions
 				:planOptions="planOptions"
 				:selectedPlan="selectedPlan"
 				@planSelected="handlePlanSelected"
 			/>
 		</div>
-	</div>
-	<div v-else class="content">
-		<!-- TODO div com os planos selecionaveis-->
-		<PlanOptions
-			:planOptions="planOptions"
-			:selectedPlan="selectedPlan"
-			@planSelected="handlePlanSelected"
-		/>
-	</div>
-	<div class="login-link">
-		<p>
-			Ja possui uma conta?
-			<router-link to="/">Login</router-link>
-		</p>
+		<div class="login-link">
+			<p>
+				Ja possui uma conta?
+				<router-link to="/">Login</router-link>
+			</p>
+		</div>
 	</div>
 </template>
 
@@ -90,6 +92,14 @@ export default {
 	justify-content: center;
 }
 
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
 .content {
 	display: flex;
 	flex-direction: row;
@@ -127,7 +137,7 @@ export default {
 	font-weight: map-get(map-get($font-styles, medium), font-weight);
 	border-radius: 10px;
 	z-index: 100;
-	@media (max-width: 712px) {
+	@media (max-width: 768px) {
 		top: 10px;
 	}
 }
@@ -141,7 +151,10 @@ export default {
 	border-radius: $border-radius;
 }
 
-@media (max-width: 712px) {
+@media (max-width: 768px) {
+	.container {
+		height: 100%;
+	}
 	.content {
 		flex-direction: column-reverse;
 	}

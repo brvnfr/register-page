@@ -53,7 +53,7 @@
 						</p>
 					</span>
 					<hr class="horizontal-spacer" />
-					<ul class="features">
+					<ul id="desktopOnly" class="features">
 						<li
 							v-for="(detail, detailIndex) in plan.features.slice(0, 5)"
 							:key="detailIndex"
@@ -128,7 +128,7 @@ export default {
 		background-image: linear-gradient(transparent, rgb(255, 255, 255));
 		background-clip: content-box;
 		pointer-events: none;
-		@media (max-width: $breakpoint-medium) {
+		@media (max-width: 768px) {
 			height: 30px;
 		}
 	}
@@ -186,12 +186,6 @@ export default {
 	color: $brand-vivid-pink;
 	margin-right: $spacing-small;
 }
-//
-#ignoreMobileView {
-	@media (max-width: $breakpoint-medium) {
-		display: none;
-	}
-}
 
 .custom-navigation {
 	display: flex;
@@ -217,5 +211,11 @@ export default {
 .previous-plan-button:hover,
 .next-plan-button:hover {
 	background-color: #0000007e;
+}
+
+@media (max-width: 768px) {
+	#desktopOnly {
+		display: none;
+	}
 }
 </style>
