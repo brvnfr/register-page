@@ -6,7 +6,7 @@
 			class="price-plan"
 			:class="{ 'plan-middle': index === 1 }"
 		>
-			<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
+			<div v-if="index === 1" class="best-plan-tag">Mais usado</div>
 			<h3>{{ plan.name }}</h3>
 			<p class="price">
 				<span v-if="!isNaN(plan.price)" class="currency">R$</span>
@@ -62,7 +62,7 @@
 			</template>
 			<Slide v-for="(plan, index) in planOptions" :key="index">
 				<div class="price-plan" @click="handleChoosePlan(plan)">
-					<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
+					<div v-if="index === 1" class="best-plan-tag">Mais usado</div>
 					<h3>{{ plan.name }}</h3>
 					<p class="price">
 						<span v-if="!isNaN(plan.price)" class="currency">R$</span>
@@ -154,6 +154,27 @@ export default {
 .desktop {
 	display: flex;
 	flex-direction: row;
+}
+
+.best-plan-tag {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	top: -33px;
+	left: 50%;
+	width: 150px;
+	text-transform: uppercase;
+	transform: translateX(-50%);
+	padding: 5px;
+	background-color: $brand-lime-green;
+	color: $color-white;
+	font-size: map-get(map-get($font-styles, medium), size);
+	font-weight: map-get(map-get($font-styles, medium), font-weight);
+	border-radius: 10px;
+	z-index: 100;
+	@media (max-width: 768px) {
+		bottom: -10px;
+	}
 }
 
 .price-plan {
