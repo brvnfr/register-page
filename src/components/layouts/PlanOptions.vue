@@ -54,14 +54,13 @@
 			ref="carousel"
 			:items-to-show="1"
 			:wrap-around="true"
-			v-model="currentSlide"
 			style="width: 300px"
 		>
 			<template #addons>
 				<Navigation />
 			</template>
 			<Slide v-for="(plan, index) in planOptions" :key="index">
-				<div class="price-plan" @click="handleChoosePlan(plan)">
+				<div class="price-plan">
 					<div v-if="index === 1" class="best-plan-tag">Mais usado</div>
 					<h3>{{ plan.name }}</h3>
 					<p class="price">
@@ -69,7 +68,9 @@
 						<span class="price-value">{{ plan.price }}</span>
 						<span v-if="!isNaN(plan.price)" class="unit">/mês</span>
 					</p>
-
+					<hr class="horizontal-spacer" />
+					<CTAButton @click="handleChoosePlan(plan)">Escolher Plano</CTAButton>
+					<hr class="horizontal-spacer" />
 					<span
 						class="plan-description"
 						v-for="(description, index) in plan.description"
@@ -185,7 +186,7 @@ export default {
 	width: 300px;
 	cursor: pointer;
 	transition: box-shadow 0.3s ease;
-	margin-top: 21px;
+	margin-top: 29px;
 }
 
 .plan-middle {

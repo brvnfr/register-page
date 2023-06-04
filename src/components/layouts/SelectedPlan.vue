@@ -9,7 +9,7 @@
 			</p>
 
 			<hr class="horizontal-spacer" />
-			<CTAButton @click="deselectPlan">Trocar Plano</CTAButton>
+			<CTAButton @click="clearSelectedPlan">Trocar Plano</CTAButton>
 			<hr class="horizontal-spacer" />
 			<span
 				class="plan-description"
@@ -144,8 +144,8 @@ export default {
 		handleChoosePlan(plan) {
 			this.$emit('update:selectedPlan', plan)
 		},
-		deselectPlan() {
-			this.$emit('update:selectedPlan', null)
+		clearSelectedPlan() {
+			this.$emit('clear-plan')
 		},
 		nextPlan() {
 			this.$refs.carousel.next() // botoes custom carousel
