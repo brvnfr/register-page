@@ -163,6 +163,13 @@ export default {
 	width: 300px;
 	cursor: pointer;
 	transition: box-shadow 0.3s ease;
+	margin-top: 21px;
+}
+
+.plan-middle {
+	margin-top: 0;
+	width: 350px;
+	height: 100%;
 }
 
 .price-plan h3 {

@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div :class="containerClass">
 		<div class="logo-brand">
 			<img
 				src="@/assets/images/brand/brand-logo.svg"
@@ -72,7 +72,14 @@ export default {
 	created() {
 		this.isPlanSelected = false
 	},
-	computed: {},
+	computed: {
+		containerClass() {
+			return {
+				container: this.selectedPlan !== null,
+				'container-full': this.selectedPlan === null,
+			}
+		},
+	},
 	methods: {
 		handleSubmit(formData) {
 			// Lógica para tratar os dados do formulário recebidos do componente RegisterForm
@@ -100,6 +107,14 @@ export default {
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+}
+
+.container-full {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
 }
 
 .content {
