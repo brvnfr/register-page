@@ -22,6 +22,7 @@
 					:selectedPlan="selectedPlan"
 					@update-selected-plan="handleSelectPlan"
 					@clear-plan="clearSelectedPlan"
+					v-model="selectedPlanIndex"
 				/>
 			</div>
 		</div>
@@ -65,9 +66,9 @@ export default {
 	},
 	data() {
 		return {
-			selectedPlan: null,
-			isPlanSelected: false,
 			planOptions: plans,
+			selectedPlan: null,
+			selectedPlanIndex: 0,
 		}
 	},
 	computed: {

@@ -46,9 +46,9 @@
 			ref="carousel"
 			:items-to-show="1"
 			:wrap-around="true"
-			v-model="currentSlide"
 			class="mobile"
 			@slide-end="handleSlideEnd"
+			v-model="selectedPlanIndex"
 		>
 			<template #addons>
 				<div class="custom-navigation">
@@ -139,6 +139,20 @@ export default {
 		planOptions: {
 			type: Array,
 			default: () => [],
+		},
+	},
+	model: {
+		prop: 'selectedPlan',
+		event: 'update',
+	},
+	computed: {
+		selectedPlanIndex: {
+			get() {
+				return this.planOptions.findIndex((plan) => plan === this.selectedPlan) // mapeia os index
+			},
+			set(index) {
+				this.$emit('update', this.planOptions[index])
+			},
 		},
 	},
 	methods: {
