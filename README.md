@@ -1,6 +1,6 @@
 # I
 
-[English Version](## English Version)
+[English Version](#english)
 
 ### Design System
 
