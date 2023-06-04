@@ -4,9 +4,6 @@ import App from '@/App.vue';
 import AppNotification from '@/components/alerts/AppNotification.vue'
 
 
-
-app.mount('#app')
-
 import '@/assets/styles/global.scss';
 import '@fortawesome/fontawesome-free/css/all.css';
 import axiosPlugin from './plugins/axios'
