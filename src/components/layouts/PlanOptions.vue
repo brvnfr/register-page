@@ -54,13 +54,13 @@
 			ref="carousel"
 			:items-to-show="1"
 			:wrap-around="true"
-			style="width: 300px"
+			style="width: 100vw"
 		>
 			<template #addons>
 				<Navigation />
 			</template>
 			<Slide v-for="(plan, index) in planOptions" :key="index">
-				<div class="price-plan">
+				<div class="price-plan-carousel">
 					<div v-if="index === 1" class="best-plan-tag">Mais usado</div>
 					<h3>{{ plan.name }}</h3>
 					<p class="price">
@@ -185,6 +185,17 @@ export default {
 	padding: $spacing-medium;
 	border-radius: $border-radius;
 	width: 300px;
+	cursor: pointer;
+	transition: box-shadow 0.3s ease;
+	margin-top: 29px;
+}
+
+.price-plan-carousel {
+	text-align: center;
+	background-color: $color-white;
+	padding: $spacing-medium;
+	border-radius: $border-radius;
+	width: 80vw;
 	cursor: pointer;
 	transition: box-shadow 0.3s ease;
 	margin-top: 29px;
