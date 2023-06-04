@@ -82,17 +82,9 @@ export default {
 				localStorage.setItem('token', token)
 			} catch (error) {
 				console.log('Erro ao fazer login:', error)
-				this.$root.$emit('show-notification', {
-					type: 'error',
-					message: 'Não foi possivel realizar o login. Tente novamente.',
-				})
 			} finally {
 				// Redirecionar para a página após o login bem-sucedido
 				this.$router.push('/dashboard')
-				this.$root.$emit('show-notification', {
-					type: 'success',
-					message: 'Login realizado com sucesso!',
-				})
 			}
 		},
 	},
