@@ -5,7 +5,6 @@
 
 // Design Tokens \\
 
-
 // Brand Colors
 $brand-color-main: #E6EAF2;
 $brand-primary: #2A343E;
@@ -41,27 +40,27 @@ $font-styles: (
       font-family: $font-family
       ),
       medium: (
-        size: 14px,
-        font-weight: 400,
-        font-family: $font-family
+          size: 14px,
+          font-weight: 400,
+          font-family: $font-family
         ),
 
         medium-bold: (
-        size: 14px,
-        font-weight: bold,
-        font-family: $font-family
+          size: 14px,
+          font-weight: bold,
+          font-family: $font-family
         ),
         large: (
           size: 20px,
           font-weight: 700,
-    font-family: $font-family
+          font-family: $font-family
   ),
-  x-large: (
-    size:28,
-    font-weight:700,
-    font-family:$font-family
-    )
-    );
+          x-large: (
+        size:28,
+        font-weight:700,
+        font-family:$font-family
+        )
+        );
     
     // usar com map-get
     // ex:
@@ -75,15 +74,6 @@ $font-styles: (
     $font-color-white: #FAFAFC;
     $font-color-black: #0a0a0a;
 
-    // Font Sizes
-    $font-size-small: 16px;
-    $font-size-medium: 18px;
-    $font-size-large: 28px;
-    
-    // Font Weights
-    $font-400: 400;
-    $font-700: 700;
-    
     // Spacements
     $spacing-x-small: 4px;
     $spacing-small: 8px;
@@ -91,6 +81,7 @@ $font-styles: (
     $spacing-large: 24px;
     $spacing-x-large: 36px;
     $spacing-none: 0;
+    
     // Borders
     $border: 1px solid $brand-color-main;
     
@@ -99,9 +90,6 @@ $font-styles: (
     
     // Box Shadows
     $box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-    
-    
-    
     
     // Icons
     $icon-size-small: 16px;
@@ -116,9 +104,6 @@ $font-styles: (
     // Transition Effect
 $transition-duration: 0.3s;
 $transition-easing: ease-in-out;
-
-// Width
-$content-width: 1200px;
 
 // Layout
 $box-size: 400px;

@@ -1,10 +1,53 @@
 <template>
-	<div>
+	<div class="plans-container">
+		<div class="selected-plan">
+			<h3>{{ selectedPlan?.name }}</h3>
+			<p class="price">
+				<span v-if="!isNaN(selectedPlan?.price)" class="currency">R$</span>
+				<span class="price-value">{{ selectedPlan?.price }}</span>
+				<span v-if="!isNaN(selectedPlan?.price)" class="unit">/mês</span>
+			</p>
+
+			<hr class="horizontal-spacer" />
+			<CTAButton @click="deselectPlan">Trocar Plano</CTAButton>
+			<hr class="horizontal-spacer" />
+			<span
+				class="plan-description"
+				v-for="(description, index) in selectedPlan?.description"
+				:key="index"
+			>
+				<p>
+					{{ description }}
+				</p>
+			</span>
+			<hr class="horizontal-spacer" />
+
+			<span class="plan-profile">
+				<p>
+					{{ selectedPlan?.profile }}
+				</p>
+			</span>
+			<hr class="horizontal-spacer" />
+			<ul id="desktopOnly" class="features">
+				<li
+					v-for="(detail, detailIndex) in selectedPlan?.features.slice(0, 4)"
+					:key="detailIndex"
+					:class="{ 'bold-text': [0, 6].includes(detailIndex) }"
+				>
+					<i v-if="![0, 6].includes(detailIndex)" class="fas fa-check"></i>
+					{{ detail }}
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="carousel-container">
 		<Carousel
 			ref="carousel"
 			:items-to-show="1"
 			:wrap-around="true"
 			v-model="currentSlide"
+			class="mobile"
 		>
 			<template #addons>
 				<div class="custom-navigation">
@@ -68,13 +111,15 @@
 		</Carousel>
 	</div>
 </template>
+
 <script>
 import { Carousel, Slide, Pagination } from 'vue3-carousel'
+import CTAButton from '@/components/buttons/CTAButton.vue'
 import 'vue3-carousel/dist/carousel.css'
-import plans from '@/data/plans.json'
 
 export default {
 	components: {
+		CTAButton,
 		Carousel,
 		Slide,
 		Pagination,
@@ -83,19 +128,24 @@ export default {
 		return {
 			planName: '',
 			currentSlide: 0,
-			planOptions: plans,
 		}
 	},
 	props: {
 		selectedPlan: {
 			type: Object,
-			default: () => {},
+			default: null,
+		},
+		planOptions: {
+			type: Array,
+			default: () => [],
 		},
 	},
-	computed: {},
 	methods: {
-		handleChoosePlan() {
-			// Metodo para  atualizar o dado isPlanSelected para false  e mandar o evento para o  componente pai, para fazer a div de escolha de planos seja renderizada pelo v-if.
+		handleChoosePlan(plan) {
+			this.$emit('update:selectedPlan', plan)
+		},
+		deselectPlan() {
+			this.$emit('update:selectedPlan', null)
 		},
 		nextPlan() {
 			this.$refs.carousel.next() // botoes custom carousel
@@ -140,9 +190,15 @@ export default {
 	font-size: 1.5rem;
 }
 
-.price {
+.price-value {
 	font-size: 2rem;
 	margin-top: $spacing-small;
+	color: $brand-vivid-pink;
+}
+
+.currency,
+.unit {
+	font-size: 1.2em;
 	color: $brand-vivid-pink;
 }
 
@@ -213,9 +269,26 @@ export default {
 	background-color: #0000007e;
 }
 
+.carousel-container {
+	display: none;
+}
+
 @media (max-width: 768px) {
 	#desktopOnly {
 		display: none;
+	}
+	.plans-container {
+		display: none;
+	}
+	.price-plans {
+		display: none;
+	}
+	.price-plan {
+		width: 80%;
+	}
+
+	.carousel-container {
+		display: block;
 	}
 }
 </style>

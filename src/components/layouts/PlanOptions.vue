@@ -5,7 +5,6 @@
 			:key="index"
 			class="price-plan"
 			:class="{ 'plan-middle': index === 1 }"
-			@click="handleChoosePlan(plan)"
 		>
 			<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
 			<h3>{{ plan.name }}</h3>
@@ -14,7 +13,9 @@
 				<span class="price-value">{{ plan.price }}</span>
 				<span v-if="!isNaN(plan.price)" class="unit">/mês</span>
 			</p>
-
+			<hr class="horizontal-spacer" />
+			<CTAButton @click="handleChoosePlan(plan)">Escolher Plano</CTAButton>
+			<hr class="horizontal-spacer" />
 			<span
 				class="plan-description"
 				v-for="(description, index) in plan.description"
@@ -109,34 +110,34 @@
 
 <script>
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
+import CTAButton from '@/components/buttons/CTAButton.vue'
+
 import 'vue3-carousel/dist/carousel.css'
-import plans from '@/data/plans.json'
 
 export default {
 	components: {
+		CTAButton,
 		Carousel,
 		Slide,
 
 		Navigation,
 	},
 	data() {
-		return {
-			planName: '',
-			planOptions: plans,
-		}
+		return {}
 	},
 	props: {
 		selectedPlan: {
 			type: Object,
-			default: () => {},
+			default: null,
+		},
+		planOptions: {
+			type: Array,
+			default: () => [],
 		},
 	},
 	methods: {
 		handleChoosePlan(plan) {
 			this.$emit('select-plan', plan)
-		},
-		isSelectedPlan(plan) {
-			return plan === this.selectedPlan
 		},
 	},
 }
@@ -178,7 +179,7 @@ export default {
 
 .currency,
 .unit {
-	font-size: 0.8em;
+	font-size: 1.2em;
 	color: $brand-vivid-pink;
 }
 
