@@ -207,7 +207,8 @@ export default {
 	height: 100%;
 }
 
-.price-plan h3 {
+.price-plan,
+.price-plan-carousel h3 {
 	color: $font-color-primary;
 	font-weight: bold;
 	font-size: 1.5rem;
