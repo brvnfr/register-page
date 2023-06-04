@@ -7,5 +7,6 @@ module.exports = defineConfig({
         additionalData: `@import "@/assets/styles/variables.scss";`
       }
     }
-  }
+  },
+  
 })

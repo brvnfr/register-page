@@ -1,7 +1,9 @@
 {
-  "name": "signup-page",
+  "name": "adoorei-test-vue-register-page",
   "version": "0.1.0",
   "private": true,
+  "author": "Bruno Onofre",
+  "description": "Replica de uma prototipação de tela de login com autenticacao jwt e cadastro com seleçao de planos responsiva para desktop e mobile",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -11,7 +13,7 @@
     "@fortawesome/fontawesome-free": "^6.4.0",
     "axios": "^1.4.0",
     "core-js": "^3.8.3",
-    "jsonwebtoken": "^9.0.0",
+    "jwt-decode": "^3.1.2",
     "sass-loader": "^13.3.1",
     "vue": "^3.2.13",
     "vue-router": "^4.2.2",
