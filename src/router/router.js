@@ -4,6 +4,19 @@ import RegisterView from '@/views/RegisterView.vue';
 import DashboardView from '@/views/DashboardView.vue';
 import NotFound from '@/views/NotFound.vue';
 
+
+// Função  autenticação
+const requireAuth = (to, from, next) => {
+  const token = localStorage.getItem('token')
+
+  if (token) {
+    next()
+  } else {
+    // Se o token não estiver presente, redirecione para a página de login
+    next('/login')
+  }
+}
+
 const routes = [
   {
     path: '/',
@@ -23,6 +36,7 @@ const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     component: DashboardView,
+    beforeEnter: requireAuth // rota protegida com requireAuth
   },
   {
     path: '/:catchAll(.*)',

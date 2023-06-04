@@ -1,9 +1,9 @@
 {
-  "name": "adoorei-test-vue-register-page",
+  "name": "test-vue-register-page",
   "version": "0.1.0",
-  "private": true,
   "author": "Bruno Onofre",
-  "description": "Replica de uma prototipação de tela de login com autenticacao jwt e cadastro com seleçao de planos responsiva para desktop e mobile",
+  "description": "Replica de uma prototipação de tela de login com autenticacao jwt token e cadastro com seleçao de planos responsivo para desktop e mobile",
+  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
