@@ -70,8 +70,8 @@ export default {
 		async login() {
 			try {
 				const response = await this.$axios.post('/auth/login', {
-					email: this.email,
-					password: this.password,
+					username: this.email, // 83r5^_
+					password: this.password, // mor_2314
 				})
 
 				const token = response.data.token
