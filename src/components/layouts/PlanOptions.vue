@@ -49,21 +49,19 @@
 		</div>
 	</div>
 	<div class="carousel-container mobile">
+		<p class="carousel-caption">Deslize para selecionar o plano:</p>
 		<Carousel
 			ref="carousel"
 			:items-to-show="1"
 			:wrap-around="true"
 			v-model="currentSlide"
+			style="width: 300px"
 		>
 			<template #addons>
 				<Navigation />
 			</template>
 			<Slide v-for="(plan, index) in planOptions" :key="index">
-				<div
-					class="price-plan"
-					:class="{ 'plan-middle': index === 1 }"
-					@click="handleChoosePlan(plan)"
-				>
+				<div class="price-plan" @click="handleChoosePlan(plan)">
 					<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
 					<h3>{{ plan.name }}</h3>
 					<p class="price">
@@ -146,6 +144,9 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/styles/variables.scss';
 
+.carousel__viewport {
+	perspective: 2000px;
+}
 .price-plans {
 	gap: 10px;
 }
@@ -233,6 +234,9 @@ export default {
 
 	.carousel-container {
 		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 	}
 }
 </style>
