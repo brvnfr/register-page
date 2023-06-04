@@ -70,16 +70,16 @@ export default {
 		async login() {
 			try {
 				const response = await this.$axios.post('/auth/login', {
-					username: this.email, // 83r5^_
-					password: this.password, // mor_2314
+					// a rota  so aceita o dado username, entao adaptei o nome da variavel
+					username: this.email, // johnd
+					password: this.password, // m38rmF$
 				})
 
 				const token = response.data.token
 				const decodedToken = this.$jwtDecode(token)
 
+				console.log('Token de autenticação: ', decodedToken)
 				localStorage.setItem('token', token)
-
-				console.log(decodedToken)
 
 				// Redirecionar para a página após o login bem-sucedido
 				this.$router.push('/dashboard')
