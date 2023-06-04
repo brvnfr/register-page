@@ -1,7 +1,5 @@
 # Sobre o Projeto / About Project
 
-[English Version](#english)
-
 ### Design System
 
 O design system deste projeto foi feito visando objetividade, sendo de forma simplificada, com componentes dinâmicos separados por pastas de acordo com sua utilidade e variáveis de estilo (design tokens) pré-configuradas em um único arquivo SASS, utilizado em todos os componentes e páginas do projeto.
