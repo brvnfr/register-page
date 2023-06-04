@@ -11,25 +11,26 @@
 			Você está muito perto de mudar a forma de <br />
 			<u>hospedar seu site</u>
 		</h2>
-		<div v-if="!isPlanSelected" class="content">
+		<div v-if="selectedPlan !== null" class="content">
 			<div class="register-column">
 				<RegisterForm @submit="handleSubmit" />
 			</div>
 			<div class="plan-column">
 				<div class="selected-plan-tag">Plano Escolhido</div>
 				<SelectedPlan
-					:planOptions="planOptions"
 					:selectedPlan="selectedPlan"
-					@planSelected="handlePlanSelected"
+					:planOptions="planOptions"
+					@update:selectedPlan="updateSelectedPlan"
 				/>
 			</div>
 		</div>
 		<div v-else class="content">
 			<!-- TODO div com os planos selecionaveis-->
 			<PlanOptions
-				:planOptions="planOptions"
 				:selectedPlan="selectedPlan"
+				:planOptions="planOptions"
 				@planSelected="handlePlanSelected"
+				@update:selectedPlan="updateSelectedPlan"
 			/>
 		</div>
 		<div class="register-link">
@@ -45,6 +46,7 @@
 import RegisterForm from '@/components/forms/RegisterForm.vue'
 import SelectedPlan from '@/components/layouts/SelectedPlan.vue'
 import PlanOptions from '@/components/layouts/PlanOptions.vue'
+import plans from '@/data/plans.json'
 
 export default {
 	components: {
@@ -53,28 +55,30 @@ export default {
 		PlanOptions,
 	},
 	watch: {
-		// whenever question changes, this function will run
-		selectedPlan(updated) {
-			if (updated.includes('?')) {
-				console.log('retornou selectedPlan:', updated)
-			}
+		selectedPlan(newVal) {
+			if (newVal !== null) {
+				this.isPlanSelected = true
+				console.log('selectedPlan foi atualizado:', newVal)
+			} else this.isPlanSelected = false
 		},
 	},
 	data() {
 		return {
 			selectedPlan: null,
 			isPlanSelected: false,
+			planOptions: plans,
 		}
 	},
-
+	created() {
+		this.isPlanSelected = false
+	},
 	computed: {},
 	methods: {
 		handleSubmit(formData) {
 			// Lógica para tratar os dados do formulário recebidos do componente RegisterForm
 			console.log(formData)
 		},
-
-		handlePlanSelected(plan) {
+		updateSelectedPlan(plan) {
 			this.selectedPlan = plan
 		},
 	},

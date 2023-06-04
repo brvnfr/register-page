@@ -1,55 +1,53 @@
 <template>
-	<div class="plans-container desktop">
-		<div class="price-plans">
-			<div
-				v-for="(plan, index) in planOptions"
+	<div class="price-plans desktop">
+		<div
+			v-for="(plan, index) in planOptions"
+			:key="index"
+			class="price-plan"
+			:class="{ 'plan-middle': index === 1 }"
+		>
+			<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
+			<h3>{{ plan.name }}</h3>
+			<p class="price">
+				<span v-if="!isNaN(plan.price)" class="currency">R$</span>
+				<span class="price-value">{{ plan.price }}</span>
+				<span v-if="!isNaN(plan.price)" class="unit">/mês</span>
+			</p>
+			<hr class="horizontal-spacer" />
+			<CTAButton @click="handleChoosePlan(plan)">Escolher Plano</CTAButton>
+			<hr class="horizontal-spacer" />
+			<span
+				class="plan-description"
+				v-for="(description, index) in plan.description"
 				:key="index"
-				class="price-plan"
-				:class="{ 'plan-middle': index === 1 }"
-				@click="handleChoosePlan(plan)"
 			>
-				<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
-				<h3>{{ plan.name }}</h3>
-				<p class="price">
-					<span v-if="!isNaN(plan.price)" class="currency">R$</span>
-					<span class="price-value">{{ plan.price }}</span>
-					<span v-if="!isNaN(plan.price)" class="unit">/mês</span>
+				<p>
+					{{ description }}
 				</p>
+			</span>
+			<hr class="horizontal-spacer" />
 
-				<span
-					class="plan-description"
-					v-for="(description, index) in plan.description"
-					:key="index"
+			<span>
+				<p>
+					{{ plan.profile }}
+				</p>
+			</span>
+			<hr class="horizontal-spacer" />
+			<ul class="features">
+				<li
+					v-for="(detail, detailIndex) in plan.features"
+					:key="detailIndex"
+					:class="{ 'bold-text': [0, 6, 7, 11, 13].includes(detailIndex) }"
 				>
-					<p>
-						{{ description }}
-					</p>
-				</span>
-				<hr class="horizontal-spacer" />
-
-				<span>
-					<p>
-						{{ plan.profile }}
-					</p>
-				</span>
-				<hr class="horizontal-spacer" />
-				<ul class="features">
-					<li
-						v-for="(detail, detailIndex) in plan.features"
-						:key="detailIndex"
-						:class="{ 'bold-text': [0, 6, 7, 11, 13].includes(detailIndex) }"
-					>
-						<i
-							v-if="![0, 6, 7, 11, 13].includes(detailIndex)"
-							class="fas fa-check"
-						></i>
-						{{ detail }}
-					</li>
-				</ul>
-			</div>
+					<i
+						v-if="![0, 6, 7, 11, 13].includes(detailIndex)"
+						class="fas fa-check"
+					></i>
+					{{ detail }}
+				</li>
+			</ul>
 		</div>
 	</div>
-
 	<div class="carousel-container mobile">
 		<Carousel
 			ref="carousel"
@@ -112,34 +110,34 @@
 
 <script>
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
+import CTAButton from '@/components/buttons/CTAButton.vue'
+
 import 'vue3-carousel/dist/carousel.css'
-import plans from '@/data/plans.json'
 
 export default {
 	components: {
+		CTAButton,
 		Carousel,
 		Slide,
 
 		Navigation,
 	},
 	data() {
-		return {
-			planName: '',
-			planOptions: plans,
-		}
+		return {}
 	},
 	props: {
 		selectedPlan: {
 			type: Object,
-			default: () => {},
+			default: null,
+		},
+		planOptions: {
+			type: Array,
+			default: () => [],
 		},
 	},
 	methods: {
 		handleChoosePlan(plan) {
 			this.$emit('select-plan', plan)
-		},
-		isSelectedPlan(plan) {
-			return plan === this.selectedPlan
 		},
 	},
 }
@@ -150,6 +148,11 @@ export default {
 
 .price-plans {
 	gap: 10px;
+}
+
+.desktop {
+	display: flex;
+	flex-direction: row;
 }
 
 .price-plan {
@@ -176,7 +179,7 @@ export default {
 
 .currency,
 .unit {
-	font-size: 0.8em;
+	font-size: 1.2em;
 	color: $brand-vivid-pink;
 }
 
@@ -217,11 +220,12 @@ export default {
 		display: none;
 	}
 	.price-plan {
-		width: 80%;
+		// width: 80%;
+		flex-direction: column;
 	}
 
 	.carousel-container {
-		display: block;
+		display: flex;
 	}
 }
 </style>
