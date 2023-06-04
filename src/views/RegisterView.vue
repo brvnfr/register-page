@@ -19,8 +19,7 @@
 				<div class="selected-plan-tag">Plano Escolhido</div>
 				<SelectedPlan
 					:selectedPlan="selectedPlan"
-					:planOptions="planOptions"
-					@update:selectedPlan="updateSelectedPlan"
+					@clear-plan="clearSelectedPlan"
 				/>
 			</div>
 		</div>
@@ -29,8 +28,7 @@
 			<PlanOptions
 				:selectedPlan="selectedPlan"
 				:planOptions="planOptions"
-				@planSelected="handlePlanSelected"
-				@update:selectedPlan="updateSelectedPlan"
+				@select-plan="handleSelectPlan"
 			/>
 		</div>
 		<div class="register-link">
@@ -81,12 +79,11 @@ export default {
 		},
 	},
 	methods: {
-		handleSubmit(formData) {
-			// Lógica para tratar os dados do formulário recebidos do componente RegisterForm
-			console.log(formData)
-		},
-		updateSelectedPlan(plan) {
+		handleSelectPlan(plan) {
 			this.selectedPlan = plan
+		},
+		clearSelectedPlan() {
+			this.selectedPlan = null
 		},
 	},
 }
