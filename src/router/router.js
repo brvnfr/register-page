@@ -5,17 +5,17 @@ import DashboardView from '@/views/DashboardView.vue';
 import NotFound from '@/views/NotFound.vue';
 
 
-// Função  autenticação
+//logica simples autenticando o acesso a rota dashboard se tiver token salvo no localStorage
 const requireAuth = (to, from, next) => {
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem('token');
 
-  if (token) {
-    next()
+  if (token) {  
+    next();
   } else {
-    // Se o token não estiver presente, redirecione para a página de login
-    next('/login')
+    next('/login');
   }
-}
+};
+
 
 const routes = [
   {
@@ -45,11 +45,18 @@ const routes = [
   }
 ];
 
+//   remove o token do localStorage ao sair do dashboard
+const clearToken = (to) => {
+  if (to.name !== 'Dashboard') {
+    localStorage.removeItem('token');
+  }
+};
+
 const router = createRouter({
   history: createWebHistory(),
   routes
 });
 
-
+router.beforeEach(clearToken); // Chama a função clearToken antes de cada transição de rota
 
 export default router;

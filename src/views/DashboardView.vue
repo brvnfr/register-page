@@ -25,7 +25,7 @@
 					<ul>
 						<li>Conta</li>
 						<li>Configurações</li>
-						<li>Sair</li>
+						<li @click="logout">Sair</li>
 					</ul>
 				</div>
 			</div>
@@ -45,6 +45,9 @@ export default {
 	methods: {
 		toggleDropdown() {
 			this.showDropdown = !this.showDropdown
+		},
+		logout() {
+			this.$router.push('/') // metodo simples para mudar a route da pagina, fazendo o token de auth ser deletado, conforme configurado no router.js
 		},
 	},
 }
