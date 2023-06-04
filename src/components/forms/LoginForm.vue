@@ -52,7 +52,7 @@ export default {
 		}
 	},
 	methods: {
-		handleSubmit() {
+		async handleSubmit() {
 			this.errors = {}
 
 			if (!this.email) {
@@ -64,11 +64,28 @@ export default {
 			}
 
 			if (Object.keys(this.errors).length === 0) {
-				this.login()
+				await this.login()
 			}
 		},
-		login() {
-			// Método para fazer login usando JWT e acessando a rota do fakeAPI
+		async login() {
+			try {
+				const response = await this.$axios.post('/auth/login', {
+					email: this.email,
+					password: this.password,
+				})
+
+				const token = response.data.token
+				const decodedToken = this.$jwtDecode(token)
+
+				localStorage.setItem('token', token)
+
+				console.log(decodedToken)
+
+				// Redirecionar para a página após o login bem-sucedido
+				this.$router.push('/dashboard')
+			} catch (error) {
+				console.log('Erro ao fazer login:', error)
+			}
 		},
 	},
 }
