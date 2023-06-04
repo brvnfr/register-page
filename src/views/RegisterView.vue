@@ -13,12 +13,14 @@
 		</h2>
 		<div v-if="selectedPlan !== null" class="content">
 			<div class="register-column">
-				<RegisterForm @submit="handleSubmit" />
+				<RegisterForm :selecedPlan="selectedPlan" />
 			</div>
 			<div class="plan-column">
 				<div class="selected-plan-tag">Plano Escolhido</div>
 				<SelectedPlan
+					:planOptions="planOptions"
 					:selectedPlan="selectedPlan"
+					@update-selected-plan="handleSelectPlan"
 					@clear-plan="clearSelectedPlan"
 				/>
 			</div>
@@ -52,6 +54,7 @@ export default {
 		RegisterForm,
 		PlanOptions,
 	},
+	emits: ['update-selected-plan', 'clear-plan'],
 	watch: {
 		selectedPlan(newVal) {
 			if (newVal !== null) {
@@ -66,9 +69,6 @@ export default {
 			isPlanSelected: false,
 			planOptions: plans,
 		}
-	},
-	created() {
-		this.isPlanSelected = false
 	},
 	computed: {
 		containerClass() {

@@ -114,6 +114,7 @@ import CTAButton from '@/components/buttons/CTAButton.vue'
 import 'vue3-carousel/dist/carousel.css'
 
 export default {
+	emits: ['select-plan'], // Declaração do evento emitido pelo componente
 	components: {
 		CTAButton,
 		Carousel,

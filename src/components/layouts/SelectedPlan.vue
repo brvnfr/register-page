@@ -48,6 +48,7 @@
 			:wrap-around="true"
 			v-model="currentSlide"
 			class="mobile"
+			@slide-end="handleSlideEnd"
 		>
 			<template #addons>
 				<div class="custom-navigation">
@@ -153,6 +154,13 @@ export default {
 
 		previousPlan() {
 			this.$refs.carousel.prev()
+		},
+		handleSlideEnd() {
+			this.$emit('update-selected-plan', this.planOptions[this.currentSlide]) // atualiza o selectedPlan no parent  ao ser chamado pelo evento de slide-end do carousel
+			console.log(
+				'plano selecionado no slide:',
+				this.planOptions[this.currentSlide]
+			)
 		},
 	},
 }

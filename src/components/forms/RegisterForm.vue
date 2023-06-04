@@ -1,5 +1,5 @@
 <template>
-	<form class="form" @submit.prevent="handleSubmit">
+	<form class="form">
 		<h2>Dados pessoais</h2>
 		<h3>Informe seus dados pessoais para acesso à sua conta</h3>
 
@@ -111,6 +111,12 @@ export default {
 			},
 		}
 	},
+	props: {
+		selectedPlan: {
+			type: Object,
+			default: null,
+		},
+	},
 	methods: {
 		handleSubmit() {
 			this.clearErrors()
@@ -119,10 +125,8 @@ export default {
 				return
 			}
 
-			// Lógica para enviar os dados do formulário ao servidor ou realizar qualquer outra ação necessária
-			// ...
+			// Lógica para enviar os dados do formulário e do selectedPlan ao servidor e realizar cadastro
 
-			// Exemplo de exibição de uma mensagem de sucesso após o envio do formulário
 			alert('Cadastro realizado com sucesso!')
 		},
 		validateForm() {
