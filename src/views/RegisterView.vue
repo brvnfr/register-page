@@ -13,14 +13,17 @@
 		</h2>
 		<div v-if="selectedPlan !== null" class="content">
 			<div class="register-column">
-				<RegisterForm :selecedPlan="selectedPlan" />
+				<RegisterForm
+					:selecedPlan="selectedPlan"
+					@update:selectedPlan="handleUpdateSelectedPlan"
+				/>
 			</div>
 			<div class="plan-column">
 				<div class="selected-plan-tag">Plano Escolhido</div>
 				<SelectedPlan
 					:planOptions="planOptions"
 					:selectedPlan="selectedPlan"
-					@update-selected-plan="handleSelectPlan"
+					@update-selected-plan="handleUpdateSelectedPlan"
 					@clear-plan="clearSelectedPlan"
 					v-model="selectedPlanIndex"
 				/>
@@ -31,7 +34,7 @@
 			<PlanOptions
 				:selectedPlan="selectedPlan"
 				:planOptions="planOptions"
-				@select-plan="handleSelectPlan"
+				@select-plan="handleUpdateSelectedPlan"
 			/>
 		</div>
 		<div class="register-link">
@@ -56,14 +59,6 @@ export default {
 		PlanOptions,
 	},
 	emits: ['update-selected-plan', 'clear-plan'],
-	watch: {
-		selectedPlan(newVal) {
-			if (newVal !== null) {
-				this.isPlanSelected = true
-				console.log('selectedPlan foi atualizado:', newVal)
-			} else this.isPlanSelected = false
-		},
-	},
 	data() {
 		return {
 			planOptions: plans,
@@ -80,7 +75,7 @@ export default {
 		},
 	},
 	methods: {
-		handleSelectPlan(plan) {
+		handleUpdateSelectedPlan(plan) {
 			this.selectedPlan = plan
 		},
 		clearSelectedPlan() {

@@ -88,6 +88,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import CTAButton from '@/components/buttons/CTAButton.vue'
 
 export default {
@@ -114,41 +115,66 @@ export default {
 	props: {
 		selectedPlan: {
 			type: Object,
-			default: null,
 		},
 	},
 	methods: {
-		handleSubmit() {
+		async handleSubmit() {
 			this.clearErrors()
 
 			if (!this.validateForm()) {
 				return
 			}
 
-			// Lógica para enviar os dados do formulário e do selectedPlan ao servidor e realizar cadastro
+			try {
+				// Realizar a requisição para a rota https://fakestoreapi.com/users
+				const response = await axios.post('/users', {
+					name: this.name,
+					email: this.email,
+					password: this.password,
+					siteName: this.siteName,
+					selectedPlan: this.selectedPlan,
+				})
 
-			alert('Cadastro realizado com sucesso!')
+				// Verificar a resposta da requisição
+				if (response.status === 200) {
+					alert('Cadastro realizado com sucesso!')
+				} else {
+					alert(
+						'Ocorreu um erro ao realizar o cadastro. Por favor, tente novamente.'
+					)
+				}
+			} catch (error) {
+				alert(
+					'Ocorreu um erro ao realizar o cadastro. Por favor, tente novamente.'
+				)
+				console.error(error)
+			}
 		},
+
 		validateForm() {
 			let isValid = true
+
+			// Validando inputs com seus respectivos regex e retornando valor false caso haja algum erro, removendo whitespaces do texto com o metodo .trim()
 
 			if (this.name.trim() === '') {
 				this.errors.name = 'Por favor, informe seu nome.'
 				isValid = false
 			}
 
+			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 			if (this.email.trim() === '') {
 				this.errors.email = 'Por favor, informe seu e-mail.'
 				isValid = false
-			} else if (!this.isValidEmail(this.email)) {
+			} else if (!emailRegex.test(this.email)) {
 				this.errors.email = 'Por favor, informe um e-mail válido.'
 				isValid = false
 			}
 
+			const passwordRegex = /^.{8,}$/
 			if (this.password.trim() === '') {
 				this.errors.password = 'Por favor, informe sua senha.'
 				isValid = false
-			} else if (this.password.length < 8) {
+			} else if (!passwordRegex.test(this.password)) {
 				this.errors.password = 'A senha deve conter pelo menos 8 caracteres.'
 				isValid = false
 			}
@@ -166,20 +192,9 @@ export default {
 				isValid = false
 			}
 
-			if (!this.policyCheckbox) {
-				alert(
-					'Por favor, concorde com os Termos de Uso e Políticas de Privacidade.'
-				)
-				isValid = false
-			}
-
 			return isValid
 		},
-		isValidEmail(email) {
-			// Lógica para validar o formato do e-mail, por exemplo, usando uma expressão regular
-			// Neste exemplo, vamos usar uma expressão regular simples para verificar se contém um "@" e um "."
-			return email.includes('@') && email.includes('.')
-		},
+
 		clearErrors() {
 			this.errors.name = ''
 			this.errors.email = ''
@@ -200,7 +215,7 @@ export default {
 }
 
 .form-margin {
-	margin-bottom: calc($spacing-x-small - 5px); /* Reduzir a margem inferior */
+	margin-bottom: calc($spacing-x-small - 5px);
 }
 
 .form-caption {
@@ -208,7 +223,7 @@ export default {
 	font-size: map-get(map-get($font-styles, x-small), size);
 	font-weight: map-get(map-get($font-styles, x-small), font-weight);
 	margin-top: calc($spacing-x-small - 3px); /* Reduzir a margem superior */
-	margin-bottom: $spacing-small; /* Reduzir a margem inferior */
+	margin-bottom: $spacing-small;
 }
 
 .form .input {
@@ -247,11 +262,11 @@ input:focus {
 	color: $error-color;
 	font-size: map-get(map-get($font-styles, x-small), size);
 	font-weight: map-get(map-get($font-styles, x-large), font-weight);
-	margin-top: $spacing-x-small; /* Reduzir a margem superior */
+	margin-top: $spacing-x-small;
 }
 
 h2:last-of-type {
-	margin-bottom: $spacing-small; /* Reduzir a margem inferior */
+	margin-bottom: $spacing-small;
 }
 
 .checkbox-section {
