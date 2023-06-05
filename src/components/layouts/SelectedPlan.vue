@@ -51,7 +51,8 @@
 			v-model="selectedPlanIndex"
 		>
 			<template #addons>
-				<div class="custom-navigation">
+				<Navigation />
+				<!-- <div class="custom-navigation">
 					<button
 						aria-label="Previous Plan"
 						id="previousPlan"
@@ -68,7 +69,7 @@
 					>
 						<i class="fa-solid fa-chevron-right"></i>
 					</button>
-				</div>
+				</div> -->
 			</template>
 
 			<Slide v-for="(plan, index) in planOptions" :key="index">
@@ -114,7 +115,7 @@
 </template>
 
 <script>
-import { Carousel, Slide, Pagination } from 'vue3-carousel'
+import { Carousel, Slide, Navigation } from 'vue3-carousel'
 import CTAButton from '@/components/buttons/CTAButton.vue'
 import 'vue3-carousel/dist/carousel.css'
 
@@ -123,7 +124,7 @@ export default {
 		CTAButton,
 		Carousel,
 		Slide,
-		Pagination,
+		Navigation,
 	},
 	data() {
 		return {
