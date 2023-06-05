@@ -3,7 +3,7 @@
 		<h2>Dados pessoais</h2>
 		<h3>Informe seus dados pessoais para acesso à sua conta</h3>
 
-		<div class="input">
+		<div class="input form-group">
 			<label for="name">Nome Completo</label>
 			<input
 				id="name"
@@ -12,9 +12,9 @@
 				:class="{ 'input-error': errors.name }"
 				placeholder="Informe seu nome completo"
 			/>
-			<div v-if="errors.name" class="error-message">{{ errors.name }}</div>
+			<div v-if="errors.name" class="error-balloon">{{ errors.name }}</div>
 		</div>
-		<div class="input">
+		<div class="input form-group">
 			<label for="email">Email</label>
 			<input
 				id="email"
@@ -23,9 +23,9 @@
 				:class="{ 'input-error': errors.email }"
 				placeholder="Informe seu e-mail"
 			/>
-			<div v-if="errors.email" class="error-message">{{ errors.email }}</div>
+			<div v-if="errors.email" class="error-balloon">{{ errors.email }}</div>
 		</div>
-		<div class="input">
+		<div class="input form-group">
 			<label for="password">Senha</label>
 			<input
 				id="password"
@@ -35,13 +35,13 @@
 				type="password"
 				class="form-margin"
 			/>
-			<div v-if="errors.password" class="error-message">
+			<div v-if="errors.password" class="error-balloon">
 				{{ errors.password }}
 			</div>
 			<p class="form-caption">No mínimo 8 caracteres.</p>
 		</div>
 
-		<div class="input">
+		<div class="input form-group">
 			<label for="confirmPassword">Confirme sua senha</label>
 			<input
 				id="confirmPassword"
@@ -50,7 +50,7 @@
 				:class="{ 'input-error': confirmPasswordError }"
 				type="password"
 			/>
-			<div v-if="confirmPasswordError" class="error-message">
+			<div v-if="confirmPasswordError" class="error-balloon">
 				{{ confirmPasswordError }}
 			</div>
 		</div>
@@ -59,7 +59,7 @@
 
 		<h2 class="section-title">Dados do seu Site</h2>
 
-		<div class="input">
+		<div class="input form-group">
 			<label for="siteName">Nome do site</label>
 			<input
 				id="siteName"
@@ -132,6 +132,7 @@ export default {
 					email: this.email,
 					password: this.password,
 					siteName: this.siteName,
+					plan: this.selectedPlan,
 				})
 
 				if (response.status === 200) {
@@ -256,11 +257,20 @@ input:focus {
 	border-color: $error-color;
 }
 
-.error-message {
-	color: $error-color;
-	font-size: map-get(map-get($font-styles, x-small), size);
-	font-weight: map-get(map-get($font-styles, x-large), font-weight);
-	margin-top: $spacing-x-small;
+.form-group {
+	position: relative;
+}
+
+.error-balloon {
+	position: absolute;
+	bottom: -17px;
+	left: 0;
+	width: 100%;
+	background-color: $error-color;
+	color: $color-white;
+	padding: 5px;
+	border-radius: 5px;
+	font-size: 14px;
 }
 
 h2:last-of-type {
