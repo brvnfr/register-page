@@ -48,7 +48,7 @@
 			:wrap-around="true"
 			class="mobile"
 			@slide-end="handleSlideEnd"
-			v-model="selectedPlanIndex"
+			v-model="currentSlideIndex"
 		>
 			<template #addons>
 				<Navigation />
@@ -111,7 +111,9 @@ export default {
 	data() {
 		return {
 			planName: '',
-			currentSlide: 0,
+			currentSlideIndex: this.planOptions.findIndex(
+				(plan) => plan === this.selectedPlan
+			),
 		}
 	},
 	emits: ['update-selected-plan', 'clear-plan'],
@@ -125,14 +127,15 @@ export default {
 			default: () => [],
 		},
 	},
+	watch: {
+		selectedPlanIndex(newValue) {
+			this.currentSlideIndex = newValue
+		},
+	},
+
 	computed: {
-		selectedPlanIndex: {
-			get() {
-				return this.planOptions.findIndex((plan) => plan === this.selectedPlan) // mapeia os index
-			},
-			set(index) {
-				this.$emit('update-selected-plan', this.planOptions[index])
-			},
+		selectedPlanIndex() {
+			return this.planOptions.findIndex((plan) => plan === this.selectedPlan)
 		},
 	},
 	methods: {
@@ -150,11 +153,8 @@ export default {
 			this.$refs.carousel.prev()
 		},
 		handleSlideEnd() {
-			console.log(
-				'plano selecionado no slide:',
-				this.planOptions[this.currentSlide]
-			)
-			this.$emit('update-selected-plan', this.planOptions[this.currentSlide]) // atualiza o selectedPlan no parent  ao ser chamado pelo evento de slide-end do carousel
+			const selectedPlan = this.planOptions[this.currentSlideIndex]
+			this.$emit('update-selected-plan', selectedPlan)
 		},
 	},
 }
