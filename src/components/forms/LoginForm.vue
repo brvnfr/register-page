@@ -67,26 +67,6 @@ export default {
 				await this.login()
 			}
 		},
-		async login() {
-			try {
-				const response = await this.$axios.post('/auth/login', {
-					// a rota  so aceita o dado username, entao adaptei o nome da variavel
-					username: this.email, // johnd
-					password: this.password, // m38rmF$
-				})
-
-				const token = response.data.token
-				const decodedToken = this.$jwtDecode(token)
-
-				console.log('Token de autenticação: ', decodedToken)
-				localStorage.setItem('token', token)
-			} catch (error) {
-				console.log('Erro ao fazer login:', error)
-			} finally {
-				// Redirecionar para a página após o login bem-sucedido
-				this.$router.push('/dashboard')
-			}
-		},
 	},
 }
 </script>
