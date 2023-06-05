@@ -24,6 +24,7 @@
 					:selectedPlan="selectedPlan"
 					:planOptions="planOptions"
 					@update-selected-plan="handleUpdateSelectedPlan"
+					@clear-plan="clearSelectedPlan"
 				/>
 			</div>
 		</div>
