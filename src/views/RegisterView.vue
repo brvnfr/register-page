@@ -11,7 +11,7 @@
 			Você está muito perto de mudar a forma de <br />
 			<u>hospedar seu site</u>
 		</h2>
-		<div v-if="isPlanSelected" class="content">
+		<div v-if="selectedPlan !== null" class="content">
 			<div class="register-column">
 				<RegisterForm
 					:selectedPlan="selectedPlan"
@@ -22,12 +22,12 @@
 				<div class="selected-plan-tag">Plano Escolhido</div>
 				<SelectedPlan
 					v-bind="{ planOptions, selectedPlan }"
-					@updateSelectedPlan="handleUpdateSelectedPlan"
+					@update-selected-plan="handleUpdateSelectedPlan"
 					@clearPlan="clearSelectedPlan"
 				/>
 			</div>
 		</div>
-		<div v-else class="content">
+		<div v-else-if="selectedPlan === null" class="content">
 			<!-- TODO div com os planos selecionaveis-->
 			<PlanOptions
 				:selectedPlan="selectedPlan"
@@ -61,23 +61,18 @@ export default {
 			planOptions: plans,
 			selectedPlan: null,
 			selectedPlanIndex: 0,
-			isPlanSelected: false,
 		}
 	},
 	watch: {
 		selectedPlan() {
-			if (this.selectedPlan !== null) {
-				this.isPlanSelected = true
-			} else {
-				this.isPlanSelected = false
-			}
+			console.log('plano mudou', this.selectedPlan)
 		},
 	},
 	computed: {
 		containerClass() {
 			return {
-				container: this.isPlanSelected,
-				'container-full': !this.isPlanSelected,
+				container: this.selectedPlan !== null,
+				'container-full': this.selectedPlan === null,
 			}
 		},
 	},

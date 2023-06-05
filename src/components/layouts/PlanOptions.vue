@@ -132,7 +132,7 @@ export default {
 		},
 		planOptions: {
 			type: Array,
-			default: () => [],
+			required: true,
 		},
 	},
 	methods: {

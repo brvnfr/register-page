@@ -148,13 +148,13 @@ export default {
 				return this.planOptions.findIndex((plan) => plan === this.selectedPlan) // mapeia os index
 			},
 			set(index) {
-				this.$emit('update', this.planOptions[index])
+				this.$emit('update-selected-plan', this.planOptions[index])
 			},
 		},
 	},
 	methods: {
 		handleChoosePlan(plan) {
-			this.$emit('update:selectedPlan', plan)
+			this.$emit('update-selected-plan', plan)
 		},
 		clearSelectedPlan() {
 			this.$emit('clear-plan')
@@ -167,11 +167,11 @@ export default {
 			this.$refs.carousel.prev()
 		},
 		handleSlideEnd() {
-			this.$emit('update-selected-plan', this.planOptions[this.currentSlide]) // atualiza o selectedPlan no parent  ao ser chamado pelo evento de slide-end do carousel
 			console.log(
 				'plano selecionado no slide:',
 				this.planOptions[this.currentSlide]
 			)
+			this.$emit('update-selected-plan', this.planOptions[this.currentSlide]) // atualiza o selectedPlan no parent  ao ser chamado pelo evento de slide-end do carousel
 		},
 	},
 }
