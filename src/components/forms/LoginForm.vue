@@ -39,6 +39,7 @@
 
 <script>
 import CTAButton from '@/components/buttons/CTAButton.vue'
+import { mapState, mapActions } from 'vuex'
 
 export default {
 	components: {
@@ -51,8 +52,12 @@ export default {
 			errors: {},
 		}
 	},
+	computed: {
+		...mapState('auth', ['email', 'password']),
+	},
 	methods: {
-		async handleSubmit() {
+		...mapActions('auth', ['login']),
+		handleSubmit() {
 			this.errors = {}
 
 			if (!this.email) {
@@ -64,7 +69,7 @@ export default {
 			}
 
 			if (Object.keys(this.errors).length === 0) {
-				await this.login()
+				this.login() // chama o metodo de login na actions do modulo auth na store
 			}
 		},
 	},
