@@ -21,9 +21,10 @@
 			<div class="plan-column">
 				<div class="selected-plan-tag">Plano Escolhido</div>
 				<SelectedPlan
-					v-bind="{ planOptions, selectedPlan }"
+					:selectedPlan="selectedPlan"
+					:planOptions="planOptions"
 					@update-selected-plan="handleUpdateSelectedPlan"
-					@clearPlan="clearSelectedPlan"
+					@clear-plan="clearSelectedPlan"
 				/>
 			</div>
 		</div>
