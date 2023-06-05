@@ -66,6 +66,11 @@ export default {
 			selectedPlanIndex: 0,
 		}
 	},
+	watch: {
+		selectedPlan(newPlan) {
+			console.log('Novo plano selecionado:', newPlan)
+		},
+	},
 	computed: {
 		containerClass() {
 			return {
