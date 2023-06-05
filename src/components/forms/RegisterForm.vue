@@ -112,6 +112,7 @@ export default {
 			},
 		}
 	},
+	emits: ['update-selected-plan'],
 	props: {
 		selectedPlan: {
 			type: Object,

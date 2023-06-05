@@ -14,8 +14,8 @@
 		<div v-if="isPlanSelected" class="content">
 			<div class="register-column">
 				<RegisterForm
-					:selecedPlan="selectedPlan"
-					@update:selectedPlan="handleUpdateSelectedPlan"
+					:selectedPlan="selectedPlan"
+					@update-selected-plan="handleUpdateSelectedPlan"
 				/>
 			</div>
 			<div class="plan-column">
@@ -56,7 +56,6 @@ export default {
 		RegisterForm,
 		PlanOptions,
 	},
-	emits: ['update-selected-plan', 'clear-plan'],
 	data() {
 		return {
 			planOptions: plans,

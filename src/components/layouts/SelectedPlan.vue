@@ -131,6 +131,7 @@ export default {
 			currentSlide: 0,
 		}
 	},
+	emits: ['update-selected-plan', 'clear-plan'],
 	props: {
 		selectedPlan: {
 			type: Object,
