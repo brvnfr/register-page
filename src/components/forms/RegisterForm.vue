@@ -3,7 +3,7 @@
 		<h2>Dados pessoais</h2>
 		<h3>Informe seus dados pessoais para acesso à sua conta</h3>
 
-		<div class="input">
+		<div class="input form-group">
 			<label for="name">Nome Completo</label>
 			<input
 				id="name"
@@ -12,9 +12,9 @@
 				:class="{ 'input-error': errors.name }"
 				placeholder="Informe seu nome completo"
 			/>
-			<div v-if="errors.name" class="error-message">{{ errors.name }}</div>
+			<div v-if="errors.name" class="error-balloon">{{ errors.name }}</div>
 		</div>
-		<div class="input">
+		<div class="input form-group">
 			<label for="email">Email</label>
 			<input
 				id="email"
@@ -23,9 +23,9 @@
 				:class="{ 'input-error': errors.email }"
 				placeholder="Informe seu e-mail"
 			/>
-			<div v-if="errors.email" class="error-message">{{ errors.email }}</div>
+			<div v-if="errors.email" class="error-balloon">{{ errors.email }}</div>
 		</div>
-		<div class="input">
+		<div class="input form-group">
 			<label for="password">Senha</label>
 			<input
 				id="password"
@@ -35,13 +35,13 @@
 				type="password"
 				class="form-margin"
 			/>
-			<div v-if="errors.password" class="error-message">
+			<div v-if="errors.password" class="error-balloon">
 				{{ errors.password }}
 			</div>
 			<p class="form-caption">No mínimo 8 caracteres.</p>
 		</div>
 
-		<div class="input">
+		<div class="input form-group">
 			<label for="confirmPassword">Confirme sua senha</label>
 			<input
 				id="confirmPassword"
@@ -50,7 +50,7 @@
 				:class="{ 'input-error': confirmPasswordError }"
 				type="password"
 			/>
-			<div v-if="confirmPasswordError" class="error-message">
+			<div v-if="confirmPasswordError" class="error-balloon">
 				{{ confirmPasswordError }}
 			</div>
 		</div>
@@ -59,7 +59,7 @@
 
 		<h2 class="section-title">Dados do seu Site</h2>
 
-		<div class="input">
+		<div class="input form-group">
 			<label for="siteName">Nome do site</label>
 			<input
 				id="siteName"
@@ -88,6 +88,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import CTAButton from '@/components/buttons/CTAButton.vue'
 
 export default {
@@ -111,20 +112,45 @@ export default {
 			},
 		}
 	},
+	props: {
+		selectedPlan: {
+			type: Object,
+			required: true,
+		},
+	},
 	methods: {
-		handleSubmit() {
+		async handleSubmit() {
 			this.clearErrors()
 
 			if (!this.validateForm()) {
 				return
 			}
 
-			// Lógica para enviar os dados do formulário ao servidor ou realizar qualquer outra ação necessária
-			// ...
+			try {
+				const response = await axios.post('/users', {
+					name: this.name,
+					email: this.email,
+					password: this.password,
+					siteName: this.siteName,
+					plan: this.selectedPlan,
+				})
 
-			// Exemplo de exibição de uma mensagem de sucesso após o envio do formulário
-			alert('Cadastro realizado com sucesso!')
+				if (response.status === 200) {
+					this.$router.push('/registration-complete')
+				} else {
+					alert(
+						'Ocorreu um erro ao realizar o cadastro. Por favor, tente novamente.'
+					)
+					console.warning(response.status)
+				}
+			} catch (error) {
+				alert(
+					'Ocorreu um erro ao realizar o cadastro. Por favor, tente novamente.'
+				)
+				console.error(error)
+			}
 		},
+
 		validateForm() {
 			let isValid = true
 
@@ -133,18 +159,20 @@ export default {
 				isValid = false
 			}
 
+			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 			if (this.email.trim() === '') {
 				this.errors.email = 'Por favor, informe seu e-mail.'
 				isValid = false
-			} else if (!this.isValidEmail(this.email)) {
+			} else if (!emailRegex.test(this.email)) {
 				this.errors.email = 'Por favor, informe um e-mail válido.'
 				isValid = false
 			}
 
+			const passwordRegex = /^.{8,}$/
 			if (this.password.trim() === '') {
 				this.errors.password = 'Por favor, informe sua senha.'
 				isValid = false
-			} else if (this.password.length < 8) {
+			} else if (!passwordRegex.test(this.password)) {
 				this.errors.password = 'A senha deve conter pelo menos 8 caracteres.'
 				isValid = false
 			}
@@ -162,20 +190,9 @@ export default {
 				isValid = false
 			}
 
-			if (!this.policyCheckbox) {
-				alert(
-					'Por favor, concorde com os Termos de Uso e Políticas de Privacidade.'
-				)
-				isValid = false
-			}
-
 			return isValid
 		},
-		isValidEmail(email) {
-			// Lógica para validar o formato do e-mail, por exemplo, usando uma expressão regular
-			// Neste exemplo, vamos usar uma expressão regular simples para verificar se contém um "@" e um "."
-			return email.includes('@') && email.includes('.')
-		},
+
 		clearErrors() {
 			this.errors.name = ''
 			this.errors.email = ''
@@ -186,6 +203,7 @@ export default {
 	},
 }
 </script>
+
 <style lang="scss" scoped>
 @import '@/assets/styles/variables.scss';
 
@@ -196,7 +214,7 @@ export default {
 }
 
 .form-margin {
-	margin-bottom: calc($spacing-x-small - 5px); /* Reduzir a margem inferior */
+	margin-bottom: calc($spacing-x-small - 5px);
 }
 
 .form-caption {
@@ -204,7 +222,7 @@ export default {
 	font-size: map-get(map-get($font-styles, x-small), size);
 	font-weight: map-get(map-get($font-styles, x-small), font-weight);
 	margin-top: calc($spacing-x-small - 3px); /* Reduzir a margem superior */
-	margin-bottom: $spacing-small; /* Reduzir a margem inferior */
+	margin-bottom: $spacing-small;
 }
 
 .form .input {
@@ -239,15 +257,24 @@ input:focus {
 	border-color: $error-color;
 }
 
-.error-message {
-	color: $error-color;
-	font-size: map-get(map-get($font-styles, x-small), size);
-	font-weight: map-get(map-get($font-styles, x-large), font-weight);
-	margin-top: $spacing-x-small; /* Reduzir a margem superior */
+.form-group {
+	position: relative;
+}
+
+.error-balloon {
+	position: absolute;
+	bottom: -17px;
+	left: 0;
+	width: 100%;
+	background-color: $error-color;
+	color: $color-white;
+	padding: 5px;
+	border-radius: 5px;
+	font-size: 14px;
 }
 
 h2:last-of-type {
-	margin-bottom: $spacing-small; /* Reduzir a margem inferior */
+	margin-bottom: $spacing-small;
 }
 
 .checkbox-section {

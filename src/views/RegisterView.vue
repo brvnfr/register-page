@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div :class="containerClass">
 		<div class="logo-brand">
 			<img
 				src="@/assets/images/brand/brand-logo.svg"
@@ -13,24 +13,26 @@
 		</h2>
 		<div v-if="selectedPlan !== null" class="content">
 			<div class="register-column">
-				<RegisterForm @submit="handleSubmit" />
+				<RegisterForm
+					:selectedPlan="selectedPlan"
+					@update-selected-plan="handleUpdateSelectedPlan"
+				/>
 			</div>
 			<div class="plan-column">
 				<div class="selected-plan-tag">Plano Escolhido</div>
 				<SelectedPlan
-					:selectedPlan="selectedPlan"
-					:planOptions="planOptions"
-					@update:selectedPlan="updateSelectedPlan"
+					v-bind="{ planOptions, selectedPlan }"
+					@update-selected-plan="handleUpdateSelectedPlan"
+					@clearPlan="clearSelectedPlan"
 				/>
 			</div>
 		</div>
-		<div v-else class="content">
+		<div v-else-if="selectedPlan === null" class="content">
 			<!-- TODO div com os planos selecionaveis-->
 			<PlanOptions
 				:selectedPlan="selectedPlan"
 				:planOptions="planOptions"
-				@planSelected="handlePlanSelected"
-				@update:selectedPlan="updateSelectedPlan"
+				@select-plan="handleUpdateSelectedPlan"
 			/>
 		</div>
 		<div class="register-link">
@@ -54,32 +56,32 @@ export default {
 		RegisterForm,
 		PlanOptions,
 	},
-	watch: {
-		selectedPlan(newVal) {
-			if (newVal !== null) {
-				this.isPlanSelected = true
-				console.log('selectedPlan foi atualizado:', newVal)
-			} else this.isPlanSelected = false
-		},
-	},
 	data() {
 		return {
-			selectedPlan: null,
-			isPlanSelected: false,
 			planOptions: plans,
+			selectedPlan: null,
+			selectedPlanIndex: 0,
 		}
 	},
-	created() {
-		this.isPlanSelected = false
-	},
-	computed: {},
-	methods: {
-		handleSubmit(formData) {
-			// Lógica para tratar os dados do formulário recebidos do componente RegisterForm
-			console.log(formData)
+	watch: {
+		selectedPlan() {
+			console.log('plano mudou', this.selectedPlan)
 		},
-		updateSelectedPlan(plan) {
+	},
+	computed: {
+		containerClass() {
+			return {
+				container: this.selectedPlan !== null,
+				'container-full': this.selectedPlan === null,
+			}
+		},
+	},
+	methods: {
+		handleUpdateSelectedPlan(plan) {
 			this.selectedPlan = plan
+		},
+		clearSelectedPlan() {
+			this.selectedPlan = null
 		},
 	},
 }
@@ -100,6 +102,14 @@ export default {
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+}
+
+.container-full {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
 }
 
 .content {

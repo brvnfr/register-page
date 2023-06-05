@@ -9,7 +9,7 @@
 			</p>
 
 			<hr class="horizontal-spacer" />
-			<CTAButton @click="deselectPlan">Trocar Plano</CTAButton>
+			<CTAButton @click="clearSelectedPlan">Trocar Plano</CTAButton>
 			<hr class="horizontal-spacer" />
 			<span
 				class="plan-description"
@@ -46,8 +46,9 @@
 			ref="carousel"
 			:items-to-show="1"
 			:wrap-around="true"
-			v-model="currentSlide"
 			class="mobile"
+			@slide-end="handleSlideEnd"
+			v-model="selectedPlanIndex"
 		>
 			<template #addons>
 				<div class="custom-navigation">
@@ -130,6 +131,7 @@ export default {
 			currentSlide: 0,
 		}
 	},
+	emits: ['update-selected-plan', 'clear-plan'],
 	props: {
 		selectedPlan: {
 			type: Object,
@@ -140,12 +142,22 @@ export default {
 			default: () => [],
 		},
 	},
+	computed: {
+		selectedPlanIndex: {
+			get() {
+				return this.planOptions.findIndex((plan) => plan === this.selectedPlan) // mapeia os index
+			},
+			set(index) {
+				this.$emit('update-selected-plan', this.planOptions[index])
+			},
+		},
+	},
 	methods: {
 		handleChoosePlan(plan) {
-			this.$emit('update:selectedPlan', plan)
+			this.$emit('update-selected-plan', plan)
 		},
-		deselectPlan() {
-			this.$emit('update:selectedPlan', null)
+		clearSelectedPlan() {
+			this.$emit('clear-plan')
 		},
 		nextPlan() {
 			this.$refs.carousel.next() // botoes custom carousel
@@ -153,6 +165,13 @@ export default {
 
 		previousPlan() {
 			this.$refs.carousel.prev()
+		},
+		handleSlideEnd() {
+			console.log(
+				'plano selecionado no slide:',
+				this.planOptions[this.currentSlide]
+			)
+			this.$emit('update-selected-plan', this.planOptions[this.currentSlide]) // atualiza o selectedPlan no parent  ao ser chamado pelo evento de slide-end do carousel
 		},
 	},
 }

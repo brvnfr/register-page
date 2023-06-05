@@ -6,7 +6,7 @@
 			class="price-plan"
 			:class="{ 'plan-middle': index === 1 }"
 		>
-			<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
+			<div v-if="index === 1" class="best-plan-tag">Mais usado</div>
 			<h3>{{ plan.name }}</h3>
 			<p class="price">
 				<span v-if="!isNaN(plan.price)" class="currency">R$</span>
@@ -49,29 +49,28 @@
 		</div>
 	</div>
 	<div class="carousel-container mobile">
+		<p class="carousel-caption">Deslize para selecionar o plano:</p>
 		<Carousel
 			ref="carousel"
 			:items-to-show="1"
 			:wrap-around="true"
-			v-model="currentSlide"
+			style="width: 100vw"
 		>
 			<template #addons>
 				<Navigation />
 			</template>
 			<Slide v-for="(plan, index) in planOptions" :key="index">
-				<div
-					class="price-plan"
-					:class="{ 'plan-middle': index === 1 }"
-					@click="handleChoosePlan(plan)"
-				>
-					<div v-if="index === 1" class="selected-plan-tag">Mais usado</div>
+				<div class="price-plan-carousel">
+					<div v-if="index === 1" class="best-plan-tag">Mais usado</div>
 					<h3>{{ plan.name }}</h3>
 					<p class="price">
 						<span v-if="!isNaN(plan.price)" class="currency">R$</span>
 						<span class="price-value">{{ plan.price }}</span>
 						<span v-if="!isNaN(plan.price)" class="unit">/mês</span>
 					</p>
-
+					<hr class="horizontal-spacer" />
+					<CTAButton @click="handleChoosePlan(plan)">Escolher Plano</CTAButton>
+					<hr class="horizontal-spacer" />
 					<span
 						class="plan-description"
 						v-for="(description, index) in plan.description"
@@ -115,6 +114,7 @@ import CTAButton from '@/components/buttons/CTAButton.vue'
 import 'vue3-carousel/dist/carousel.css'
 
 export default {
+	emits: ['select-plan'], // Declaração do evento emitido pelo componente
 	components: {
 		CTAButton,
 		Carousel,
@@ -132,7 +132,7 @@ export default {
 		},
 		planOptions: {
 			type: Array,
-			default: () => [],
+			required: true,
 		},
 	},
 	methods: {
@@ -146,6 +146,9 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/styles/variables.scss';
 
+.carousel__viewport {
+	perspective: 2000px;
+}
 .price-plans {
 	gap: 10px;
 }
@@ -153,6 +156,27 @@ export default {
 .desktop {
 	display: flex;
 	flex-direction: row;
+}
+
+.best-plan-tag {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	top: -33px;
+	left: 50%;
+	width: 150px;
+	text-transform: uppercase;
+	transform: translateX(-50%);
+	padding: 5px;
+	background-color: $brand-lime-green;
+	color: $color-white;
+	font-size: map-get(map-get($font-styles, medium), size);
+	font-weight: map-get(map-get($font-styles, medium), font-weight);
+	border-radius: 10px;
+	z-index: 100;
+	@media (max-width: 768px) {
+		bottom: -10px;
+	}
 }
 
 .price-plan {
@@ -163,9 +187,28 @@ export default {
 	width: 300px;
 	cursor: pointer;
 	transition: box-shadow 0.3s ease;
+	margin-top: 29px;
 }
 
-.price-plan h3 {
+.price-plan-carousel {
+	text-align: center;
+	background-color: $color-white;
+	padding: $spacing-medium;
+	border-radius: $border-radius;
+	width: 80vw;
+	cursor: pointer;
+	transition: box-shadow 0.3s ease;
+	margin-top: 29px;
+}
+
+.plan-middle {
+	margin-top: 0;
+	width: 350px;
+	height: 100%;
+}
+
+.price-plan h3,
+.price-plan-carousel h3 {
 	color: $font-color-primary;
 	font-weight: bold;
 	font-size: 1.5rem;
@@ -226,6 +269,9 @@ export default {
 
 	.carousel-container {
 		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 	}
 }
 </style>
