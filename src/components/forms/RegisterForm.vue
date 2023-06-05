@@ -120,6 +120,10 @@ export default {
 	},
 	methods: {
 		async handleSubmit() {
+			console.log(
+				'verifica se o dado é alterado no metodo de cadastro',
+				this.selectedPlan
+			)
 			this.clearErrors()
 
 			if (!this.validateForm()) {
