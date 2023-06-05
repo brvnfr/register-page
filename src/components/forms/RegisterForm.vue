@@ -1,5 +1,5 @@
 <template>
-	<form class="form">
+	<form class="form" @submit.prevent="handleSubmit">
 		<h2>Dados pessoais</h2>
 		<h3>Informe seus dados pessoais para acesso à sua conta</h3>
 
@@ -112,18 +112,14 @@ export default {
 			},
 		}
 	},
-	emits: ['update-selected-plan'],
 	props: {
 		selectedPlan: {
 			type: Object,
+			required: true,
 		},
 	},
 	methods: {
 		async handleSubmit() {
-			console.log(
-				'verifica se o dado é alterado no metodo de cadastro',
-				this.selectedPlan
-			)
 			this.clearErrors()
 
 			if (!this.validateForm()) {
@@ -131,22 +127,20 @@ export default {
 			}
 
 			try {
-				// Realizar a requisição para a rota https://fakestoreapi.com/users
 				const response = await axios.post('/users', {
 					name: this.name,
 					email: this.email,
 					password: this.password,
 					siteName: this.siteName,
-					// selectedPlan: this.selectedPlan, // comentado pois so serve para fins esteticos e a rota nao recebe esse dado.
 				})
 
-				// Verificar a resposta da requisição
 				if (response.status === 200) {
 					this.$router.push('/registration-complete')
 				} else {
 					alert(
 						'Ocorreu um erro ao realizar o cadastro. Por favor, tente novamente.'
 					)
+					console.warning(response.status)
 				}
 			} catch (error) {
 				alert(
@@ -158,8 +152,6 @@ export default {
 
 		validateForm() {
 			let isValid = true
-
-			// Validando inputs com seus respectivos regex e retornando valor false caso haja algum erro, removendo whitespaces do texto com o metodo .trim()
 
 			if (this.name.trim() === '') {
 				this.errors.name = 'Por favor, informe seu nome.'
@@ -210,6 +202,7 @@ export default {
 	},
 }
 </script>
+
 <style lang="scss" scoped>
 @import '@/assets/styles/variables.scss';
 
