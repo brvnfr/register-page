@@ -1,19 +1,8 @@
+import { createApp } from 'vue';
 import { createStore } from 'vuex';
 
-const store = createStore({
-  state: {
-    count: 0
-  },
-  mutations: {
-    increment(state) {
-      state.count++;
-    }
-  },
-  actions: {
-    increment(context) {
-      context.commit('increment');
-    }
-  }
-});
+const app = createApp({});
 
-export default store;
+app.use(createStore());
+
+export default app;
