@@ -28,9 +28,11 @@
 			<div v-if="errors.password" class="error-message">
 				{{ errors.password }}
 			</div>
-			<a href="/login/forgot-password" class="forgot-password"
-				>Esqueci minha senha</a
-			>
+			<div class="forgot-password-container">
+				<a href="/login/forgot-password" class="forgot-password"
+					>Esqueci minha senha</a
+				>
+			</div>
 		</div>
 
 		<CTAButton @click="handleSubmit">Entrar</CTAButton>
@@ -134,13 +136,18 @@ input:focus {
 	margin-top: $spacing-x-small;
 }
 
+.forgot-password-container {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: calc(#{$spacing-x-small} - 3px);
+	margin-bottom: $spacing-medium;
+}
+
 .forgot-password {
 	text-decoration: underline;
 	color: $font-color-secondary;
 	font-size: map-get(map-get($font-styles, x-small), size);
 	font-weight: map-get(map-get($font-styles, x-small), font-weight);
-	margin-top: calc(#{$spacing-x-small} - 3px);
-	margin-bottom: $spacing-medium;
 
 	&:hover {
 		color: $brand-color-main;
