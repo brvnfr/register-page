@@ -30,16 +30,20 @@
 				</div>
 			</div>
 			<div class="dashboard-content">
-				<h1 class="welcome-message">Olá João,</h1>
-				<p>Seja bem-vindo a uma conta de hospedagem.</p>
-				<iframe
-					width="560"
-					height="315"
-					src="https://www.youtube.com/embed/zcXtyKdP92c"
-					frameborder="0"
-					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-					allowfullscreen
-				></iframe>
+				<div class="text-container">
+					<h1 class="welcome-message">Olá João,</h1>
+					<p>Seja bem-vindo a sua conta de hospedagem.</p>
+				</div>
+				<div class="video-container">
+					<iframe
+						width="560"
+						height="315"
+						src="https://www.youtube.com/embed/zcXtyKdP92c"
+						frameborder="0"
+						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen
+					></iframe>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -140,14 +144,17 @@ export default {
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+	align-items: flex-start;
 }
 
-.welcome-message {
-	font-size: 24px;
+.text-container {
+	text-align: left;
 	margin-bottom: 16px;
-	text-align: center;
+}
+
+.video-container {
+	display: flex;
+	justify-content: center;
 }
 
 .logo-brand-mobile {
