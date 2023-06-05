@@ -138,7 +138,7 @@ export default {
 
 				// Verificar a resposta da requisição
 				if (response.status === 200) {
-					alert('Cadastro realizado com sucesso!')
+					this.$router.push('/registration-complete')
 				} else {
 					alert(
 						'Ocorreu um erro ao realizar o cadastro. Por favor, tente novamente.'

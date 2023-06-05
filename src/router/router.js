@@ -3,6 +3,7 @@ import LoginView from '@/views/LoginView.vue';
 import RegisterView from '@/views/RegisterView.vue';
 import DashboardView from '@/views/DashboardView.vue';
 import NotFound from '@/views/NotFound.vue';
+import RegistrationComplete from '@/views/RegistrationComplete.vue'
 
 
 //logica simples autenticando o acesso a rota dashboard se tiver token salvo no localStorage
@@ -31,6 +32,11 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: RegisterView
+  },
+  {
+    path: '/registration-complete',
+    name: 'RegistrationComplete',
+    component: RegistrationComplete
   },
   {
     path: '/dashboard',
