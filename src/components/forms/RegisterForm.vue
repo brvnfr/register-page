@@ -132,7 +132,7 @@ export default {
 					email: this.email,
 					password: this.password,
 					siteName: this.siteName,
-					selectedPlan: this.selectedPlan,
+					// selectedPlan: this.selectedPlan, // comentado pois so serve para fins esteticos e a rota nao recebe esse dado.
 				})
 
 				// Verificar a resposta da requisição

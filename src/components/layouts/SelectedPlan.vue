@@ -141,10 +141,6 @@ export default {
 			default: () => [],
 		},
 	},
-	model: {
-		prop: 'selectedPlan',
-		event: 'update',
-	},
 	computed: {
 		selectedPlanIndex: {
 			get() {
