@@ -1,14 +1,12 @@
-
 // Scrollbar
 
-// Chrome, Safari e Opera
+// Chrome, Safari, and Opera
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: $brand-vivid-pink;
-
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -19,69 +17,69 @@
   background-color: transparent;
 }
 
-// Firefox 
-
+// Firefox
 * {
   scrollbar-color: $brand-vivid-pink transparent;
   scrollbar-width: thin;
 }
 
-// Seletor de texto selecionado
+// Selected text highlight
 ::selection {
   background-color: $brand-vivid-pink;
-  color:$color-white
+  color: $color-white;
 }
 
-// Links visitados
+// Visited links
 a:visited {
   color: $brand-vivid-pink;
 }
 
-// Links ativos/hover
+// Active/hover links
 a:hover,
 a:active {
   color: $brand-vivid-pink;
 }
 
-//body html
-body,html {
+// Body and HTML
+body,
+html {
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: $font-family;
   background-color: $bg-default;
-  @media (max-width: $breakpoint-medium) {
-    margin:0;
-  }
 
+  @media (max-width: $breakpoint-medium) {
+    margin: 0;
+  }
 }
 
-//Titulos e subtitulos
+// Headings and subheadings
 h2 {
-	font-size: map-get(map-get($font-styles, large), size);
-	font-weight: map-get(map-get($font-styles, large), font-weight);
-	margin: $spacing-none;
+  font-size: map-get(map-get($font-styles, large), size);
+  font-weight: map-get(map-get($font-styles, large), font-weight);
+  margin: $spacing-none;
 }
 
 h3 {
-	font-size: map-get(map-get($font-styles, medium), size);
-	font-weight: map-get(map-get($font-styles, medium), font-weight);
-	color: $font-color-secondary;
-	margin-top: $spacing-none;
-	margin-bottom: $spacing-medium;
+  font-size: map-get(map-get($font-styles, medium), size);
+  font-weight: map-get(map-get($font-styles, medium), font-weight);
+  color: $font-color-secondary;
+  margin-top: $spacing-none;
+  margin-bottom: $spacing-medium;
 }
 
-
-// spacer
+// Spacer
 .horizontal-spacer {
   border: none;
   border-top: 1px solid $brand-color-main;
   margin: $spacing-medium 0;
-  @media (max-width: $breakpoint-medium) {
-		margin: $spacing-small 0
-	}
 
+  @media (max-width: $breakpoint-medium) {
+    margin: $spacing-small 0;
+  }
 }
 
 .logo-brand {
@@ -90,5 +88,5 @@ h3 {
 }
 
 .logo-img {
-  max-width: 150px; /* Ajuste o tamanho da imagem conforme necessário */
+  max-width: 150px; /* Adjust the image size as needed */
 }
