@@ -43,14 +43,14 @@ export default {
 	background-color: $color-white;
 	box-shadow: $box-shadow;
 	padding: $spacing-large;
-	width: 400px;
+	width: $box-size;
 
 	& h2 {
 		text-justify: start;
 	}
 }
 
-@media (max-width: 712px) {
+@media (max-width: $breakpoint-small) {
 	.card {
 		width: 95%;
 		padding: $spacing-small;

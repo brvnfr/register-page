@@ -162,6 +162,7 @@ export default {
 
 <style scoped lang="scss">
 @import '@/assets/styles/variables.scss';
+
 .selected-plan {
 	position: relative;
 	text-align: center;
@@ -176,10 +177,11 @@ export default {
 		bottom: 0;
 		left: 0;
 		width: 100%;
-		height: 300px; // Ajuste a altura do degradê conforme necessário
+		height: 300px;
 		background-image: linear-gradient(transparent, rgb(255, 255, 255));
 		background-clip: content-box;
 		pointer-events: none;
+
 		@media (max-width: 768px) {
 			height: 30px;
 		}
@@ -235,6 +237,7 @@ export default {
 	font-size: 1rem;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
+
 	&:hover {
 		background-color: $button-hover;
 	}
@@ -249,6 +252,7 @@ export default {
 	display: flex;
 	justify-content: space-around;
 	padding: $spacing-small;
+
 	& ol {
 		padding: 0;
 	}
@@ -279,12 +283,15 @@ export default {
 	#desktopOnly {
 		display: none;
 	}
+
 	.plans-container {
 		display: none;
 	}
+
 	.price-plans {
 		display: none;
 	}
+
 	.price-plan {
 		width: 80%;
 	}

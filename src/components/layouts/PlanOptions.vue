@@ -149,6 +149,7 @@ export default {
 .carousel__viewport {
 	perspective: 2000px;
 }
+
 .price-plans {
 	gap: 10px;
 }
@@ -174,12 +175,14 @@ export default {
 	font-weight: map-get(map-get($font-styles, medium), font-weight);
 	border-radius: 10px;
 	z-index: 100;
+
 	@media (max-width: 768px) {
 		bottom: -10px;
 	}
 }
 
-.price-plan {
+.price-plan,
+.price-plan-carousel {
 	text-align: center;
 	background-color: $color-white;
 	padding: $spacing-medium;
@@ -191,14 +194,7 @@ export default {
 }
 
 .price-plan-carousel {
-	text-align: center;
-	background-color: $color-white;
-	padding: $spacing-medium;
-	border-radius: $border-radius;
 	width: 80vw;
-	cursor: pointer;
-	transition: box-shadow 0.3s ease;
-	margin-top: 29px;
 }
 
 .plan-middle {
@@ -262,8 +258,8 @@ export default {
 	.desktop {
 		display: none;
 	}
+
 	.price-plan {
-		// width: 80%;
 		flex-direction: column;
 	}
 

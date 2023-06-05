@@ -12,6 +12,7 @@ export default {}
 
 <style scoped lang="scss">
 @import '@/assets/styles/variables.scss';
+
 .content {
 	display: flex;
 	flex-direction: column;
@@ -19,13 +20,14 @@ export default {}
 	align-items: center;
 	height: 100vh;
 }
+
 .card {
 	position: relative;
 	overflow: hidden;
 	background-color: $color-white;
 	box-shadow: $box-shadow;
 	padding: $spacing-large;
-	width: 400px;
+	width: $box-size;
 
 	& h2 {
 		text-justify: center;

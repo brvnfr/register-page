@@ -221,12 +221,12 @@ export default {
 	color: $font-color-secondary;
 	font-size: map-get(map-get($font-styles, x-small), size);
 	font-weight: map-get(map-get($font-styles, x-small), font-weight);
-	margin-top: calc($spacing-x-small - 3px); /* Reduzir a margem superior */
+	margin-top: calc($spacing-x-small - 3px);
 	margin-bottom: $spacing-small;
 }
 
 .form .input {
-	margin-bottom: $spacing-medium; /* Ajuste o valor da margem conforme necessário */
+	margin-bottom: $spacing-medium;
 }
 
 label {
@@ -244,10 +244,12 @@ input {
 	border-radius: $border-radius;
 	transition: border-color 0.3s;
 }
+
 input[type='checkbox'] {
 	width: 16px;
 	font-size: 20px;
 }
+
 input:focus {
 	outline: 1px solid $brand-vivid-pink;
 	border-color: $brand-vivid-pink;
@@ -289,12 +291,15 @@ h2:last-of-type {
 
 .checkbox-section input[type='checkbox'] {
 	margin-right: $spacing-x-small;
-	& :checked {
+
+	&:checked {
 		--checkbox-color: $brand-vivid-pink;
 	}
+
 	a {
 		color: $brand-vivid-pink;
-		& :hover {
+
+		&:hover {
 			text-decoration: underline;
 			color: $brand-vivid-pink;
 		}

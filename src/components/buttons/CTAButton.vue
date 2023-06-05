@@ -25,7 +25,7 @@ export default {
 
 .cta-button {
 	width: 100%;
-	background-color: $button-color;
+	background-color: $brand-vivid-pink;
 	color: $color-white;
 	padding: $spacing-medium $spacing-large;
 	border: none;

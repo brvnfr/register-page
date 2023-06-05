@@ -92,6 +92,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import '@/assets/styles/variables.scss';
+
 .form .input {
 	margin-bottom: $spacing-medium;
 }
@@ -111,13 +112,15 @@ input {
 	border-radius: $border-radius;
 	transition: border-color 0.3s;
 }
+
 input[type='checkbox'] {
 	width: 16px;
 	font-size: 20px;
 }
+
 input:focus {
-	outline: 1px solid $brand-vivid-pink;
-	border-color: $brand-vivid-pink;
+	outline: 1px solid $brand-color-main;
+	border-color: $brand-color-main;
 }
 
 .input-error {
@@ -128,28 +131,29 @@ input:focus {
 	color: $error-color;
 	font-size: map-get(map-get($font-styles, x-small), size);
 	font-weight: map-get(map-get($font-styles, x-large), font-weight);
-	margin-top: $spacing-x-small; /* Reduzir a margem superior */
+	margin-top: $spacing-x-small;
 }
+
 .forgot-password {
 	text-decoration: underline;
 	color: $font-color-secondary;
 	font-size: map-get(map-get($font-styles, x-small), size);
 	font-weight: map-get(map-get($font-styles, x-small), font-weight);
-	margin-top: calc($spacing-x-small - 3px); /* Reduzir a margem superior */
-	margin-bottom: $spacing-medium; /* Reduzir a margem inferior */
+	margin-top: calc(#{$spacing-x-small} - 3px);
+	margin-bottom: $spacing-medium;
 
 	&:hover {
-		color: $brand-vivid-pink;
+		color: $brand-color-main;
 	}
 }
 
 .form-caption {
 	display: flex;
-	text-justify: end;
+	text-align: end;
 	color: $font-color-secondary;
 	font-size: map-get(map-get($font-styles, x-small), size);
 	font-weight: map-get(map-get($font-styles, x-small), font-weight);
-	margin-top: calc($spacing-x-small - 3px); /* Reduzir a margem superior */
-	margin-bottom: $spacing-small; /* Reduzir a margem inferior */
+	margin-top: calc(#{$spacing-x-small} - 3px);
+	margin-bottom: $spacing-small;
 }
 </style>

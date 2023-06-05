@@ -119,7 +119,7 @@ export default {
 	align-items: center;
 	flex-direction: row;
 	flex-wrap: wrap;
-	gap: 20px;
+	gap: $spacing-medium;
 }
 
 .register-column {
@@ -128,7 +128,7 @@ export default {
 	background-color: $color-white;
 	box-shadow: $box-shadow;
 	padding: $spacing-medium;
-	width: 400px;
+	width: $box-size;
 
 	& h2 {
 		text-justify: start;
@@ -139,20 +139,21 @@ export default {
 	display: flex;
 	justify-content: center;
 	position: relative;
-	top: -33px;
+	top: -$spacing-large;
 	left: 50%;
 	width: 150px;
 	text-transform: uppercase;
 	transform: translateX(-50%);
-	padding: 5px;
+	padding: $spacing-small;
 	background-color: $color-black;
 	color: $color-white;
 	font-size: map-get(map-get($font-styles, medium), size);
 	font-weight: map-get(map-get($font-styles, medium), font-weight);
-	border-radius: 10px;
-	z-index: 100;
-	@media (max-width: 768px) {
-		top: 10px;
+	border-radius: $border-radius;
+	z-index: $z-index-modal;
+
+	@media (max-width: $breakpoint-medium) {
+		top: $spacing-small;
 	}
 }
 
@@ -165,7 +166,7 @@ export default {
 	border-radius: $border-radius;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-medium) {
 	.container {
 		height: 100%;
 	}
@@ -194,11 +195,11 @@ h2:first-of-type {
 	margin: $spacing-small 0;
 	text-align: center;
 	& p {
-		margin-bottom: 0;
+		margin-bottom: $spacing-none;
 	}
 	& router-link {
-		margin-left: 5px;
-		color: $brand-vivid-pink;
+		margin-left: $spacing-x-small;
+		color: $button-color;
 	}
 }
 </style>
