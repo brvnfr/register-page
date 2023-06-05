@@ -29,7 +29,18 @@
 					</ul>
 				</div>
 			</div>
-			<div class="dashboard-content"></div>
+			<div class="dashboard-content">
+				<h1 class="welcome-message">Olá João,</h1>
+				<p>Seja bem-vindo a uma conta de hospedagem.</p>
+				<iframe
+					width="560"
+					height="315"
+					src="https://www.youtube.com/embed/zcXtyKdP92c"
+					frameborder="0"
+					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen
+				></iframe>
+			</div>
 		</div>
 	</div>
 </template>
@@ -127,6 +138,16 @@ export default {
 .dashboard-content {
 	flex: 1;
 	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.welcome-message {
+	font-size: 24px;
+	margin-bottom: 16px;
+	text-align: center;
 }
 
 .logo-brand-mobile {
