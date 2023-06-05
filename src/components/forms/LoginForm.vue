@@ -39,7 +39,6 @@
 
 <script>
 import CTAButton from '@/components/buttons/CTAButton.vue'
-import { mapState, mapActions } from 'vuex'
 
 export default {
 	components: {
@@ -52,12 +51,8 @@ export default {
 			errors: {},
 		}
 	},
-	computed: {
-		...mapState('auth', ['email', 'password']),
-	},
 	methods: {
-		...mapActions('auth', ['login']),
-		handleSubmit() {
+		async handleSubmit() {
 			this.errors = {}
 
 			if (!this.email) {
@@ -69,7 +64,27 @@ export default {
 			}
 
 			if (Object.keys(this.errors).length === 0) {
-				this.login() // chama o metodo de login na actions do modulo auth na store
+				await this.login()
+			}
+		},
+		async login() {
+			try {
+				const response = await this.$axios.post('/auth/login', {
+					// a rota  so aceita o dado username, entao adaptei o nome da variavel
+					username: this.email, // johnd
+					password: this.password, // m38rmF$
+				})
+
+				const token = response.data.token
+				const decodedToken = this.$jwtDecode(token)
+
+				console.log('Token de autenticação: ', decodedToken)
+				localStorage.setItem('token', token)
+			} catch (error) {
+				console.log('Erro ao fazer login:', error)
+			} finally {
+				// Redirecionar para a página após o login bem-sucedido
+				this.$router.push('/dashboard')
 			}
 		},
 	},
