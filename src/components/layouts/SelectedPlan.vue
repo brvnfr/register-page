@@ -52,24 +52,6 @@
 		>
 			<template #addons>
 				<Navigation />
-				<!-- <div class="custom-navigation">
-					<button
-						aria-label="Previous Plan"
-						id="previousPlan"
-						@click="previousPlan"
-						class="previous-plan-button"
-					>
-						<i class="fa-solid fa-chevron-left"></i>
-					</button>
-					<Pagination />
-					<button
-						aria-label="Next Plan"
-						@click="nextPlan"
-						class="next-plan-button"
-					>
-						<i class="fa-solid fa-chevron-right"></i>
-					</button>
-				</div> -->
 			</template>
 
 			<Slide v-for="(plan, index) in planOptions" :key="index">
