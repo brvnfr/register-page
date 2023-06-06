@@ -27,7 +27,7 @@ A lógica consiste em:
 
 Este projeto utiliza uma requisição POST na API do FakeAPI para realizar um cadastro demonstrativo.
 
-O cadastro é feito através de uma requisição para a rota específica, enviando os dados do formulario de cadastro pré validado por expressoes regulares, notificando erro nos campos invalidos, e redirecionando para uma pagina de registro completo caso realizado com sucesso.
+O cadastro é feito através de uma requisição para a rota específica, enviando os dados do plano selecionado e do formulario de cadastro pré validado por expressoes regulares, notificando erro nos campos invalidos e redirecionando para uma pagina de registro completo caso realizado com sucesso.
 
 Na tela de cadastro, existe toda uma lógica para obter o dado do plano selecionado, de acordo com a escolha do usuário, de forma distinta nas versões web e mobile.
 
