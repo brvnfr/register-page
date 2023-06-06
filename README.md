@@ -1,4 +1,4 @@
-# Sobre o Projeto / About Project
+# Sobre o Projeto 
 
 ### Design System
 
