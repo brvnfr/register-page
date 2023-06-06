@@ -18,9 +18,9 @@
 						class="logo-img"
 					/>
 				</div>
-				<div class="user-profile" @click="toggleDropdown">
-					<i class="fas fa-user avatar"></i>
-				</div>
+				<button class="user-profile" @click="toggleDropdown">
+					<i class="fas fa-user"></i>
+				</button>
 				<div class="dropdown" :class="{ 'show-dropdown': showDropdown }">
 					<ul>
 						<li>Conta</li>
@@ -102,16 +102,19 @@ export default {
 	background-color: $brand-color-main;
 	cursor: pointer;
 	display: flex;
+	border: none;
 	justify-content: center;
 	align-items: center;
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
-}
-
-.avatar {
-	font-size: $icon-size-large;
+	transition: 1s;
 	color: $font-color-light;
+	font-size: $icon-size-medium;
+	&:hover {
+		background-color: darken($brand-color-main, 10%);
+		color: lighten($font-color-light, 50%);
+	}
 }
 
 .dropdown {
