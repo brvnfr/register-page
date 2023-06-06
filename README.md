@@ -1,12 +1,12 @@
 # Sobre o Projeto 
 
 
-## Login
+### Login
 ```
 username: johnd
 senha: m38rmF$
 ```
-
+---
 
 ### Design System
 
@@ -96,16 +96,16 @@ This project was created and regularly tested using Google's Lighthouse tool, co
 
 ----
 
-# Project setup
+### Project setup
 ```
 npm install´
 ```
 
-# Compiles and hot-reloads for development
+### Compiles and hot-reloads for development
 ```
 npm run serve
 ```
-# Compiles and minifies for production
+### Compiles and minifies for production
 ```
 npm run build
 ```
