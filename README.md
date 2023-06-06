@@ -98,7 +98,7 @@ This project was created and regularly tested using Google's Lighthouse tool, co
 
 ### Project setup
 ```
-npm install´
+npm install
 ```
 
 ### Compiles and hot-reloads for development
