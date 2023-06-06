@@ -1,6 +1,6 @@
 <template>
 	<div class="dashboard-view">
-		<div class="sidebar">
+		<div class="sidebar" :class="{ 'sidebar-hidden': isMobile }">
 			<div class="logo-brand">
 				<img
 					src="@/assets/images/brand/brand-logo.svg"
@@ -32,12 +32,11 @@
 			<div class="dashboard-content">
 				<div class="text-container">
 					<h1 class="welcome-message">Olá João,</h1>
-					<p>Seja bem-vindo a sua conta de hospedagem.</p>
+					<p>Seja bem-vindo à sua conta de hospedagem.</p>
 				</div>
 				<div class="video-container">
 					<iframe
-						width="560"
-						height="315"
+						class="dashboard-video"
 						src="https://www.youtube.com/embed/zcXtyKdP92c"
 						frameborder="0"
 						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -55,6 +54,7 @@ export default {
 	data() {
 		return {
 			showDropdown: false,
+			isMobile: false,
 		}
 	},
 	methods: {
@@ -62,8 +62,18 @@ export default {
 			this.showDropdown = !this.showDropdown
 		},
 		logout() {
-			this.$router.push('/') // metodo simples para mudar a route da pagina, fazendo o token de auth ser deletado, conforme configurado no router.js
+			this.$router.push('/')
 		},
+		checkMobile() {
+			this.isMobile = window.innerWidth <= 768
+		},
+	},
+	mounted() {
+		window.addEventListener('resize', this.checkMobile)
+		this.checkMobile()
+	},
+	beforeUnmount() {
+		window.removeEventListener('resize', this.checkMobile)
 	},
 }
 </script>
@@ -73,13 +83,18 @@ export default {
 
 .dashboard-view {
 	display: flex;
-	height: 100vh;
+	min-height: 100vh;
 }
 
 .sidebar {
 	width: 250px;
 	background-color: $brand-color-main;
 	color: $font-color-primary;
+	transition: transform 0.3s ease-in-out;
+
+	&.sidebar-hidden {
+		transform: translateX(-100%);
+	}
 }
 
 .main {
@@ -150,24 +165,34 @@ export default {
 }
 
 .text-container {
+	display: flex;
+	flex-direction: column;
 	text-align: left;
 	margin-bottom: $spacing-medium;
 }
 
 .video-container {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
+	align-items: center;
+}
+
+.dashboard-video {
+	width: 500px;
+	height: 500px;
 }
 
 .logo-brand-mobile {
 	display: none;
 }
 
-@media (max-width: $breakpoint-large) {
+@media (max-width: $breakpoint-medium) {
 	.top-navigation {
 		justify-content: space-between;
 	}
 	.sidebar {
+		transform: none !important;
 		display: none;
 	}
 	.logo-brand-mobile {
