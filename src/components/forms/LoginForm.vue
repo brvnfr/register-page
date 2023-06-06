@@ -144,13 +144,14 @@ input:focus {
 }
 
 .forgot-password {
+	padding: $spacing-x-small;
 	text-decoration: underline;
-	color: $font-color-secondary;
+	color: $brand-vivid-pink;
 	font-size: map-get(map-get($font-styles, x-small), size);
 	font-weight: map-get(map-get($font-styles, x-small), font-weight);
 
 	&:hover {
-		color: $brand-color-main;
+		color: $brand-vivid-pink;
 	}
 }
 
