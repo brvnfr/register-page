@@ -1,4 +1,7 @@
 <template>
+	<div class="title">
+		<p>Selecione o plano:</p>
+	</div>
 	<div class="price-plans desktop">
 		<div
 			v-for="(plan, index) in planOptions"
@@ -149,15 +152,22 @@ export default {
 .carousel__viewport {
 	perspective: 2000px;
 }
-
+.title {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-end;
+	margin-bottom: 0;
+	width: 100%;
+}
 .price-plans {
-	gap: 10px;
+	gap: 20px;
 }
 
 .desktop {
 	display: flex;
 	flex-direction: row;
-	margin-top: calc($spacing-x-large * 2);
+	margin-top: $spacing-x-large;
 }
 
 .best-plan-tag {
