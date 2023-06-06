@@ -157,6 +157,7 @@ export default {
 .desktop {
 	display: flex;
 	flex-direction: row;
+	margin-top: calc($spacing-x-large * 2);
 }
 
 .best-plan-tag {
