@@ -266,7 +266,8 @@ export default {
 }
 
 @media (max-width: 768px) {
-	.desktop {
+	.desktop,
+	.title {
 		display: none;
 	}
 
