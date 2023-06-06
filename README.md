@@ -1,5 +1,13 @@
 # Sobre o Projeto 
 
+
+## Login
+```
+username: johnd
+senha: m38rmF$
+```
+
+
 ### Design System
 
 O design system deste projeto foi feito visando objetividade, sendo de forma simplificada, com componentes dinâmicos separados por pastas de acordo com sua utilidade e variáveis de estilo (design tokens) pré-configuradas em um único arquivo SASS, utilizado em todos os componentes e páginas do projeto.
@@ -89,10 +97,15 @@ This project was created and regularly tested using Google's Lighthouse tool, co
 ----
 
 # Project setup
-´npm install´
+```
+npm install´
+```
 
 # Compiles and hot-reloads for development
-´npm run serve´
-
+```
+npm run serve
+```
 # Compiles and minifies for production
-´npm run build´
+```
+npm run build
+```
