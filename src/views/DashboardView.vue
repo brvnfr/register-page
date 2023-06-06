@@ -36,8 +36,8 @@
 				</div>
 				<div class="video-container">
 					<iframe
-						width="560"
-						height="315"
+						width="100%"
+						height="400"
 						src="https://www.youtube.com/embed/zcXtyKdP92c"
 						frameborder="0"
 						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -157,6 +157,7 @@ export default {
 .video-container {
 	display: flex;
 	justify-content: center;
+	width: 100%;
 }
 
 .logo-brand-mobile {
@@ -172,6 +173,9 @@ export default {
 	}
 	.logo-brand-mobile {
 		display: flex;
+	}
+	.video-container {
+		width: -webkit-fill-available;
 	}
 }
 </style>
