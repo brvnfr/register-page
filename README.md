@@ -44,42 +44,55 @@ Este projeto foi criado e testado com frequência utilizando a ferramenta Lighth
 
 ## English Version
 
-### Design System
+# About the Project
 
-The design system of this project was developed with the goal of simplicity, with dynamic components organized into folders according to their purpose and pre-configured style variables (design tokens) in a single SASS file, used across all components and pages of the project.
+## Design System
 
-### Authentication and Login
+The design system of this project was designed with a focus on simplicity, using a simplified approach with dynamic components organized in folders according to their utility, and pre-configured style variables (design tokens) in a single SASS file, which is used across all components and pages of the project.
 
-This project utilizes a simple authentication method for demonstration purposes.
+## Authentication and Login
+
+This project utilizes a simple authentication method for demonstrative purposes.
 
 The logic consists of:
 
-1. Making a POST request to the FakeAPI's API using the 'axios' library to handle the request and 'try', 'catch', and 'finally' blocks to handle it in an asynchronous login function.
+1. Making a POST request to the FakeAPI, using the 'axios' library to handle the request, and 'try', 'catch', and 'finally' blocks to handle it within an asynchronous login function.
 2. If the login is successful, the authentication token, which is included in the response of the request, is saved in the browser's localStorage and used to validate access to the protected route in the router.js file, granting access to the Dashboard page.
-3. In the router.js file, in addition to the function that grants access to the Dashboard route if a token is saved in the localStorage, there is another function that removes the token whenever the path is changed, redirecting to the login page.
-4. On the Dashboard page, there is a "Logout" button within the dropdown of the 'User' button, which, when clicked, intentionally changes the path, removing the token from the localStorage and applying the access protection to the page.
+3. In the router.js file, in addition to the function that allows access to the Dashboard route if a token is stored in the localStorage, there is another function that removes the token whenever the path is changed, redirecting to the login page.
+4. On the Dashboard page, there is a button labeled "Logout" inside the user dropdown, which, when clicked, intentionally changes the path, removing the token from the localStorage and applying access protection to the page.
 
-### Registration and Plan Selection
+## Registration and Plan Selection
 
-This project uses a POST request to the FakeAPI's API to perform a demo registration.
+This project uses a POST request to the FakeAPI to perform a demonstrative registration.
 
-The registration is done by making a request to the specific route and, for the sake of simplicity and limitations of the API, it does not send plan data.
+The registration is done by sending a request to the specific route, including the data from the pre-validated registration form using regular expressions, notifying errors in case of invalid fields, and redirecting to a complete registration page upon successful registration.
 
-On the registration page, there is a logic to obtain the selected plan data, according to the user's choice, in a different way for web and mobile versions.
+On the registration page, there is a logic to obtain the selected plan data based on the user's choice, which differs between the web and mobile versions.
 
 1. In the desktop version, the user selects the plan by clicking on CTA buttons.
 2. In the mobile version, the user chooses the plan through a carousel/slider.
 
-### Responsiveness
+## Responsiveness
 
-This project was developed using Flexbox to provide better responsiveness between the desktop and mobile versions.
+This project was developed using Flexbox to ensure better responsiveness between the desktop and mobile versions.
 
 All adjustments made to the style variables aim to optimize the project to:
 
 1. Function well in both breakpoints.
-2. Reuse components, without the need to create distinct versions for them.
-3. Maintain clean and performant code.
+2. Reuse components without the need to create distinct versions for them.
+3. Keep the code clean and performant.
 
-### Metrics
+## Metrics
 
-This project has been frequently created and tested using Google's Lighthouse tool, always monitoring the metrics of Performance, Accessibility, Best Practices, and SEO, maintaining a score between 90-100.
+This project was created and regularly tested using Google's Lighthouse tool, constantly monitoring Performance, Accessibility, Best Practices, and SEO metrics, aiming to maintain a score between 90-100.
+
+----
+
+# Project setup
+´npm install´
+
+# Compiles and hot-reloads for development
+´npm run serve´
+
+# Compiles and minifies for production
+´npm run build´
